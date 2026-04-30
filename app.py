@@ -212,9 +212,9 @@ def handle_action(data: dict):
         next_scene = SCENES["start"]
         state["current_scene"] = "start"
 
-    # Auto-advance cultivation check (only if conditions met)
+    # Auto-advance cultivation check (skip if choice explicitly set cultivation)
     next_realm = can_advance_cultivation(state)
-    if next_realm and state.get("auto_advance", True):
+    if next_realm and state.get("auto_advance", True) and "cultivation" not in effects:
         state = advance_cultivation(state)
 
     chapter = next_scene.get("chapter", 1)
