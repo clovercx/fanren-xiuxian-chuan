@@ -1,3 +1,12 @@
+---
+title: Fanren Xiuxian Chuan
+emoji: 😻
+colorFrom: blue
+colorTo: blue
+sdk: docker
+pinned: false
+---
+
 ## 《凡人修仙传》—— 互动小说游戏
 
 **一部从凡人到化神的完整修仙史诗，4小时爆肝开发，538个场景。**
