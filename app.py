@@ -25,6 +25,20 @@ app.add_middleware(
 SAVE_DIR = os.path.join(os.path.dirname(__file__), "saves")
 os.makedirs(SAVE_DIR, exist_ok=True)
 
+STATS_FILE = os.path.join(SAVE_DIR, "stats.json")
+
+
+def _load_stats():
+    if os.path.exists(STATS_FILE):
+        with open(STATS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {"play_count": 0, "messages": []}
+
+
+def _save_stats(stats):
+    with open(STATS_FILE, "w", encoding="utf-8") as f:
+        json.dump(stats, f, ensure_ascii=False, indent=2)
+
 
 class ChoiceRequest(BaseModel):
     choice_index: int
@@ -44,6 +58,55 @@ def get_game_info():
         "chapters": GAME_CHAPTERS,
         "total_chapters": len(GAME_CHAPTERS),
     }
+
+
+# ── 游玩统计 ──
+
+
+@app.get("/api/stats")
+def get_stats():
+    stats = _load_stats()
+    return {"play_count": stats.get("play_count", 0)}
+
+
+@app.post("/api/stats/play")
+def record_play():
+    stats = _load_stats()
+    stats["play_count"] = stats.get("play_count", 0) + 1
+    _save_stats(stats)
+    return {"play_count": stats["play_count"]}
+
+
+# ── 留言板 ──
+
+
+@app.get("/api/messages")
+def get_messages(limit: int = 50):
+    stats = _load_stats()
+    msgs = stats.get("messages", [])
+    # 按时间倒序返回
+    msgs_sorted = sorted(msgs, key=lambda m: m.get("timestamp", 0), reverse=True)
+    return {"messages": msgs_sorted[:limit]}
+
+
+@app.post("/api/messages")
+def add_message(data: dict):
+    name = (data.get("name") or "匿名道友").strip()
+    content = (data.get("content") or "").strip()
+    if not content:
+        raise HTTPException(400, "留言内容不能为空")
+    if len(content) > 500:
+        raise HTTPException(400, "留言内容不能超过500字")
+    stats = _load_stats()
+    msg = {
+        "id": len(stats.get("messages", [])) + 1,
+        "name": name[:10],
+        "content": content[:500],
+        "timestamp": __import__("time").time(),
+    }
+    stats.setdefault("messages", []).append(msg)
+    _save_stats(stats)
+    return {"success": True, "message": msg}
 
 
 @app.get("/api/init")

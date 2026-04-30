@@ -568,6 +568,7 @@ body::before {
           <button class="landing-btn primary" id="landingContinue" onclick="startFromSave()">📂 继续冒险</button>
           <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
           <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
+          <div style="margin-top:24px;font-size:0.8em;color:var(--text-dim);letter-spacing:1px;" id="landingPlayCount">✦ 加载中...</div>
         </div>
       </div>
 
@@ -577,6 +578,7 @@ body::before {
         <button class="action-btn" onclick="newGame()">🔄 重开</button>
         <button class="action-btn" onclick="saveGame()">💾 存档</button>
         <button class="action-btn" onclick="showLoadModal()">📂 读档</button>
+        <button class="action-btn" onclick="toggleBoard()">💬 留言</button>
       </div>
     </div>
   </div>
@@ -597,6 +599,25 @@ body::before {
     <h2>📂 读档</h2>
     <div id="loadSlots"></div>
     <button class="modal-close" onclick="closeLoadModal()">关闭</button>
+  </div>
+</div>
+
+<!-- 留言板弹窗 -->
+<div class="modal-overlay" id="boardModal">
+  <div class="modal" style="max-width:600px;">
+    <h2>💬 留言墙</h2>
+    <div style="margin-bottom:12px;padding:10px;background:var(--bg-primary);border-radius:6px;text-align:center;font-size:0.9em;color:var(--accent-gold);">
+      <span id="playCountDisplay">加载中...</span>
+    </div>
+    <div style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap;">
+      <input id="msgName" type="text" placeholder="你的道号（留空则匿名）" maxlength="10"
+        style="flex:1;min-width:100px;padding:8px 12px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:4px;color:var(--text-primary);font-family:'Noto Serif SC',serif;font-size:0.85em;">
+      <textarea id="msgContent" placeholder="写下你的感想或建议..." maxlength="500"
+        style="flex:100%;height:56px;padding:8px 12px;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:4px;color:var(--text-primary);font-family:'Noto Serif SC',serif;font-size:0.85em;resize:none;"></textarea>
+      <button onclick="submitMessage()" style="padding:8px 20px;background:var(--gold-gradient);border:none;border-radius:4px;color:#1a1210;font-family:'Noto Serif SC',serif;font-size:0.85em;cursor:pointer;font-weight:700;">✦ 留言 ✦</button>
+    </div>
+    <div id="msgList" style="max-height:320px;overflow-y:auto;border-top:1px solid var(--border-color);padding-top:10px;"></div>
+    <button class="modal-close" onclick="closeBoardModal()">关闭</button>
   </div>
 </div>
 
@@ -636,6 +657,11 @@ async function init() {
       $('landingContinue').disabled = true;
       $('landingContinue').textContent = '📂 无存档';
     }
+    // 加载游玩次数
+    fetch(API + '/api/stats').then(function(r){return r.json();}).then(function(d){
+      var el = document.getElementById('landingPlayCount');
+      if (el) el.textContent = '✦ 已有 ' + d.play_count + ' 位道友踏上修仙之路 ✦';
+    }).catch(function(){});
     $('actionBar').style.display = 'none';
   } catch(e) {
     $('storyContainer').innerHTML = `<p style="color:var(--accent-red);">连接服务器失败: ${e.message}</p>`;
@@ -676,6 +702,8 @@ async function startNewGame() {
     $('actionBar').style.display = 'flex';
     renderAll();
     showNameModal();
+    // 记录游玩次数
+    fetch(API + '/api/stats/play', {method: 'POST'}).catch(function(){});
   } catch(e) {
     $('storyContainer').innerHTML = `<p style="color:var(--accent-red);">启动失败: ${e.message}</p>`;
   }
@@ -1331,6 +1359,92 @@ async function fetchSceneAndRender(sceneId) {
 
 function closeLoadModal() { $('loadModal').classList.remove('active'); }
 
+// ── 留言板 ──
+var boardOpen = false;
+
+function toggleBoard() {
+  boardOpen = !boardOpen;
+  if (boardOpen) {
+    $('boardModal').classList.add('active');
+    loadBoard();
+  } else {
+    $('boardModal').classList.remove('active');
+  }
+}
+
+function closeBoardModal() {
+  boardOpen = false;
+  $('boardModal').classList.remove('active');
+}
+
+async function loadBoard() {
+  // Fetch play count
+  try {
+    const statsRes = await fetch(API + '/api/stats');
+    const statsData = await statsRes.json();
+    $('playCountDisplay').textContent = '✦ 已有 ' + statsData.play_count + ' 位道友踏上修仙之路 ✦';
+  } catch(e) {
+    $('playCountDisplay').textContent = '✦ 道友络绎 ✦';
+  }
+  // Fetch messages
+  try {
+    const msgRes = await fetch(API + '/api/messages');
+    const msgData = await msgRes.json();
+    renderMessages(msgData.messages || []);
+  } catch(e) {
+    $('msgList').innerHTML = '<div style="text-align:center;color:var(--text-dim);padding:20px;">留言加载失败</div>';
+  }
+}
+
+function renderMessages(messages) {
+  const list = $('msgList');
+  if (!messages || messages.length === 0) {
+    list.innerHTML = '<div style="text-align:center;color:var(--text-dim);padding:30px;">暂无留言<br><span style="font-size:0.8em;">留下你的感想吧</span></div>';
+    return;
+  }
+  let html = '';
+  messages.forEach(function(m) {
+    var date = new Date(m.timestamp * 1000);
+    var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    html += '<div style="padding:10px 0;border-bottom:1px solid var(--border-color);">';
+    html += '  <div style="display:flex;justify-content:space-between;margin-bottom:4px;">';
+    html += '    <strong style="color:var(--accent-gold);font-size:0.85em;">' + escapeHtml(m.name) + '</strong>';
+    html += '    <span style="color:var(--text-dim);font-size:0.75em;">' + dateStr + '</span>';
+    html += '  </div>';
+    html += '  <div style="color:var(--text-secondary);font-size:0.85em;line-height:1.6;">' + escapeHtml(m.content) + '</div>';
+    html += '</div>';
+  });
+  list.innerHTML = html;
+}
+
+async function submitMessage() {
+  var name = $('msgName').value.trim() || '匿名道友';
+  var content = $('msgContent').value.trim();
+  if (!content) {
+    showEffectNotification({message: '请写下留言内容'});
+    return;
+  }
+  if (content.length > 500) {
+    showEffectNotification({message: '留言不能超过500字'});
+    return;
+  }
+  try {
+    const res = await fetch(API + '/api/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name: name, content: content})
+    });
+    const data = await res.json();
+    if (data.success) {
+      $('msgContent').value = '';
+      showEffectNotification({message: '留言成功！'});
+      loadBoard();  // Refresh list
+    }
+  } catch(e) {
+    showEffectNotification({message: '留言失败，请重试'});
+  }
+}
+
 // ── 新游戏（从游戏内重开）──
 async function newGame() {
   if (gameState && gameState.turn_count > 0) {
@@ -1344,6 +1458,7 @@ async function newGame() {
       <button class="landing-btn primary" id="landingContinue" onclick="startFromSave()">📂 继续冒险</button>
       <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
       <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
+      <div style="margin-top:24px;font-size:0.8em;color:var(--text-dim);letter-spacing:1px;" id="landingPlayCount">✦ 加载中...</div>
     </div>`;
   document.getElementById('choicesArea').innerHTML = '';
   init();
