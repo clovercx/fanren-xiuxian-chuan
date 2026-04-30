@@ -571,10 +571,9 @@ body::before {
       <div class="choices-area" id="choicesArea"></div>
 
       <div class="action-bar" id="actionBar" style="display:none;">
+        <button class="action-btn" onclick="newGame()">🔄 重开</button>
         <button class="action-btn" onclick="saveGame()">💾 存档</button>
         <button class="action-btn" onclick="showLoadModal()">📂 读档</button>
-        <button class="action-btn" onclick="newGame()">🔄 重开</button>
-        <button class="action-btn" onclick="toggleAutoAdvance()">⚡ 自动突破</button>
       </div>
     </div>
   </div>
@@ -602,7 +601,10 @@ body::before {
 <div class="advance-notification" id="advanceModal">
   <h2>✦ 突破 ✦</h2>
   <p id="advanceMessage">修为圆满，可突破至下一境界！</p>
-  <button class="advance-btn" onclick="doAdvance()">运功突破</button>
+  <div id="advanceProgress" style="margin:12px auto;width:200px;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden;">
+    <div id="advanceBar" style="width:0%;height:100%;background:var(--gold-gradient);border-radius:3px;transition:width 0.3s ease;"></div>
+  </div>
+  <button class="advance-btn" id="advanceBtn" onclick="clickAdvance()">凝聚真气（0/5）</button>
 </div>
 
 <script>
@@ -612,7 +614,6 @@ body::before {
 
 let gameState = null;
 let currentScene = null;
-let autoAdvance = true;
 const API = '';
 
 function $(id) { return document.getElementById(id); }
@@ -647,7 +648,6 @@ async function startFromSave() {
       return;
     }
     gameState = data.state;
-    gameState.auto_advance = autoAdvance;
     currentScene = data.scene;
     $('landingScreen').style.display = 'none';
     $('actionBar').style.display = 'flex';
@@ -667,7 +667,6 @@ async function startNewGame() {
     const data = await res.json();
     gameState = data.state;
     currentScene = data.scene;
-    gameState.auto_advance = autoAdvance;
     $('landingScreen').style.display = 'none';
     $('actionBar').style.display = 'flex';
     renderAll();
@@ -919,7 +918,6 @@ async function makeChoice(index) {
     });
     const data = await res.json();
     gameState = data.state;
-    gameState.auto_advance = autoAdvance;
     currentScene = data.scene;
     renderAll();
     window.scrollTo(0, 0);
@@ -962,7 +960,6 @@ async function continueStory() {
     });
     const data = await res.json();
     gameState = data.state;
-    gameState.auto_advance = autoAdvance;
     currentScene = data.scene;
     renderAll();
     window.scrollTo(0, 0);
@@ -972,20 +969,42 @@ async function continueStory() {
   }
 }
 
-// ── 突破系统 ──
+// ── 突破系统（手动点击）──
+var advanceClicks = 0;
+var advanceMaxClicks = 5;
+var advanceRealm = null;
+
 function checkAdvance() {
-  if (!gameState || !autoAdvance) return;
-  // Check via API
+  if (!gameState) return;
   fetch(API + '/api/advance', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({state: gameState})
   }).then(r => r.json()).then(data => {
     if (data.new_realm) {
+      advanceClicks = 0;
+      advanceRealm = data.new_realm;
       $('advanceMessage').textContent = `修为圆满，可突破至【${data.new_realm}】！`;
+      $('advanceBar').style.width = '0%';
+      $('advanceBtn').textContent = '凝聚真气（0/' + advanceMaxClicks + '）';
+      $('advanceBtn').disabled = false;
       $('advanceModal').classList.add('active');
     }
   }).catch(() => {});
+}
+
+function clickAdvance() {
+  advanceClicks++;
+  var pct = (advanceClicks / advanceMaxClicks) * 100;
+  $('advanceBar').style.width = pct + '%';
+  // 每次点击文字变化增加沉浸感
+  var texts = ['凝聚真气', '引气入体', '冲击瓶颈', '淬炼经脉', '破茧成蝶'];
+  var idx = Math.min(advanceClicks - 1, texts.length - 1);
+  $('advanceBtn').textContent = texts[idx] + '（' + advanceClicks + '/' + advanceMaxClicks + '）';
+  if (advanceClicks >= advanceMaxClicks) {
+    $('advanceBtn').disabled = true;
+    doAdvance();
+  }
 }
 
 async function doAdvance() {
@@ -997,7 +1016,6 @@ async function doAdvance() {
     });
     const data = await res.json();
     gameState = data.state;
-    gameState.auto_advance = autoAdvance;
     $('advanceModal').classList.remove('active');
     renderStats();
     autoSave();
@@ -1005,13 +1023,6 @@ async function doAdvance() {
   } catch(e) {
     alert('突破失败: ' + e.message);
   }
-}
-
-function toggleAutoAdvance() {
-  autoAdvance = !autoAdvance;
-  if (gameState) gameState.auto_advance = autoAdvance;
-  const btn = document.querySelectorAll('.action-btn')[3];
-  if (btn) btn.style.borderColor = autoAdvance ? 'var(--accent-green)' : 'var(--accent-red)';
 }
 
 // ── 效果提示 ──
@@ -1051,23 +1062,23 @@ function showEffectNotification(effects) {
     toast.onclick = function(){ this.remove(); };
     toast.style.cssText = `
       position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-      background:linear-gradient(135deg, #1a1210, #2a1f1a);
-      border:2px solid var(--accent-gold);
-      border-radius:12px; padding:20px 36px;
-      color:var(--accent-gold); font-size:1.1em;
-      z-index:9999; min-width:260px; text-align:center;
-      box-shadow:0 0 60px rgba(201,168,76,0.2);
+      background:var(--bg-card);
+      border:1px solid var(--accent-gold);
+      border-radius:10px; padding:16px 30px;
+      color:var(--text-primary); font-size:1em;
+      z-index:9999; min-width:240px; text-align:center;
+      box-shadow:0 4px 24px rgba(0,0,0,0.12);
       cursor:pointer; letter-spacing:1px; line-height:1.8;
-      animation:toastFadeIn 0.4s ease;
+      animation:toastFadeIn 0.3s ease;
     `;
     toast.innerHTML = lines.join('<br>');
     document.body.appendChild(toast);
-    // Auto-dismiss after 4 seconds, or click to dismiss immediately
+    // Auto-dismiss after 2.5 seconds, or click to dismiss immediately
     var autoTimer = setTimeout(function(){
       toast.style.opacity = '0';
       toast.style.transition = 'opacity 0.5s';
       setTimeout(function(){ toast.remove(); }, 500);
-    }, 4000);
+    }, 2500);
     toast.addEventListener('click', function(){
       clearTimeout(autoTimer);
       toast.remove();
@@ -1192,7 +1203,6 @@ async function doLoad(slot) {
     const res = await fetch(API + `/api/save/${slot}`);
     const data = await res.json();
     gameState = data.state;
-    gameState.auto_advance = autoAdvance;
     currentScene = data.scene;
     $('landingScreen').style.display = 'none';
     $('actionBar').style.display = 'flex';
@@ -1210,7 +1220,6 @@ function doLoadLocal(slot) {
     const data = JSON.parse(localStorage.getItem(`frwd_save_${slot}`));
     if (!data || !data.state) throw new Error('no save');
     gameState = data.state;
-    gameState.auto_advance = autoAdvance;
     // Need to fetch the scene from server
     fetchSceneAndRender(gameState.current_scene || 'start');
     showEffectNotification({message: `已读取本地存档 ${slot}`});
@@ -1229,7 +1238,6 @@ async function fetchSceneAndRender(sceneId) {
     });
     const data = await res.json();
     gameState = data.state;
-    gameState.auto_advance = autoAdvance;
     currentScene = data.scene;
     $('landingScreen').style.display = 'none';
     $('actionBar').style.display = 'flex';
