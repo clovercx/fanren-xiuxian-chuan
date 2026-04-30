@@ -11489,7 +11489,7 @@ SCENES["ch13_chapter_end"] = {
 # ═══════════════════════════════════════════
 
 SCENES["ch14_first_step"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "===== 第十五章：飞升之路·化神 =====\n",
         "",
@@ -11514,7 +11514,7 @@ SCENES["ch14_first_step"] = {
 }
 
 SCENES["ch14_path_journey"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你在金色道路上行走。",
         "",
@@ -11539,7 +11539,7 @@ SCENES["ch14_path_journey"] = {
 }
 
 SCENES["ch14_gate_trial"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你推开石门的瞬间——周围的景象猛地一变！",
         "",
@@ -11568,7 +11568,7 @@ SCENES["ch14_gate_trial"] = {
 }
 
 SCENES["ch14_trial_ambition"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "「为了变强——不被命运摆布！」",
         "",
@@ -11593,7 +11593,7 @@ SCENES["ch14_trial_ambition"] = {
 }
 
 SCENES["ch14_trial_protect"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "「为了守护——守护我想守护的人和事！」",
         "",
@@ -11618,7 +11618,7 @@ SCENES["ch14_trial_protect"] = {
 }
 
 SCENES["ch14_trial_curiosity"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "「为了……看看这天之上的风景。」",
         "",
@@ -11643,7 +11643,7 @@ SCENES["ch14_trial_curiosity"] = {
 }
 
 SCENES["ch14_path_storm"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "通过了第一关——前方的道路开始变得更加艰难。",
         "",
@@ -11663,7 +11663,7 @@ SCENES["ch14_path_storm"] = {
 }
 
 SCENES["ch14_storm_smart"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你停下脚步，仔细观察时空风暴的规律。",
         "",
@@ -11686,7 +11686,7 @@ SCENES["ch14_storm_smart"] = {
 }
 
 SCENES["ch14_storm_force"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你催动玄天镜——镜面扩大到方圆一丈，将你整个人笼罩其中。天火在镜面外层形成第二道防御。",
         "",
@@ -11709,7 +11709,7 @@ SCENES["ch14_storm_force"] = {
 }
 
 SCENES["ch14_will_remnants"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你继续前行。金色道路两旁开始出现一些残缺的人影。",
         "",
@@ -11734,7 +11734,7 @@ SCENES["ch14_will_remnants"] = {
 }
 
 SCENES["ch14_remnant_talk"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "厉云啸的虚影微微颔首：",
         "",
@@ -11763,7 +11763,7 @@ SCENES["ch14_remnant_talk"] = {
 }
 
 SCENES["ch14_war_story"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "「结果是——我们败了。」厉云啸的声音中带着深深的悲凉：",
         "",
@@ -11790,7 +11790,7 @@ SCENES["ch14_war_story"] = {
 }
 
 SCENES["ch14_remnant_gift"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "厉云啸的力量融入你的体内——你对天地法则的理解瞬间提升了一大截。元婴后期的瓶颈在松动——化神的门槛近在咫尺。",
         "",
@@ -11819,7 +11819,7 @@ SCENES["ch14_remnant_gift"] = {
 }
 
 SCENES["ch14_final_altar"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你踏上平台的那一刻——天地骤变！",
         "",
@@ -11846,7 +11846,7 @@ SCENES["ch14_final_altar"] = {
 }
 
 SCENES["ch14_tribulation_first"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "轰隆隆——！！！",
         "",
@@ -11873,7 +11873,7 @@ SCENES["ch14_tribulation_first"] = {
 }
 
 SCENES["ch14_tribulation_mid"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "天雷一波接一波地落下——你从一开始的从容应对，渐渐变得吃力。",
         "",
@@ -11904,7 +11904,7 @@ SCENES["ch14_tribulation_mid"] = {
 }
 
 SCENES["ch14_voice_question"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "「本座——天宫守门人，奉天宫之命镇守此界通道三万载。」",
         "",
@@ -11931,7 +11931,7 @@ SCENES["ch14_voice_question"] = {
 }
 
 SCENES["ch14_tribulation_final"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你燃烧了元婴中最后的力量——天火从你的丹田中冲天而起！",
         "",
@@ -11956,7 +11956,7 @@ SCENES["ch14_tribulation_final"] = {
 }
 
 SCENES["ch14_breakthrough"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "不知过了多久——",
         "",
@@ -11988,7 +11988,7 @@ SCENES["ch14_breakthrough"] = {
 }
 
 SCENES["ch14_divine_power"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "化神期——",
         "",
@@ -12014,7 +12014,7 @@ SCENES["ch14_divine_power"] = {
 }
 
 SCENES["ch14_guardian_final"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "虚空中——一道身影缓缓浮现。",
         "",
@@ -12033,7 +12033,7 @@ SCENES["ch14_guardian_final"] = {
 }
 
 SCENES["ch14_final_choice"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "守门人看着你，缓缓道：",
         "",
@@ -12064,7 +12064,7 @@ SCENES["ch14_final_choice"] = {
 # ── 结局1：飞升 ──
 
 SCENES["ch14_ending_ascend"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你沉默了片刻，然后说：",
         "",
@@ -12097,7 +12097,7 @@ SCENES["ch14_ending_ascend"] = {
 # ── 结局2：守护者 ──
 
 SCENES["ch14_ending_guardian"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你看着下方的世界，缓缓道：",
         "",
@@ -12128,7 +12128,7 @@ SCENES["ch14_ending_guardian"] = {
 # ── 结局3：我命由我不由天 ──
 
 SCENES["ch14_ending_own_path"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你笑了——那是一切尽在掌握的自信笑容。",
         "",
@@ -12159,7 +12159,7 @@ SCENES["ch14_ending_own_path"] = {
 }
 
 SCENES["ch14_break_all"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "你全力一拳轰出！",
         "",
@@ -12194,7 +12194,7 @@ SCENES["ch14_break_all"] = {
 # ── 终章 ──
 
 SCENES["ch14_ending"] = {
-    "chapter": 14,
+    "chapter": 15,
     "is_end": True,
     "text": [
         "===== 第十三章 · 完 =====\n",
@@ -12238,7 +12238,7 @@ SCENES["ch14_ending"] = {
 }
 
 SCENES["ch14_restart"] = {
-    "chapter": 14,
+    "chapter": 15,
     "text": [
         "故事讲完了——但修仙之路，永远不会结束。",
         "",
