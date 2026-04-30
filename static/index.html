@@ -731,9 +731,9 @@ function renderStats() {
     </div>
     <div class="stat-section">
       <div class="section-title">✦ 资质</div>
-      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('根骨',STAT_DESC['talent'])"><span class="stat-label">根骨</span><span class="stat-value">${s.talent}/10</span></div>
-      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('悟性',STAT_DESC['comprehension'])"><span class="stat-label">悟性</span><span class="stat-value">${s.comprehension}/10</span></div>
-      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('气运',STAT_DESC['luck'])"><span class="stat-label highlight">气运</span><span class="stat-value highlight">${s.luck}/10</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('根骨',STAT_DESC['talent'])"><span class="stat-label">根骨</span><span class="stat-value">${s.talent}/15</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('悟性',STAT_DESC['comprehension'])"><span class="stat-label">悟性</span><span class="stat-value">${s.comprehension}/15</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('气运',STAT_DESC['luck'])"><span class="stat-label highlight">气运</span><span class="stat-value highlight">${s.luck}/15</span></div>
     </div>
     <div class="stat-section">
       <div class="section-title">✦ 财物</div>
@@ -1154,12 +1154,12 @@ function showEffectNotification(effects) {
     `;
     toast.innerHTML = lines.join('<br>');
     document.body.appendChild(toast);
-    // Auto-dismiss after 1 second, or click to dismiss immediately
+    // Auto-dismiss after 4 seconds, or click to dismiss immediately
     var autoTimer = setTimeout(function(){
       toast.style.opacity = '0';
       toast.style.transition = 'opacity 0.5s';
       setTimeout(function(){ toast.remove(); }, 500);
-    }, 1000);
+    }, 4000);
     toast.addEventListener('click', function(){
       clearTimeout(autoTimer);
       toast.remove();
