@@ -158,6 +158,16 @@ def check_conditions(state, conditions):
         elif key == "has_pill":
             if value not in state["pills"]:
                 return False
+        elif key == "reputation_min":
+            # value格式: {"七玄门": 20} 表示七玄门声望>=20
+            if isinstance(value, dict):
+                for faction, min_val in value.items():
+                    if state.get("reputation", {}).get(faction, 0) < min_val:
+                        return False
+            elif isinstance(value, (int, float)):
+                # 向后兼容: 简单数字时检查七玄门声望
+                if state.get("reputation", {}).get("七玄门", 0) < value:
+                    return False
         elif key == "chapter_min":
             if state["chapter"] < value:
                 return False

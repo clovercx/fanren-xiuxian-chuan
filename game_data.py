@@ -3209,6 +3209,9 @@ SCENES["ch4_return_to_sect"] = {
     "choices": [
         {"text": "返回宗门，向管事报到", "next": "ch4_report",
          "effects": {"spiritual_power": 5}},
+        {"text": "去藏经阁汇报秘境见闻——声望所至，长老接见", "next": "ch4_reputation_qixuan",
+         "effects": {"reputation": {"七玄门": 5}},
+         "conditions": {"reputation_min": {"七玄门": 30}}},
     ]
 }
 
@@ -3236,6 +3239,78 @@ SCENES["ch4_report"] = {
          "effects": {}},
         {"text": "先查看传讯玉符", "next": "ch4_jade_token",
          "effects": {}},
+    ]
+}
+
+# ── 声望奖励事件 ──
+
+SCENES["ch4_reputation_qixuan"] = {
+    "chapter": 4,
+    "text": [
+        "你在秘境中的英勇表现和高尚品行早已传遍了七玄门。当你踏入藏经阁时，看守藏经阁的老者罕见地睁开了双眼。",
+        "",
+        "“你的事我听说了——血色秘境中救同门、拒贪念、持道心。不错，不错。”老者点了点头，“后生可畏。”",
+        "",
+        "他指了指通往三楼的楼梯：“三楼有一卷《凝气化元术》，是筑基期修炼的上乘法门。一般内门弟子都未必有机会接触——但你，有这个资格。”",
+        "",
+        "你心中大喜，恭敬地行了一礼：“多谢前辈！”",
+    ],
+    "choices": [
+        {"text": "登上三楼——翻阅《凝气化元术》", "next": "ch4_reputation_reward",
+         "effects": {"add_technique": "凝气化元术", "comprehension": 2, "spiritual_power": 20,
+                     "reputation": {"七玄门": 5}}},
+    ]
+}
+
+SCENES["ch4_reputation_reward"] = {
+    "chapter": 4,
+    "text": [
+        "你小心翼翼地走上三楼。这里的藏书比一楼二楼加起来还少，但每一卷都是精品。",
+        "",
+        "你找到了那卷《凝气化元术》。翻开一看，里面记载的是一种将真气压缩凝聚、提高真元品质的法门。学会之后，你的真气将比同阶修士更加精纯凝实。",
+        "",
+        "你如获至宝，当即坐下开始研读。",
+    ],
+    "choices": [
+        {"text": "潜心研读——受益匪浅", "next": "ch4_letter",
+         "effects": {"spiritual_power": 10, "comprehension": 1}},
+    ]
+}
+
+# ── 丹霞宗声望事件（可从任何坊市场景进入）──
+
+SCENES["ch4_reputation_danxia"] = {
+    "chapter": 4,
+    "text": [
+        "你带着丹霞宗的传讯令牌来到天风城的丹霞宗分舵。得知你来了，秦鹤亲自迎了出来。",
+        "",
+        "“哈哈，我就知道小友非池中之物！”秦鹤热情地拉着你的手，“你在血色秘境中的事迹我们丹霞宗也听说了。能活着出来已是难得，还能救助同门——这份心性，正是我丹道修士应有的品格。”",
+        "",
+        "他拿出一枚玉简：“这是我们丹霞宗珍藏的《蕴灵丹方》。蕴灵丹可以大幅提升筑基期修士吸收灵气的速度——市面上根本买不到。送给你了！”",
+    ],
+    "choices": [
+        {"text": "收下丹方——丹霞宗果然大气！", "next": "ch4_letter",
+         "effects": {"add_item": "蕴灵丹方", "comprehension": 2, "reputation": {"丹霞宗": 10}},
+         "conditions": {"reputation_min": {"丹霞宗": 20}}},
+    ]
+}
+
+# ── 无常盟声望事件 ──
+
+SCENES["ch4_reputation_wuchang"] = {
+    "chapter": 4,
+    "text": [
+        "你在无常盟的地下据点出示了令牌。接待你的修士看到你的令牌后，态度立刻恭敬了许多。",
+        "",
+        "“原来是血战大人介绍来的贵客。”他压低声音，“最近我们得到了一条情报——关于血色秘境更深层的秘密。据说秘境深处有一处血煞真人真正的闭关之地，里面可能有结丹的秘密。”",
+        "",
+        "“这份情报——免费送给你了。算是无常盟对盟友的一点心意。”",
+    ],
+    "choices": [
+        {"text": "收下情报——无常盟的线人果然厉害！", "next": "ch4_letter",
+         "effects": {"spirit_stones": 30, "spiritual_power": 15, "comprehension": 1,
+                     "reputation": {"无常盟": 5}},
+         "conditions": {"reputation_min": {"无常盟": 15}}},
     ]
 }
 

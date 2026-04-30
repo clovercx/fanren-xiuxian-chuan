@@ -325,6 +325,12 @@ def _get_visible_choices(choices, state):
                         cond_labels.append(f"需要：{v}")
                     elif k == "cultivation_min":
                         cond_labels.append(f"境界≥{v}")
+                    elif k == "reputation_min":
+                        if isinstance(v, dict):
+                            for f, mv in v.items():
+                                cond_labels.append(f"声望·{f}≥{mv}")
+                        else:
+                            cond_labels.append(f"七玄门声望≥{v}")
                     elif k == "flag" or k == "no_flag" or k == "chapter_min":
                         pass  # 剧情条件不显示给玩家
                 if cond_labels:
