@@ -143,6 +143,21 @@ def check_conditions(state, conditions):
         elif key == "talent_min":
             if state["talent"] < value:
                 return False
+        elif key == "comprehension_min":
+            if state["comprehension"] < value:
+                return False
+        elif key == "luck_min":
+            if state["luck"] < value:
+                return False
+        elif key == "spirit_stones_min":
+            if state["spirit_stones"] < value:
+                return False
+        elif key == "has_artifact":
+            if value not in state["artifacts"]:
+                return False
+        elif key == "has_pill":
+            if value not in state["pills"]:
+                return False
         elif key == "chapter_min":
             if state["chapter"] < value:
                 return False

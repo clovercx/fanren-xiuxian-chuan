@@ -1483,9 +1483,13 @@ SCENES["ch2_library_first"] = {
          "effects": {"spiritual_power": 5}},
         {"text": "选一本丹道典籍——《百炼丹方》", "next": "ch2_learn_alchemy_book",
          "effects": {"spirit_stones": -3, "comprehension": 1},
-         "conditions": {"has_item": "百草经"}},
+         "conditions": {"has_item": "百草经", "comprehension_min": 6}},
         {"text": "选一本阵法基础", "next": "ch2_learn_array",
-         "effects": {"comprehension": 1}},
+         "effects": {"comprehension": 1},
+         "conditions": {"comprehension_min": 5}},
+        {"text": "尝试上二楼——听说上面有更好的功法", "next": "ch2_library_upstairs",
+         "effects": {},
+         "conditions": {"comprehension_min": 7, "talent_min": 6}},
     ]
 }
 
@@ -1549,6 +1553,151 @@ SCENES["ch2_learn_array"] = {
     "choices": [
         {"text": "带着新知识离开藏经阁", "next": "ch2_learn_end",
          "effects": {"comprehension": 2, "spiritual_power": 3}},
+    ]
+}
+
+SCENES["ch2_library_upstairs"] = {
+    "chapter": 2,
+    "text": [
+        "你深吸一口气，迈步走向通往二楼的楼梯。看守藏经阁的老者睁开一只眼，看了你一眼，又闭上了。",
+        "",
+        "二楼比一楼小得多，只有寥寥几个书架。但上面的典籍明显高深了许多——有中阶法术、阵法进阶、炼器精要……甚至还有几卷关于结丹心得的笔记。",
+        "",
+        "你心中狂喜，这简直是宝库！",
+    ],
+    "choices": [
+        {"text": "选中阶法术——威力大增！", "next": "ch2_learn_fire",
+         "effects": {"comprehension": 2, "spiritual_power": 10}},
+        {"text": "翻阅结丹心得——受益良多", "next": "ch2_library_upstairs_insight",
+         "effects": {"comprehension": 3, "spiritual_power": 15}},
+    ]
+}
+
+SCENES["ch2_library_upstairs_insight"] = {
+    "chapter": 2,
+    "text": [
+        "你翻开一本泛黄的笔记，上面是一位金丹期前辈留下的修炼心得。文字朴实无华，但字字珠玑。",
+        "",
+        "“筑基之要，在心不在力。心有杂念，其气必散……”你读得如痴如醉，许多修炼中的困惑迎刃而解。",
+        "",
+        "虽然只是翻阅了几页，但这些心得对你来说价值连城。你感觉自己的道心更加坚定了。",
+    ],
+    "choices": [
+        {"text": "满载而归——回住处消化", "next": "ch2_learn_end",
+         "effects": {"comprehension": 2, "spiritual_power": 10, "set_flag": "read_elder_notes"}},
+    ]
+}
+
+# ── 交易场景（灵石门槛）──
+
+SCENES["ch2_market_rare"] = {
+    "chapter": 2,
+    "text": [
+        "你在坊市中闲逛，忽然注意到一个不起眼的角落里有一位灰袍老者。他的摊位上只有寥寥几件东西，但每件都散发着不凡的气息。",
+        "",
+        "你走近一看，心头一震——那是一枚下品灵石玉佩，上面刻着防御法阵；旁边还有一柄匕首，寒光凛冽，一看就不是凡品。",
+        "",
+        "老者抬眼看了看你：“小友好眼力。这些东西可不便宜——玉佩八十灵石，匕首一百二十。”",
+    ],
+    "choices": [
+        {"text": "买下防御玉佩（80灵石）", "next": "ch2_market_buy_pendant",
+         "effects": {"spirit_stones": -80, "add_item": "防御玉佩", "hp": 20},
+         "conditions": {"spirit_stones_min": 80}},
+        {"text": "买下寒光匕首（120灵石）", "next": "ch2_market_buy_dagger",
+         "effects": {"spirit_stones": -120, "add_item": "寒光匕首", "talent": 1},
+         "conditions": {"spirit_stones_min": 120}},
+        {"text": "太贵了，买不起", "next": "ch2_market_leave",
+         "effects": {}},
+    ]
+}
+
+SCENES["ch2_market_buy_pendant"] = {
+    "chapter": 2,
+    "text": [
+        "你咬了咬牙，掏出八十块灵石。老者收下灵石，将玉佩递给你。",
+        "",
+        "玉佩入手温润，隐隐有灵气流转。你将灵力注入其中，一层淡金色的光罩在体表浮现——果然是好东西！",
+        "",
+        "你小心翼翼地将玉佩挂在腰间，感觉安全了许多。",
+    ],
+    "choices": [
+        {"text": "满意地离开", "next": "ch2_market_leave",
+         "effects": {"comprehension": 1}},
+    ]
+}
+
+SCENES["ch2_market_buy_dagger"] = {
+    "chapter": 2,
+    "text": [
+        "你忍痛掏出一百二十块灵石。老者接过灵石，满意地点了点头。",
+        "",
+        "匕首入手沉重，刀刃上刻着一圈细密的符文。你轻轻一挥，空气中传来一声锐利的破空声——好快的刀！",
+        "",
+        "有了这件武器，你的战斗力提升了不少。",
+    ],
+    "choices": [
+        {"text": "满意地离开", "next": "ch2_market_leave",
+         "effects": {"add_technique": "匕首基础", "luck": 1}},
+    ]
+}
+
+SCENES["ch2_market_leave"] = {
+    "chapter": 2,
+    "text": [
+        "你离开了摊位，继续在坊市中逛了一圈。虽然没有再发现什么特别的东西，但今天的收获已经让你很满意了。",
+    ],
+    "choices": [
+        {"text": "回去修炼", "next": "ch2_learn_end",
+         "effects": {"spiritual_power": 3}},
+    ]
+}
+
+# ── 运气事件 ──
+
+SCENES["ch2_lucky_encounter"] = {
+    "chapter": 2,
+    "text": [
+        "你正在后山修炼，忽然脚下一滑，踩空了一个被杂草掩盖的坑洞。",
+        "",
+        "你摔了下去，好在只有几丈深，没有受伤。但当你爬起来时，发现坑壁上嵌着几枚发光的矿石——那是灵石原矿！",
+        "",
+        "而且坑底还有一个腐朽的木盒。你小心翼翼地打开——里面竟然是一卷古旧的丹方残卷！",
+    ],
+    "choices": [
+        {"text": "运气来了挡都挡不住！", "next": "ch2_lucky_gain",
+         "effects": {"spirit_stones": 30, "add_item": "古丹方残卷", "comprehension": 1},
+         "conditions": {"luck_min": 6}},
+        {"text": "可惜什么也没发现（气运不足）", "next": "ch2_lucky_fail",
+         "effects": {"spirit_stones": 5},
+         "conditions": {"luck_min": 0}},
+    ]
+}
+
+SCENES["ch2_lucky_gain"] = {
+    "chapter": 2,
+    "text": [
+        "你惊喜地将灵石矿石一块块挖出来，一共收获了大约三十块灵石。而那卷古丹方残卷虽然残缺不全，但上面记载了一种名为“聚灵散”的丹药配方——比普通的聚气丹效果强得多！",
+        "",
+        "你小心翼翼地收好，爬出坑洞。这次的意外之喜让你的心情大好。",
+    ],
+    "choices": [
+        {"text": "回去研究丹方", "next": "ch2_learn_end",
+         "effects": {"comprehension": 1}},
+    ]
+}
+
+SCENES["ch2_lucky_fail"] = {
+    "chapter": 2,
+    "text": [
+        "你摸了摸坑壁上的矿石——但这些都是低品位的废矿，蕴含的灵气少得可怜，根本不值钱。",
+        "",
+        "至于那个木盒，里面只有一堆腐烂的纸屑，什么也没留下。",
+        "",
+        "你无奈地爬出坑洞，拍了拍身上的泥土。看来今天运气不太好。",
+    ],
+    "choices": [
+        {"text": "继续修炼", "next": "ch2_learn_end",
+         "effects": {"spiritual_power": 2}},
     ]
 }
 
@@ -2933,7 +3082,11 @@ SCENES["ch2_library_first"] = {
         {"text": "选一本丹道典籍——《百炼丹方》", "next": "ch2_learn_alchemy_book",
          "effects": {"spirit_stones": -3, "comprehension": 1}},
         {"text": "选一本阵法基础", "next": "ch2_learn_array",
-         "effects": {"comprehension": 1}},
+         "effects": {"comprehension": 1},
+         "conditions": {"comprehension_min": 5}},
+        {"text": "尝试上二楼——听说上面有更好的功法", "next": "ch2_library_upstairs",
+         "effects": {},
+         "conditions": {"comprehension_min": 7, "talent_min": 6}},
     ]
 }
 
