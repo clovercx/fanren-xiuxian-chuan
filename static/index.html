@@ -846,7 +846,7 @@ function renderScene() {
   // 处理章节标题
   let html = '';
   const ch = currentScene.chapter || 1;
-var chNames = {1:'第一章：缘起青云',2:'第二章：初入仙途',3:'第三章：血色试炼',4:'第四章：筑基风云',5:'第五章：丹鼎之秘',6:'第六章：风云再起',7:'第七章：上古丹宗',8:'第八章：金丹大道',9:'第九章：金丹风云',10:'第十章：元婴之劫',11:'第十一章：化神之谜',12:'第十二章：破阵之战',13:'第十三章：飞升之路·化神'};
+var chNames = {1:'第一章：缘起青云',2:'第二章：初入仙途',3:'第三章：血色试炼',4:'第四章：筑基风云',5:'第五章：丹鼎之秘',6:'第六章：风云再起',7:'第七章：上古丹宗',8:'第八章：金丹大道',9:'第九章：金丹风云',10:'第十章：金丹大成',11:'第十一章：元婴之劫',12:'第十二章：化神之谜',13:'第十三章：元婴问道',14:'第十四章：破阵之战',15:'第十五章：飞升之路·化神'};
   if (ch && chNames[ch] && lines[0] && lines[0].includes(chNames[ch])) {
     html += `<div class="chapter-title">${chNames[ch]}</div>`;
     lines.shift();
@@ -883,11 +883,11 @@ html += '<p>' + escapeHtml(line).replace(/\{name\}/g, gameState ? gameState.name
     } else {
     // 章节结束，显示下一章按钮
     var nextCh = gameState.chapter + 1;
-    var chNames = {2:'第二章',3:'第三章',4:'第四章',5:'第五章',6:'第六章',7:'第七章',8:'第八章',9:'第九章',10:'第十章',11:'第十一章',12:'第十二章',13:'第十三章'};
+    var chNames = {2:'第二章',3:'第三章',4:'第四章',5:'第五章',6:'第六章',7:'第七章',8:'第八章',9:'第九章',10:'第十章',11:'第十一章',12:'第十二章',13:'第十三章',14:'第十四章',15:'第十五章'};
     var nextLabel = chNames[nextCh] || '下一章';
     choicesHtml = `
       <div style="text-align:center;margin-top:20px;color:var(--text-secondary);font-size:0.9em;">
-        ${nextCh <= 13 ? '即将开启' + nextLabel : '全十三章已毕，感谢游玩！'}
+        ${nextCh <= 15 ? '即将开启' + nextLabel : '全十五章已毕，感谢游玩！'}
       </div>
       <button class="choice-btn" onclick="continueStory()" style="text-align:center;border-color:var(--accent-gold);">
         继续冒险...
@@ -1036,8 +1036,8 @@ async function makeChoice(index) {
 // ── 继续故事 ──
 async function continueStory() {
   const nextChapter = gameState.chapter + 1;
-    if (nextChapter > 13) {
-    alert('全十三章已毕，化神飞升！感谢游玩。');
+  if (nextChapter > 15) {
+    alert('全十五章已毕，化神飞升！感谢游玩。');
     return;
   }
   const chapterScenes = {
@@ -1049,10 +1049,12 @@ async function continueStory() {
     7: 'ch7_departure',
     8: 'ch8_departure',
     9: 'ch9_elder_days',
-    10: 'ch10_new_horizon',
-    11: 'ch11_seeking_truth',
-    12: 'ch12_prepare',
-    13: 'ch13_first_step',
+    10: 'ch10_new_horizon_gc',
+    11: 'ch11_new_horizon',
+    12: 'ch12_seeking_truth',
+    13: 'ch13_yuanying_depth',
+    14: 'ch13_prepare',
+    15: 'ch14_first_step',
   };
   const target = chapterScenes[nextChapter];
   if (!target) return;

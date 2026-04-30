@@ -13,10 +13,12 @@ GAME_CHAPTERS = {
     7: "第七章：上古丹宗",
     8: "第八章：金丹大道",
     9: "第九章：金丹风云",
-    10: "第十章：元婴之劫",
-    11: "第十一章：化神之谜",
-    12: "第十二章：破阵之战",
-    13: "第十三章：飞升之路·化神",
+    10: "第十章：金丹大成",
+    11: "第十一章：元婴之劫",
+    12: "第十二章：化神之谜",
+    13: "第十三章：元婴问道",
+    14: "第十四章：破阵之战",
+    15: "第十五章：飞升之路·化神",
 }
 
 SCENES = {}
@@ -7696,17 +7698,349 @@ SCENES["ch9_chapter_end"] = {
         "",
         "每一样都不简单。但你知道，你已经准备好踏上这条路了。",
         "",
-        "（第十章即将开启：元婴之劫）",
+        "（第十一章即将开启：元婴之劫）",
     ],
     "choices": []
 }
 
 # ═══════════════════════════════════════════
-# 第十章：元婴之劫
+# 第十章：金丹大成
 # ═══════════════════════════════════════════
 
-SCENES["ch10_new_horizon"] = {
+SCENES["ch10_new_horizon_gc"] = {
     "chapter": 10,
+    "text": [
+        "===== 第十章：金丹大成 =====\n",
+        "",
+        "你站在青云峰顶，俯视着脚下的七玄门。",
+        "",
+        "金丹中期的修为在这片天地间已经算是一方强者了。但你很清楚——距离真正的巅峰，还有漫长的路。",
+        "",
+        "血煞宗覆灭后，北方修仙界平静了许多。但你的内心并不平静——金丹中期之后，你感觉到自己的修炼速度明显慢了下来。",
+        "",
+        "金丹期与之前的境界截然不同——不再是单纯地积累灵力，而是需要「淬炼金丹」。金丹越大越凝实，修为才能更进一步。",
+        "",
+        "但淬炼金丹需要的不仅仅是苦修——更需要机缘和感悟。",
+        "",
+        "你翻阅了七玄门历代金丹修士的手札，发现了一个被反复提及的地方——「金蛛秘境」。",
+        "",
+        "那是一处远古金丹修士坐化后形成的秘境，据说其中蕴含着金丹大道的终极奥秘。谁能领悟其中的真意，就能让金丹脱胎换骨。",
+    ],
+    "choices": [
+        {"text": "前往金蛛秘境——追寻金丹大道的真谛", "next": "ch10_jinzhu_prepare",
+         "effects": {"comprehension": 1}, "hint": "机缘在前，不容错过"},
+        {"text": "先在宗门巩固修为——以静制动", "next": "ch10_consolidate_first",
+         "effects": {"spiritual_power": 5}, "hint": "稳扎稳打"},
+    ]
+}
+
+SCENES["ch10_consolidate_first"] = {
+    "chapter": 10,
+    "text": [
+        "你决定先不出门，静下心来巩固一番修为。",
+        "",
+        "你花了半个月的时间整理血煞宗之战后的收获——灵石、材料、功法残卷……其中最珍贵的是一份名为「金蛛炼心诀」的残篇。",
+        "",
+        "这份残篇似乎是远古金蛛秘境的入门之法。你研读之后，对金丹的运转有了更深的理解。",
+        "",
+        "半个月后——你感觉自己的金丹比之前凝实了一分，对金蛛秘境也更加向往了。",
+    ],
+    "choices": [
+        {"text": "出发前往金蛛秘境", "next": "ch10_jinzhu_prepare",
+         "effects": {"comprehension": 1, "spiritual_power": 3}},
+    ]
+}
+
+SCENES["ch10_jinzhu_prepare"] = {
+    "chapter": 10,
+    "text": [
+        "金蛛秘境位于七玄门东北方向三千里外的一片荒山之中。",
+        "",
+        "据说远古时期有一位号称「金蛛真人」的金丹后期大圆满修士在此坐化。他毕生修炼金丹大道，对金丹的理解达到了化境。",
+        "",
+        "他坐化前将自己的感悟和部分修为融入了这片山川之中，形成了金蛛秘境。每过百年秘境开启一次，能进入其中的修士都有机会获得他的衣钵。",
+        "",
+        "你御剑而行，半日后便来到了那片荒山。",
+        "",
+        "远远看去，荒山并无奇特之处——但你的神识感知到，山体内部隐藏着一股若有若无的空间波动。",
+        "",
+        "秘境的入口，就在山中。",
+    ],
+    "choices": [
+        {"text": "寻找秘境的入口", "next": "ch10_find_entrance",
+         "effects": {"spiritual_power": 3}},
+    ]
+}
+
+SCENES["ch10_find_entrance"] = {
+    "chapter": 10,
+    "text": [
+        "你降落在荒山中，仔细搜索。",
+        "",
+        "你的神识在这里受到了一定程度的压制——金蛛真人的残余意志仍然庇护着这片土地，不让外人轻易窥探核心秘密。",
+        "",
+        "你搜索了半个时辰——在一处被藤蔓覆盖的崖壁上发现了一道若有若无的灵力波动。",
+        "",
+        "你拨开藤蔓——崖壁上露出了一道石门。石门上刻着一只蜘蛛，栩栩如生。蜘蛛的八条腿构成了一个复杂的符文阵列。",
+        "",
+        "你伸手触摸石门——符文亮起，但你感到了一种排斥力。",
+        "",
+        "这道石门——需要特定的「金丹气息」才能打开。",
+    ],
+    "choices": [
+        {"text": "将自己的金丹之力注入石门", "next": "ch10_open_gate",
+         "effects": {"hp": -5, "spiritual_power": 3}},
+    ]
+}
+
+SCENES["ch10_open_gate"] = {
+    "chapter": 10,
+    "text": [
+        "你将手掌贴在石门上，将金丹之力缓缓注入——",
+        "",
+        "石门感受到你的金丹气息，符文发出柔和的光芒。但它并没有完全打开——石门只是微微震动了一下，然后恢复了平静。",
+        "",
+        "你皱起眉头——是你的金丹还不够凝实吗？",
+        "",
+        "你加大灵力输出——石门终于发出咔咔的声响，缓缓向两侧退开。门后是一条幽深的甬道。",
+        "",
+        "你走入甬道——身后石门自动关闭。",
+        "",
+        "甬道中镶嵌着发光的灵石，足以照亮前路。你沿着甬道走了约一盏茶的功夫，前方豁然开朗——",
+        "",
+        "你来到了一个巨大的地下空间。",
+    ],
+    "choices": [
+        {"text": "观察周围的环境", "next": "ch10_underground_hall",
+         "effects": {"comprehension": 1}},
+    ]
+}
+
+SCENES["ch10_underground_hall"] = {
+    "chapter": 10,
+    "text": [
+        "地下空间呈圆形，方圆百丈。穹顶上镶嵌着无数发光的水晶，如同星空般璀璨。",
+        "",
+        "空间的中央——悬浮着一颗巨大的金色光球。光球的表面流转着无数细密的符文，散发出浩瀚的金丹气息。",
+        "",
+        "那就是金蛛真人的金丹传承——",
+        "",
+        "但你没敢贸然上前。因为光球周围，盘踞着密密麻麻的金色蜘蛛——每一只都有磨盘大小，散发着结丹期的气息。",
+        "",
+        "你数了数——至少三十只。",
+        "",
+        "单独一只对你来说不算什么——但同时面对三十只结丹期的妖兽，即便是金丹中期的你也要掂量掂量。",
+    ],
+    "choices": [
+        {"text": "强攻——以天火开路！", "next": "ch10_spider_fight",
+         "effects": {"hp": -15, "spiritual_power": 5},
+         "hint": "以力破之"},
+        {"text": "寻找控制这些金蛛的机关或法阵", "next": "ch10_spider_smart",
+         "effects": {"comprehension": 1},
+         "hint": "以智取胜"},
+        {"text": "隐匿气息——趁金蛛不备靠近光球", "next": "ch10_spider_stealth",
+         "effects": {"hp": -8, "luck": 1},
+         "hint": "暗度陈仓"},
+    ]
+}
+
+SCENES["ch10_spider_fight"] = {
+    "chapter": 10,
+    "text": [
+        "你不再犹豫——天火在掌心凝聚，化作一道金色的火焰长鞭！",
+        "",
+        "长鞭横扫——三只金蛛被火焰击中，发出一阵尖锐的嘶叫，金色的甲壳上出现了焦黑的裂纹。",
+        "",
+        "但更多的金蛛被惊动了！它们同时向你们扑来——口中喷吐出金色的蛛丝！蛛丝在空中交织成一张巨大的网，向你罩来！",
+        "",
+        "你腾空而起——天火在身周形成一道火焰旋风！金色蛛丝在火焰面前迅速融化——但金蛛的数量实在太多了。",
+        "",
+        "你一边战斗一边向中央的光球移动。每前进一步，都要击退数只金蛛的围攻。",
+        "",
+        "一炷香后——你终于杀出了一条血路，靠近了光球。你的身上多了几道伤口，但金蛛也被你斩杀了十余只。",
+    ],
+    "choices": [
+        {"text": "伸手触碰光球——接受传承", "next": "ch10_golden_ball",
+         "effects": {"spiritual_power": 8}},
+    ]
+}
+
+SCENES["ch10_spider_smart"] = {
+    "chapter": 10,
+    "text": [
+        "你没有贸然出手——而是仔细观察金蛛的行动模式。",
+        "",
+        "你很快发现——金蛛并非自由活动，而是在遵循着某种规律巡逻。它们以中央光球为中心，分成三组轮流巡逻——每隔三十息替换一次。",
+        "",
+        "而替换的间隙——有大约五息的时间，中央光球周围没有任何金蛛守护。",
+        "",
+        "五息——足够了。",
+        "",
+        "你等待了半柱香的时间，摸清了它们替换的节奏。然后——在下一轮替换的瞬间——你动了！",
+        "",
+        "身形如同一缕青烟般无声无息地掠过——在金蛛们完成替换之前，你已经站在了光球前。",
+        "",
+        "你的手指——触碰到了光球的表面。",
+    ],
+    "choices": [
+        {"text": "接受金丹传承", "next": "ch10_golden_ball",
+         "effects": {"comprehension": 1, "spiritual_power": 5}},
+    ]
+}
+
+SCENES["ch10_spider_stealth"] = {
+    "chapter": 10,
+    "text": [
+        "你收敛气息，将灵力波动降到最低。金丹隐匿术——这是你在丹宗传承中学到的技巧之一。",
+        "",
+        "你的气息变得如同一块岩石一般——金蛛虽然视力极佳，但它们主要依靠灵力波动来感知猎物。",
+        "",
+        "你一步一步地靠近光球——每一步都踩在金蛛感知的盲区。",
+        "",
+        "你的额头上渗出了汗水——这种如同刀尖上跳舞的感觉，比正面战斗还要紧张。",
+        "",
+        "但最终——你成功了。你站在光球前，伸出手——指尖触碰到了光球的表面。",
+        "",
+        "那些金蛛完全没有发现你——它们仍然在机械地巡逻着。",
+    ],
+    "choices": [
+        {"text": "接受金丹传承", "next": "ch10_golden_ball",
+         "effects": {"comprehension": 2, "spiritual_power": 3}},
+    ]
+}
+
+SCENES["ch10_golden_ball"] = {
+    "chapter": 10,
+    "text": [
+        "在你触碰到光球的瞬间——一股浩瀚的信息涌入你的脑海！",
+        "",
+        "那是金蛛真人毕生修炼金丹的心得——从金丹初成到后期圆满，每一步的感悟和突破都完整地记录在其中。",
+        "",
+        "你闭上眼睛，沉浸在知识的海洋中。",
+        "",
+        "金蛛真人对金丹的理解远超你的想象——他提出了一种名为「金丹九转」的修炼理论：金丹每经过一次淬炼，就会变得更加凝实和纯粹。九转之后，金丹就能达到圆满之境。",
+        "",
+        "你现在的金丹大概在三转到四转之间——难怪你感觉修炼速度变慢了。要达到金丹后期，至少需要六转以上。",
+        "",
+        "光球中的力量开始向你的体内涌入——你的金丹在金色光芒的包裹下缓缓旋转，表面开始出现更加细密的纹路——",
+    ],
+    "choices": [
+        {"text": "全力吸收传承——冲击金丹六转", "next": "ch10_breakthrough_six",
+         "effects": {"hp": -10, "spiritual_power": 10}},
+    ]
+}
+
+SCENES["ch10_breakthrough_six"] = {
+    "chapter": 10,
+    "text": [
+        "你全力运转金丹——金蛛真人的传承之力与你的金丹产生了强烈的共鸣！",
+        "",
+        "你的金丹在丹田中疯狂旋转——每转一圈，就变得更加凝实一分。金丹表面浮现出一道道金色的纹路——那些纹路如同天然的道痕，蕴含着天地法则。",
+        "",
+        "四转——你的金丹散发出耀眼的光芒，比之前大了整整一圈。",
+        "",
+        "五转——金丹的光芒变得内敛而深邃，表面浮现出细密的雷纹——那是法则烙印的象征。",
+        "",
+        "六转——整个地下空间都在震动！你的金丹达到了一个全新的层次——金丹后期！",
+        "",
+        "你睁开眼睛——两道金光从眼底闪过。你感受到前所未有的力量在体内涌动——神识扩展到了千丈范围，天地灵气与你更加亲近。",
+        "",
+        "金丹后期——成了！",
+    ],
+    "choices": [
+        {"text": "感受金丹后期的力量", "next": "ch10_gc_late_power",
+         "effects": {"cultivation": "结丹后期", "max_hp": 50, "hp": 25, "spiritual_power": 30}},
+    ]
+}
+
+SCENES["ch10_gc_late_power"] = {
+    "chapter": 10,
+    "text": [
+        "你握紧拳头——感受到金丹后期那澎湃的力量。",
+        "",
+        "金丹六转之后，你的金丹已经有拳头大小，丹纹密布如同天然的道痕。与之前相比，灵力的运转速度提升了三倍以上。",
+        "",
+        "你站起身来——那些残存的金蛛似乎感受到你身上的气息变化，纷纷退入了暗处。",
+        "",
+        "你看了一眼中央的光球——它已经变得暗淡了许多，大部分力量都被你吸收了。",
+        "",
+        "你在光球的底部发现了一枚古朴的玉简——那是金蛛真人留下的遗言。",
+        "",
+        "玉简中写道：",
+        "",
+        "「后来者——你能走到这里，说明你与金丹大道有缘。老夫毕生钻研金丹九转之法，最终达到了八转之境，距离九转圆满只差一步。」",
+        "",
+        "「但这一步——老夫用了三百年也没有跨过去。后来老夫明白了——金丹九转需要的不只是苦修，更是对天地法则的领悟。」",
+        "",
+        "「去吧——你的路还很长。」",
+    ],
+    "choices": [
+        {"text": "离开金蛛秘境——返回七玄门", "next": "ch10_return_sect",
+         "effects": {"spiritual_power": 5}},
+    ]
+}
+
+SCENES["ch10_return_sect"] = {
+    "chapter": 10,
+    "text": [
+        "你离开了金蛛秘境。",
+        "",
+        "走出石门的那一刻——你深深吸了一口外面的空气。阳光温暖而明亮，与地下空间的阴冷形成了鲜明的对比。",
+        "",
+        "你回头看了一眼石门——石门在你身后缓缓闭合，仿佛从未开启过。",
+        "",
+        "但你带走的——是金丹大道的真意。",
+        "",
+        "返回七玄门的路上，你一直在思考金蛛真人的遗言——金丹九转，需要的不只是苦修，更是对天地法则的领悟。",
+        "",
+        "这句话解开了你心中长久的困惑。",
+        "",
+        "回到七玄门后，你直接去了青云峰闭关。金蛛真人的传承还需要时间去消化——而你已经看到了通往结丹后期圆满的道路。",
+        "",
+        "你盘膝而坐，闭上双眼——金丹在丹田中缓缓旋转，散发出温润的光芒。金色的丹纹如同呼吸般一明一暗，与你的心跳遥相呼应。",
+    ],
+    "choices": [
+        {"text": "继续修炼——为冲击元婴做准备", "next": "ch10_chapter_end",
+         "effects": {"spiritual_power": 5}},
+    ]
+}
+
+SCENES["ch10_chapter_end"] = {
+    "chapter": 10,
+    "is_end": True,
+    "text": [
+        "===== 第十章 · 完 =====\n",
+        "",
+        "金丹后期——你站在了金丹期的巅峰。",
+        "",
+        "距离元婴，只差最后一步。",
+        "",
+        "但这一步——也是最难的一步。",
+        "",
+        "你查阅了七玄门所有关于元婴的典籍——要突破元婴，需要三个条件：",
+        "",
+        "第一——足够的灵力积累。这一点你已经达到了。",
+        "",
+        "第二——一件本命法宝，用以承载元婴。你还没有这样的法宝。",
+        "",
+        "第三——渡过四九小天劫。那是天道的考验，九死一生。",
+        "",
+        "你望向窗外的夜空——繁星点点，如同无数双眼睛在注视着你。",
+        "",
+        "「元婴——我来了。」",
+        "",
+        "（第十一章即将开启：元婴之劫）",
+    ],
+    "choices": []
+}
+
+
+# ═══════════════════════════════════════════
+# 第十一章：元婴之劫
+# ═══════════════════════════════════════════
+
+SCENES["ch11_new_horizon"] = {
+    "chapter": 11,
     "text": [
         "===== 第十章：元婴之劫 =====\n",
         "",
@@ -7725,15 +8059,15 @@ SCENES["ch10_new_horizon"] = {
         "你翻阅了七玄门藏经阁中所有关于元婴的典籍，渐渐理清了思路。",
     ],
     "choices": [
-        {"text": "查阅典籍，研究本命法宝的炼制之法", "next": "ch10_research_treasure",
+        {"text": "查阅典籍，研究本命法宝的炼制之法", "next": "ch11_research_treasure",
          "effects": {"comprehension": 1}, "hint": "工欲善其事，必先利其器"},
-        {"text": "先闭关冲击结丹后期", "next": "ch10_breakthrough_late",
+        {"text": "先闭关冲击结丹后期", "next": "ch11_breakthrough_late",
          "effects": {"spiritual_power": 5}, "hint": "根基不牢，万事皆空"},
     ]
 }
 
-SCENES["ch10_research_treasure"] = {
-    "chapter": 10,
+SCENES["ch11_research_treasure"] = {
+    "chapter": 11,
     "text": [
         "你在藏经阁中翻阅了三天三夜。",
         "",
@@ -7748,13 +8082,13 @@ SCENES["ch10_research_treasure"] = {
         "你合上最后一本古籍，心中已经有了决断。",
     ],
     "choices": [
-        {"text": "前往落日山脉寻找玄天镜", "next": "ch10_departure_sunset",
+        {"text": "前往落日山脉寻找玄天镜", "next": "ch11_departure_sunset",
          "effects": {"spiritual_power": 3, "set_flag": "research_done"}},
     ]
 }
 
-SCENES["ch10_departure_sunset"] = {
-    "chapter": 10,
+SCENES["ch11_departure_sunset"] = {
+    "chapter": 11,
     "text": [
         "落日山脉——位于七玄门以西三千里，是一片人迹罕至的荒古山脉。",
         "",
@@ -7769,13 +8103,13 @@ SCENES["ch10_departure_sunset"] = {
         "「也罢。」掌门取出一枚古玉递给你，「这是护心玉，可在危急时刻挡下元婴期全力一击。你带着吧。」",
     ],
     "choices": [
-        {"text": "谢过掌门，即刻出发", "next": "ch10_journey_sunset",
+        {"text": "谢过掌门，即刻出发", "next": "ch11_journey_sunset",
          "effects": {"add_item": "护心玉"}},
     ]
 }
 
-SCENES["ch10_journey_sunset"] = {
-    "chapter": 10,
+SCENES["ch11_journey_sunset"] = {
+    "chapter": 11,
     "text": [
         "你御剑西行，三千里路程对金丹中期的你来说不过半日。",
         "",
@@ -7788,13 +8122,13 @@ SCENES["ch10_journey_sunset"] = {
         "飞行了约一个时辰后，你的神识捕捉到了一丝异常的灵力波动——从一处被冰雪覆盖的山谷中传出。",
     ],
     "choices": [
-        {"text": "降落到山谷中探查", "next": "ch10_snow_valley",
+        {"text": "降落到山谷中探查", "next": "ch11_snow_valley",
          "effects": {"hp": -5}},
     ]
 }
 
-SCENES["ch10_snow_valley"] = {
-    "chapter": 10,
+SCENES["ch11_snow_valley"] = {
+    "chapter": 11,
     "text": [
         "你降落在山谷中。积雪没过膝盖，寒风如刀。",
         "",
@@ -7813,13 +8147,13 @@ SCENES["ch10_snow_valley"] = {
         "轰隆隆——石门缓缓打开了。",
     ],
     "choices": [
-        {"text": "进入遗迹", "next": "ch10_ruins_hall",
+        {"text": "进入遗迹", "next": "ch11_ruins_hall",
          "effects": {"comprehension": 1}},
     ]
 }
 
-SCENES["ch10_ruins_hall"] = {
-    "chapter": 10,
+SCENES["ch11_ruins_hall"] = {
+    "chapter": 11,
     "text": [
         "石门之后是一条长长的甬道，两壁镶嵌着夜明珠，照亮了前路。",
         "",
@@ -7836,16 +8170,16 @@ SCENES["ch10_ruins_hall"] = {
         "这具枯骨生前——至少是元婴后期的修为。",
     ],
     "choices": [
-        {"text": "恭敬行礼，说明来意", "next": "ch10_respect_bones",
+        {"text": "恭敬行礼，说明来意", "next": "ch11_respect_bones",
          "effects": {"comprehension": 1}, "hint": "对前辈保持敬意"},
-        {"text": "直接去取玄天镜", "next": "ch10_rush_treasure",
+        {"text": "直接去取玄天镜", "next": "ch11_rush_treasure",
          "effects": {"hp": -10, "luck": 1},
          "hint": "先拿到手再说"},
     ]
 }
 
-SCENES["ch10_respect_bones"] = {
-    "chapter": 10,
+SCENES["ch11_respect_bones"] = {
+    "chapter": 11,
     "text": [
         "你整理衣冠，向那具枯骨郑重地行了一礼。",
         "",
@@ -7866,13 +8200,13 @@ SCENES["ch10_respect_bones"] = {
         "「你不是来盗宝的——你的礼数和诚意，老夫感受到了。」",
     ],
     "choices": [
-        {"text": "'前辈认得七玄门？'", "next": "ch10_elder_talk",
+        {"text": "'前辈认得七玄门？'", "next": "ch11_elder_talk",
          "effects": {"comprehension": 1}},
     ]
 }
 
-SCENES["ch10_elder_talk"] = {
-    "chapter": 10,
+SCENES["ch11_elder_talk"] = {
+    "chapter": 11,
     "text": [
         "枯骨眼中的幽光闪烁了一下，似乎在回忆遥远的往事。",
         "",
@@ -7887,14 +8221,14 @@ SCENES["ch10_elder_talk"] = {
         "「你若要取玄天镜——必须答应老夫，他日若遇到天玄宗的后人，要照拂一二。若是天玄宗的血脉没有断绝，你需将玄天镜归还。」",
     ],
     "choices": [
-        {"text": "'晚辈答应前辈——立下心魔誓言'", "next": "ch10_make_oath",
+        {"text": "'晚辈答应前辈——立下心魔誓言'", "next": "ch11_make_oath",
          "effects": {"comprehension": 1, "spiritual_power": 5},
          "hint": "心魔誓言不可违背"},
     ]
 }
 
-SCENES["ch10_make_oath"] = {
-    "chapter": 10,
+SCENES["ch11_make_oath"] = {
+    "chapter": 11,
     "text": [
         "你郑重地立下了心魔誓言——若遇天玄宗后人，必当照拂；若天玄宗血脉重现，必归还玄天镜。",
         "",
@@ -7913,13 +8247,13 @@ SCENES["ch10_make_oath"] = {
         "话音刚落，枯骨化作了一堆齑粉，消散在风中。",
     ],
     "choices": [
-        {"text": "收好玄天镜，离开遗迹", "next": "ch10_leave_ruins",
+        {"text": "收好玄天镜，离开遗迹", "next": "ch11_leave_ruins",
          "effects": {"add_item": "玄天镜", "spiritual_power": 10}},
     ]
 }
 
-SCENES["ch10_rush_treasure"] = {
-    "chapter": 10,
+SCENES["ch11_rush_treasure"] = {
+    "chapter": 11,
     "text": [
         "你一个纵身扑向玄天镜！",
         "",
@@ -7938,13 +8272,13 @@ SCENES["ch10_rush_treasure"] = {
         "你意识到——这具枯骨残魂未散，是玄天镜的守护者。没有他的认可，你根本拿不走玄天镜。",
     ],
     "choices": [
-        {"text": "诚恳道歉，说明来意", "next": "ch10_respect_bones",
+        {"text": "诚恳道歉，说明来意", "next": "ch11_respect_bones",
          "effects": {"hp": -15}},
     ]
 }
 
-SCENES["ch10_leave_ruins"] = {
-    "chapter": 10,
+SCENES["ch11_leave_ruins"] = {
+    "chapter": 11,
     "text": [
         "你离开了落日山脉。",
         "",
@@ -7959,13 +8293,13 @@ SCENES["ch10_leave_ruins"] = {
         "你现在的修为还是结丹中期，距离元婴还差一个小境界。但玄天镜在手的你，已经有信心冲击结丹后期了。",
     ],
     "choices": [
-        {"text": "闭关冲击结丹后期", "next": "ch10_breakthrough_late",
+        {"text": "闭关冲击结丹后期", "next": "ch11_breakthrough_late",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch10_breakthrough_late"] = {
-    "chapter": 10,
+SCENES["ch11_breakthrough_late"] = {
+    "chapter": 11,
     "text": [
         "你在青云峰的修炼密室中盘膝坐下。",
         "",
@@ -7988,13 +8322,13 @@ SCENES["ch10_breakthrough_late"] = {
         "结丹后期——突破了！",
     ],
     "choices": [
-        {"text": "感受金丹后期的力量", "next": "ch10_late_power",
+        {"text": "感受金丹后期的力量", "next": "ch11_late_power",
          "effects": {"cultivation": "结丹后期", "max_hp": 60, "hp": 30, "spiritual_power": 40}},
     ]
 }
 
-SCENES["ch10_late_power"] = {
-    "chapter": 10,
+SCENES["ch11_late_power"] = {
+    "chapter": 11,
     "text": [
         "你长出一口气，缓缓睁开双眼。",
         "",
@@ -8013,13 +8347,13 @@ SCENES["ch10_late_power"] = {
         "你取出玄天镜，开始准备将它与自己的神魂相连——这是炼制本命法宝最关键的一步。",
     ],
     "choices": [
-        {"text": "开始炼制本命法宝", "next": "ch10_refine_treasure",
+        {"text": "开始炼制本命法宝", "next": "ch11_refine_treasure",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch10_refine_treasure"] = {
-    "chapter": 10,
+SCENES["ch11_refine_treasure"] = {
+    "chapter": 11,
     "text": [
         "你将玄天镜悬浮在身前，催动天火将其包裹。",
         "",
@@ -8040,13 +8374,13 @@ SCENES["ch10_refine_treasure"] = {
         "本命法宝——成了！",
     ],
     "choices": [
-        {"text": "感受本命法宝的威力", "next": "ch10_refine_success",
+        {"text": "感受本命法宝的威力", "next": "ch11_refine_success",
          "effects": {"hp": -15, "spiritual_power": 15}},
     ]
 }
 
-SCENES["ch10_refine_success"] = {
-    "chapter": 10,
+SCENES["ch11_refine_success"] = {
+    "chapter": 11,
     "text": [
         "你伸出手，玄天镜自动飞入你的掌心。",
         "",
@@ -8065,13 +8399,13 @@ SCENES["ch10_refine_success"] = {
         "天空晴朗无云，但你的直觉告诉你——天劫，随时可能降临。",
     ],
     "choices": [
-        {"text": "为渡劫做准备", "next": "ch10_prepare_tribulation",
+        {"text": "为渡劫做准备", "next": "ch11_prepare_tribulation",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch10_prepare_tribulation"] = {
-    "chapter": 10,
+SCENES["ch11_prepare_tribulation"] = {
+    "chapter": 11,
     "text": [
         "渡天劫不是儿戏——四九小天劫虽然只是元婴天劫中威力最小的，但对于第一次渡劫的修士来说，仍然九死一生。",
         "",
@@ -8094,13 +8428,13 @@ SCENES["ch10_prepare_tribulation"] = {
         "四九小天劫——来了！",
     ],
     "choices": [
-        {"text": "迎劫——开启所有阵法！", "next": "ch10_first_thunder",
+        {"text": "迎劫——开启所有阵法！", "next": "ch11_first_thunder",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch10_first_thunder"] = {
-    "chapter": 10,
+SCENES["ch11_first_thunder"] = {
+    "chapter": 11,
     "text": [
         "轰隆隆——！！",
         "",
@@ -8119,13 +8453,13 @@ SCENES["ch10_first_thunder"] = {
         "然而不等你细细体会——第二道天雷已经蓄势待发。它的威势，比第一道强了至少一倍！",
     ],
     "choices": [
-        {"text": "加固阵法，迎接第二道天雷", "next": "ch10_second_thunder",
+        {"text": "加固阵法，迎接第二道天雷", "next": "ch11_second_thunder",
          "effects": {"hp": -8, "spiritual_power": 8}},
     ]
 }
 
-SCENES["ch10_second_thunder"] = {
-    "chapter": 10,
+SCENES["ch11_second_thunder"] = {
+    "chapter": 11,
     "text": [
         "轰——！！",
         "",
@@ -8144,16 +8478,16 @@ SCENES["ch10_second_thunder"] = {
         "你感受到了一股前所未有的压迫感——第三道天雷的威力，绝对不会比前两道简单相加弱。",
     ],
     "choices": [
-        {"text": "以玄天镜全力防御", "next": "ch10_third_thunder",
+        {"text": "以玄天镜全力防御", "next": "ch11_third_thunder",
          "effects": {"hp": -12, "spiritual_power": 10}},
-        {"text": "以攻对攻——用天火迎击天雷！", "next": "ch10_third_thunder",
+        {"text": "以攻对攻——用天火迎击天雷！", "next": "ch11_third_thunder",
          "effects": {"hp": -15, "spiritual_power": 12},
          "hint": "天火对天雷，以强对强"},
     ]
 }
 
-SCENES["ch10_third_thunder"] = {
-    "chapter": 10,
+SCENES["ch11_third_thunder"] = {
+    "chapter": 11,
     "text": [
         "第三道天雷——降临！",
         "",
@@ -8174,13 +8508,13 @@ SCENES["ch10_third_thunder"] = {
         "第四道天雷——也是最强的最后一道——正在凝聚。",
     ],
     "choices": [
-        {"text": "燃烧精血，全力应对最后一击", "next": "ch10_fourth_thunder",
+        {"text": "燃烧精血，全力应对最后一击", "next": "ch11_fourth_thunder",
          "effects": {"hp": -20, "spiritual_power": 15}},
     ]
 }
 
-SCENES["ch10_fourth_thunder"] = {
-    "chapter": 10,
+SCENES["ch11_fourth_thunder"] = {
+    "chapter": 11,
     "text": [
         "天空中的劫云变成了深紫色。云层中传来沉闷的雷声，如同天道的心跳。",
         "",
@@ -8205,13 +8539,13 @@ SCENES["ch10_fourth_thunder"] = {
         "但你——没有倒下。",
     ],
     "choices": [
-        {"text": "守住心神——等待天劫结束", "next": "ch10_tribulation_survive",
+        {"text": "守住心神——等待天劫结束", "next": "ch11_tribulation_survive",
          "effects": {"hp": -25, "spiritual_power": 20}},
     ]
 }
 
-SCENES["ch10_tribulation_survive"] = {
-    "chapter": 10,
+SCENES["ch11_tribulation_survive"] = {
+    "chapter": 11,
     "text": [
         "不知过了多久——也许是一瞬，也许是永恒。",
         "",
@@ -8234,14 +8568,14 @@ SCENES["ch10_tribulation_survive"] = {
         "元婴——成了！",
     ],
     "choices": [
-        {"text": "稳固元婴，感受元婴期的力量", "next": "ch10_nascent_soul",
+        {"text": "稳固元婴，感受元婴期的力量", "next": "ch11_nascent_soul",
          "effects": {"cultivation": "元婴初期", "max_hp": 100, "hp": 50, "spiritual_power": 60},
          "hint": "元婴已成，大道可期"},
     ]
 }
 
-SCENES["ch10_nascent_soul"] = {
-    "chapter": 10,
+SCENES["ch11_nascent_soul"] = {
+    "chapter": 11,
     "text": [
         "你闭上眼睛，内视丹田。",
         "",
@@ -8262,13 +8596,13 @@ SCENES["ch10_nascent_soul"] = {
         "这就是元婴期的力量。",
     ],
     "choices": [
-        {"text": "俯瞰七玄门，感受变化", "next": "ch10_chapter_end",
+        {"text": "俯瞰七玄门，感受变化", "next": "ch11_chapter_end",
          "effects": {"spiritual_power": 10}},
     ]
 }
 
-SCENES["ch10_chapter_end"] = {
-    "chapter": 10,
+SCENES["ch11_chapter_end"] = {
+    "chapter": 11,
     "is_end": True,
     "text": [
         "===== 第十章 · 完 =====\n",
@@ -8291,19 +8625,19 @@ SCENES["ch10_chapter_end"] = {
         "",
         "你的目光投向了更遥远的天地——那里有答案。",
         "",
-        "（第十一章即将开启：化神之谜）",
+        "（第十二章即将开启：化神之谜）",
     ],
     "choices": []
 }
 
 # ═══════════════════════════════════════════
-# 第十一章：化神之谜
+# 第十二章：化神之谜
 # ═══════════════════════════════════════════
 
-SCENES["ch11_seeking_truth"] = {
-    "chapter": 11,
+SCENES["ch12_seeking_truth"] = {
+    "chapter": 12,
     "text": [
-        "===== 第十一章：化神之谜 =====\n",
+        "===== 第十二章：化神之谜 =====\n",
         "",
         "元婴初成后，你花了三个月稳固境界。",
         "",
@@ -8320,16 +8654,16 @@ SCENES["ch11_seeking_truth"] = {
         "如果这片天地真的被封印了，那么——封印在哪里？是谁下的封印？又该如何破解？",
     ],
     "choices": [
-        {"text": "深入七玄门历代掌门的秘密手札", "next": "ch11_library_deep",
+        {"text": "深入七玄门历代掌门的秘密手札", "next": "ch12_library_deep",
          "effects": {"comprehension": 1}, "hint": "宗门千年积累，必有隐秘"},
-        {"text": "去拜访北方最古老的散修——天机老人", "next": "ch11_seek_hermit",
+        {"text": "去拜访北方最古老的散修——天机老人", "next": "ch12_seek_hermit",
          "effects": {"luck": 1, "spirit_stones": -10},
          "hint": "活得最久的人知道的最多"},
     ]
 }
 
-SCENES["ch11_library_deep"] = {
-    "chapter": 11,
+SCENES["ch12_library_deep"] = {
+    "chapter": 12,
     "text": [
         "你来到七玄门的秘库——只有掌门和太上长老才能进入的地方。",
         "",
@@ -8344,13 +8678,13 @@ SCENES["ch11_library_deep"] = {
         "你继续翻找——在另一本残破的古籍中找到了一张残缺的地图。地图上标注了一个地点：「万古秘境——传说中此界与天外天的交接之处」。",
     ],
     "choices": [
-        {"text": "仔细研究地图，寻找万古秘境的线索", "next": "ch11_scroll_revelation",
+        {"text": "仔细研究地图，寻找万古秘境的线索", "next": "ch12_scroll_revelation",
          "effects": {"add_item": "万古秘境残图", "comprehension": 1}},
     ]
 }
 
-SCENES["ch11_seek_hermit"] = {
-    "chapter": 11,
+SCENES["ch12_seek_hermit"] = {
+    "chapter": 12,
     "text": [
         "你离开七玄门，御剑向北飞行了两日，来到了一座名为「听雪山」的孤峰。",
         "",
@@ -8365,13 +8699,13 @@ SCENES["ch11_seek_hermit"] = {
         "「每个突破元婴的人都会来找老夫——」天机老人落下黑子，抬起头，一双浑浊的老眼中闪过一道精光，「因为每个元婴修士都会发现那个秘密。」",
     ],
     "choices": [
-        {"text": "'前辈说的是——此界封印之事？'", "next": "ch11_hermit_talk",
+        {"text": "'前辈说的是——此界封印之事？'", "next": "ch12_hermit_talk",
          "effects": {"comprehension": 1}},
     ]
 }
 
-SCENES["ch11_hermit_talk"] = {
-    "chapter": 11,
+SCENES["ch12_hermit_talk"] = {
+    "chapter": 12,
     "text": [
         "天机老人缓缓点头：「三万年前，此界与上界之间有一场大战。上界为了封锁此界，布下了『五行封天阵』——以五件先天灵宝为阵眼，将此界与上界的通道彻底切断。」",
         "",
@@ -8386,13 +8720,13 @@ SCENES["ch11_hermit_talk"] = {
         "天机老人抬起头，缓缓吐出三个字：「三年后。」",
     ],
     "choices": [
-        {"text": "'那万古秘境又是怎么回事？'", "next": "ch11_ancient_realm_legend",
+        {"text": "'那万古秘境又是怎么回事？'", "next": "ch12_ancient_realm_legend",
          "effects": {"comprehension": 1, "set_flag": "met_hermit"}},
     ]
 }
 
-SCENES["ch11_ancient_realm_legend"] = {
-    "chapter": 11,
+SCENES["ch12_ancient_realm_legend"] = {
+    "chapter": 12,
     "text": [
         "天机老人眼中闪过一丝追忆：",
         "",
@@ -8407,13 +8741,13 @@ SCENES["ch11_ancient_realm_legend"] = {
         "「前辈——我走到今天，靠的就是那点不甘心。」",
     ],
     "choices": [
-        {"text": "回七玄门准备，前往万古秘境", "next": "ch11_prepare_expedition",
+        {"text": "回七玄门准备，前往万古秘境", "next": "ch12_prepare_expedition",
          "effects": {"comprehension": 1, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_scroll_revelation"] = {
-    "chapter": 11,
+SCENES["ch12_scroll_revelation"] = {
+    "chapter": 12,
     "text": [
         "你花了三天时间研究那张残图。",
         "",
@@ -8428,13 +8762,13 @@ SCENES["ch11_scroll_revelation"] = {
         "但后来不知道发生了什么——通天之路被斩断，此界被封印，化神成了传说。",
     ],
     "choices": [
-        {"text": "为万古秘境之行做万全准备", "next": "ch11_prepare_expedition",
+        {"text": "为万古秘境之行做万全准备", "next": "ch12_prepare_expedition",
          "effects": {"spiritual_power": 5, "set_flag": "library_path"}},
     ]
 }
 
-SCENES["ch11_prepare_expedition"] = {
-    "chapter": 11,
+SCENES["ch12_prepare_expedition"] = {
+    "chapter": 12,
     "text": [
         "你回到青云峰开始准备。",
         "",
@@ -8449,16 +8783,16 @@ SCENES["ch11_prepare_expedition"] = {
         "元婴期的修炼与之前截然不同。不再是积累灵力那么简单，而是需要「悟」——感悟天地法则，在法则的层面上提升自己。",
     ],
     "choices": [
-        {"text": "在青云峰静坐悟道", "next": "ch11_enlightenment",
+        {"text": "在青云峰静坐悟道", "next": "ch12_enlightenment",
          "effects": {"comprehension": 1}, "hint": "大道至简，静中求悟"},
-        {"text": "外出游历，在红尘中感悟", "next": "ch11_wander_world",
+        {"text": "外出游历，在红尘中感悟", "next": "ch12_wander_world",
          "effects": {"luck": 1, "hp": -5},
          "hint": "世事洞明皆学问"},
     ]
 }
 
-SCENES["ch11_enlightenment"] = {
-    "chapter": 11,
+SCENES["ch12_enlightenment"] = {
+    "chapter": 12,
     "text": [
         "你在青云峰顶盘膝而坐。",
         "",
@@ -8479,13 +8813,13 @@ SCENES["ch11_enlightenment"] = {
         "元婴中期——突破了。",
     ],
     "choices": [
-        {"text": "感受元婴中期的力量", "next": "ch11_mid_power",
+        {"text": "感受元婴中期的力量", "next": "ch12_mid_power",
          "effects": {"cultivation": "元婴中期", "max_hp": 60, "hp": 30, "spiritual_power": 40}},
     ]
 }
 
-SCENES["ch11_wander_world"] = {
-    "chapter": 11,
+SCENES["ch12_wander_world"] = {
+    "chapter": 12,
     "text": [
         "你离开了七玄门，以一个普通散修的身份在世间行走。",
         "",
@@ -8508,13 +8842,13 @@ SCENES["ch11_wander_world"] = {
         "轰——你的气息冲天而起！元婴中期，突破了！",
     ],
     "choices": [
-        {"text": "感受新的力量", "next": "ch11_mid_power",
+        {"text": "感受新的力量", "next": "ch12_mid_power",
          "effects": {"cultivation": "元婴中期", "max_hp": 50, "hp": 20, "spiritual_power": 50}},
     ]
 }
 
-SCENES["ch11_mid_power"] = {
-    "chapter": 11,
+SCENES["ch12_mid_power"] = {
+    "chapter": 12,
     "text": [
         "元婴中期的你——感觉整个世界都不同了。",
         "",
@@ -8531,13 +8865,13 @@ SCENES["ch11_mid_power"] = {
         "此外，你还炼制了一批丹药，准备了足够的灵石。",
     ],
     "choices": [
-        {"text": "出发——前往万古秘境", "next": "ch11_journey_begin",
+        {"text": "出发——前往万古秘境", "next": "ch12_journey_begin",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_journey_begin"] = {
-    "chapter": 11,
+SCENES["ch12_journey_begin"] = {
+    "chapter": 12,
     "text": [
         "万古秘境位于大陆极西的永夜沙漠。",
         "",
@@ -8554,16 +8888,16 @@ SCENES["ch11_journey_begin"] = {
         "你翻开地图——万古秘境的入口就在这片山脉的深处。但要穿过这片紫雾山脉，本身就是一场试炼。",
     ],
     "choices": [
-        {"text": "直接飞入紫雾", "next": "ch11_misty_mountains",
+        {"text": "直接飞入紫雾", "next": "ch12_misty_mountains",
          "effects": {"hp": -8}},
-        {"text": "徒步穿越，边走边探索", "next": "ch11_misty_mountains",
+        {"text": "徒步穿越，边走边探索", "next": "ch12_misty_mountains",
          "effects": {"comprehension": 1, "hp": -5},
          "hint": "小心驶得万年船"},
     ]
 }
 
-SCENES["ch11_misty_mountains"] = {
-    "chapter": 11,
+SCENES["ch12_misty_mountains"] = {
+    "chapter": 12,
     "text": [
         "你踏入紫雾的瞬间——立刻感觉到了一阵强烈的空间扭曲。周围的景色在扭曲、变形，仿佛进入了一个异空间。",
         "",
@@ -8578,17 +8912,17 @@ SCENES["ch11_misty_mountains"] = {
         "右边是一条隐蔽的山谷，谷中隐隐有流水声。山谷入口长满了奇异的发光植物，散发出柔和的光芒。",
     ],
     "choices": [
-        {"text": "走上栈道——虽然危险但可能更快", "next": "ch11_cliff_path",
+        {"text": "走上栈道——虽然危险但可能更快", "next": "ch12_cliff_path",
          "effects": {"hp": -10, "luck": 1},
          "hint": "风险与机遇并存"},
-        {"text": "进入山谷——安全但可能有其他考验", "next": "ch11_valley_path",
+        {"text": "进入山谷——安全但可能有其他考验", "next": "ch12_valley_path",
          "effects": {"comprehension": 1, "spiritual_power": 3},
          "hint": "幽谷藏真意"},
     ]
 }
 
-SCENES["ch11_cliff_path"] = {
-    "chapter": 11,
+SCENES["ch12_cliff_path"] = {
+    "chapter": 12,
     "text": [
         "你走上栈道。脚下的木板发出吱呀的声响，不少地方已经腐朽。下方是深不见底的深渊。",
         "",
@@ -8603,20 +8937,20 @@ SCENES["ch11_cliff_path"] = {
         "「道友！请助一臂之力！这头紫鳞蜥守着一株万年灵芝——我们愿意平分！」",
     ],
     "choices": [
-        {"text": "出手相助——击杀紫鳞蜥", "next": "ch11_help_fight",
+        {"text": "出手相助——击杀紫鳞蜥", "next": "ch12_help_fight",
          "effects": {"hp": -12, "spiritual_power": 5},
          "hint": "多一个朋友多条路"},
-        {"text": "袖手旁观——等他们两败俱伤再出手", "next": "ch11_wait_ambush",
+        {"text": "袖手旁观——等他们两败俱伤再出手", "next": "ch12_wait_ambush",
          "effects": {"hp": -3, "luck": 1},
          "hint": "鹬蚌相争，渔翁得利"},
-        {"text": "绕路而行，不参与争斗", "next": "ch11_bypass_fight",
+        {"text": "绕路而行，不参与争斗", "next": "ch12_bypass_fight",
          "effects": {"comprehension": 1},
          "hint": "多一事不如少一事"},
     ]
 }
 
-SCENES["ch11_help_fight"] = {
-    "chapter": 11,
+SCENES["ch12_help_fight"] = {
+    "chapter": 12,
     "text": [
         "你不再犹豫，玄天镜轰然出手！",
         "",
@@ -8633,15 +8967,15 @@ SCENES["ch11_help_fight"] = {
         "作为感谢，他们分给了你半株万年灵芝和一块从紫鳞蜥巢穴中找到的古玉。",
     ],
     "choices": [
-        {"text": "收下谢礼，询问万古秘境的情报", "next": "ch11_exchange_info",
+        {"text": "收下谢礼，询问万古秘境的情报", "next": "ch12_exchange_info",
          "effects": {"add_item": "万年灵芝", "add_item": "古玉残片",
                      "spirit_stones": 20, "set_flag": "met_sword_sect"},
          "hint": "情报比宝物更珍贵"},
     ]
 }
 
-SCENES["ch11_wait_ambush"] = {
-    "chapter": 11,
+SCENES["ch12_wait_ambush"] = {
+    "chapter": 12,
     "text": [
         "你隐在暗处，冷静地观察着战局。",
         "",
@@ -8656,15 +8990,15 @@ SCENES["ch11_wait_ambush"] = {
         "在紫鳞蜥的巢穴中，你找到了那株万年灵芝——比想象中更大，足有脸盆大小。此外还有一块古玉碎片，散发着微弱的光芒。",
     ],
     "choices": [
-        {"text": "取了灵芝和古玉，继续上路", "next": "ch11_after_ambush",
+        {"text": "取了灵芝和古玉，继续上路", "next": "ch12_after_ambush",
          "effects": {"add_item": "万年灵芝", "add_item": "古玉残片",
                      "spirit_stones": 30},
          "hint": "机缘到手"},
     ]
 }
 
-SCENES["ch11_bypass_fight"] = {
-    "chapter": 11,
+SCENES["ch12_bypass_fight"] = {
+    "chapter": 12,
     "text": [
         "你摇了摇头，没有插手这场争斗。",
         "",
@@ -8679,13 +9013,13 @@ SCENES["ch11_bypass_fight"] = {
         "玉简的信息到此为止。但这段信息已经足够珍贵——它证实了天机老人的话。",
     ],
     "choices": [
-        {"text": "继续前往万古秘境入口", "next": "ch11_arrive_realm",
+        {"text": "继续前往万古秘境入口", "next": "ch12_arrive_realm",
          "effects": {"add_item": "古玉残片", "comprehension": 2}},
     ]
 }
 
-SCENES["ch11_exchange_info"] = {
-    "chapter": 11,
+SCENES["ch12_exchange_info"] = {
+    "chapter": 12,
     "text": [
         "你坐在篝火旁，与玄天剑宗的三人交谈。",
         "",
@@ -8698,16 +9032,16 @@ SCENES["ch11_exchange_info"] = {
         "「人多力量大，秘境中的机关陷阱，一个人很难全部应付。」",
     ],
     "choices": [
-        {"text": "同意同行——结伴更安全", "next": "ch11_team_up",
+        {"text": "同意同行——结伴更安全", "next": "ch12_team_up",
          "effects": {"set_flag": "teamed_up", "comprehension": 1}},
-        {"text": "婉拒——独行更灵活", "next": "ch11_arrive_realm",
+        {"text": "婉拒——独行更灵活", "next": "ch12_arrive_realm",
          "effects": {"luck": 1},
          "hint": "独来独往，方是本色"},
     ]
 }
 
-SCENES["ch11_team_up"] = {
-    "chapter": 11,
+SCENES["ch12_team_up"] = {
+    "chapter": 12,
     "text": [
         "你与玄天剑宗的三人结伴而行。",
         "",
@@ -8724,13 +9058,13 @@ SCENES["ch11_team_up"] = {
         "那就是万古秘境。",
     ],
     "choices": [
-        {"text": "与同伴一起进入秘境", "next": "ch11_realm_gate",
+        {"text": "与同伴一起进入秘境", "next": "ch12_realm_gate",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_valley_path"] = {
-    "chapter": 11,
+SCENES["ch12_valley_path"] = {
+    "chapter": 12,
     "text": [
         "你沿着山谷前行。",
         "",
@@ -8747,16 +9081,16 @@ SCENES["ch11_valley_path"] = {
         "「小友，那莲花老夫守了三百年——你可不能抢。」",
     ],
     "choices": [
-        {"text": "转身道歉，礼貌询问", "next": "ch11_valley_elder",
+        {"text": "转身道歉，礼貌询问", "next": "ch12_valley_elder",
          "effects": {"comprehension": 1}, "hint": "以礼待人"},
-        {"text": "警惕——先发制人", "next": "ch11_valley_fight",
+        {"text": "警惕——先发制人", "next": "ch12_valley_fight",
          "effects": {"hp": -10, "spiritual_power": 3},
          "hint": "防人之心不可无"},
     ]
 }
 
-SCENES["ch11_valley_elder"] = {
-    "chapter": 11,
+SCENES["ch12_valley_elder"] = {
+    "chapter": 12,
     "text": [
         "你转过身——一个穿着破旧麻衣的老者正坐在不远处的一块石头上，笑眯眯地看着你。",
         "",
@@ -8773,14 +9107,14 @@ SCENES["ch11_valley_elder"] = {
         "「这是『通天令』——持此令牌，可在封印松动时感应到通道的位置。算是对你守礼的奖赏。」",
     ],
     "choices": [
-        {"text": "谢过前辈，收下通天令", "next": "ch11_get_token",
+        {"text": "谢过前辈，收下通天令", "next": "ch12_get_token",
          "effects": {"add_item": "通天令", "comprehension": 1, "spiritual_power": 10},
          "hint": "机缘天降"},
     ]
 }
 
-SCENES["ch11_valley_fight"] = {
-    "chapter": 11,
+SCENES["ch12_valley_fight"] = {
+    "chapter": 12,
     "text": [
         "你瞬间转身，玄天镜在身前展开！",
         "",
@@ -8799,13 +9133,13 @@ SCENES["ch11_valley_fight"] = {
         "他打量了你一番，微笑道：「你身上有天火的气息——看来是天火选中的人。既然如此，老夫给你一个忠告：进入秘境后，去找『天火殿』。那里有你需要的东西。」",
     ],
     "choices": [
-        {"text": "谢过前辈指点", "next": "ch11_valley_advice",
+        {"text": "谢过前辈指点", "next": "ch12_valley_advice",
          "effects": {"set_flag": "elder_advice", "hp": -8}},
     ]
 }
 
-SCENES["ch11_valley_advice"] = {
-    "chapter": 11,
+SCENES["ch12_valley_advice"] = {
+    "chapter": 12,
     "text": [
         "「天火殿？」你追问。",
         "",
@@ -8818,13 +9152,13 @@ SCENES["ch11_valley_advice"] = {
         "你向着他消失的方向深深一礼，然后离开了山谷。",
     ],
     "choices": [
-        {"text": "前往万古秘境入口", "next": "ch11_arrive_realm",
+        {"text": "前往万古秘境入口", "next": "ch12_arrive_realm",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_get_token"] = {
-    "chapter": 11,
+SCENES["ch12_get_token"] = {
+    "chapter": 12,
     "text": [
         "你双手接过通天令——令牌入手温润，材质非金非玉，上面刻着古老的符文。在你握住它的瞬间，令牌微微发光，仿佛在回应你体内的灵力。",
         "",
@@ -8837,13 +9171,13 @@ SCENES["ch11_get_token"] = {
         "你摸了摸怀中的通天令，心中多了一份底气。有了它，你在万古秘境中的目标就更明确了。",
     ],
     "choices": [
-        {"text": "前往万古秘境入口", "next": "ch11_arrive_realm",
+        {"text": "前往万古秘境入口", "next": "ch12_arrive_realm",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_after_ambush"] = {
-    "chapter": 11,
+SCENES["ch12_after_ambush"] = {
+    "chapter": 12,
     "text": [
         "你取了灵芝和古玉，继续前行。",
         "",
@@ -8856,13 +9190,13 @@ SCENES["ch11_after_ambush"] = {
         "那就是万古秘境的入口。",
     ],
     "choices": [
-        {"text": "进入万古秘境", "next": "ch11_realm_gate",
+        {"text": "进入万古秘境", "next": "ch12_realm_gate",
          "effects": {"spiritual_power": 3}},
     ]
 }
 
-SCENES["ch11_arrive_realm"] = {
-    "chapter": 11,
+SCENES["ch12_arrive_realm"] = {
+    "chapter": 12,
     "text": [
         "你穿过了紫雾山脉，来到了金色光幕前。",
         "",
@@ -8877,13 +9211,13 @@ SCENES["ch11_arrive_realm"] = {
         "看来——达到元婴后期的修士要么已经找到了自己的路，要么已经放弃了。",
     ],
     "choices": [
-        {"text": "等待入口开启", "next": "ch11_realm_gate",
+        {"text": "等待入口开启", "next": "ch12_realm_gate",
          "effects": {"spiritual_power": 3}},
     ]
 }
 
-SCENES["ch11_realm_gate"] = {
-    "chapter": 11,
+SCENES["ch12_realm_gate"] = {
+    "chapter": 12,
     "text": [
         "三天后——金色光幕开始剧烈颤动！",
         "",
@@ -8902,13 +9236,13 @@ SCENES["ch11_realm_gate"] = {
         "这就是万古秘境的内部。",
     ],
     "choices": [
-        {"text": "探索秘境——寻找破界符的线索", "next": "ch11_explore_realm",
+        {"text": "探索秘境——寻找破界符的线索", "next": "ch12_explore_realm",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_explore_realm"] = {
-    "chapter": 11,
+SCENES["ch12_explore_realm"] = {
+    "chapter": 12,
     "text": [
         "万古秘境广袤无垠。你的神识在这里被压缩到了外界的三分之一，但仍然足以覆盖方圆三百丈。",
         "",
@@ -8921,17 +9255,17 @@ SCENES["ch11_explore_realm"] = {
         "而那块「破界符」——就藏在秘境最深处的主殿中。",
     ],
     "choices": [
-        {"text": "直奔主殿——以最快的速度赶路", "next": "ch11_rush_to_temple",
+        {"text": "直奔主殿——以最快的速度赶路", "next": "ch12_rush_to_temple",
          "effects": {"hp": -8, "spiritual_power": 3},
          "hint": "兵贵神速"},
-        {"text": "一边探索一边前进——收集更多信息", "next": "ch11_thorough_search",
+        {"text": "一边探索一边前进——收集更多信息", "next": "ch12_thorough_search",
          "effects": {"comprehension": 1, "luck": 1},
          "hint": "磨刀不误砍柴工"},
     ]
 }
 
-SCENES["ch11_rush_to_temple"] = {
-    "chapter": 11,
+SCENES["ch12_rush_to_temple"] = {
+    "chapter": 12,
     "text": [
         "你根据石碑上的指引，全速向主殿方向飞去。",
         "",
@@ -8948,17 +9282,17 @@ SCENES["ch11_rush_to_temple"] = {
         "「来者止步——接受天仙试炼！」",
     ],
     "choices": [
-        {"text": "接受试炼——堂堂正正进入", "next": "ch11_temple_trial",
+        {"text": "接受试炼——堂堂正正进入", "next": "ch12_temple_trial",
          "effects": {"spiritual_power": 5, "set_flag": "trial_taken"},
          "hint": "大道直行"},
-        {"text": "寻找其他入口——绕开守卫", "next": "ch11_side_entrance",
+        {"text": "寻找其他入口——绕开守卫", "next": "ch12_side_entrance",
          "effects": {"comprehension": 1},
          "hint": "变通之道"},
     ]
 }
 
-SCENES["ch11_thorough_search"] = {
-    "chapter": 11,
+SCENES["ch12_thorough_search"] = {
+    "chapter": 12,
     "text": [
         "你耐着性子，一边向主殿方向移动，一边仔细搜索沿途的每一处遗迹。",
         "",
@@ -8969,7 +9303,7 @@ SCENES["ch11_thorough_search"] = {
         "更重要的是——你在一张石桌上发现了一枚完好的玉简。玉简中记载着一门上古秘术：「天魂炼器术」——以自身神魂为引，将多种天地灵物融合炼制，打造出一件独一无二的本命法宝。",
     ],
     "choices": [
-        {"text": "收好材料，继续前往主殿", "next": "ch11_temple_trial",
+        {"text": "收好材料，继续前往主殿", "next": "ch12_temple_trial",
          "effects": {"add_item": "星辰铁", "add_item": "万年冰晶", "add_item": "凤凰羽",
                      "add_item": "天魂炼器术玉简",
                      "comprehension": 2, "spirit_stones": 30},
@@ -8977,8 +9311,8 @@ SCENES["ch11_thorough_search"] = {
     ]
 }
 
-SCENES["ch11_temple_trial"] = {
-    "chapter": 11,
+SCENES["ch12_temple_trial"] = {
+    "chapter": 12,
     "text": [
         "你走向宫殿大门——两尊石像守卫同时动了！",
         "",
@@ -8997,14 +9331,14 @@ SCENES["ch11_temple_trial"] = {
         "「你以为你真的是什么天才？你只是运气好罢了。」",
     ],
     "choices": [
-        {"text": "坚定道心——'我命由我不由天！'", "next": "ch11_trial_passed",
+        {"text": "坚定道心——'我命由我不由天！'", "next": "ch12_trial_passed",
          "effects": {"hp": -5, "comprehension": 1},
          "hint": "道心不移"},
     ]
 }
 
-SCENES["ch11_trial_passed"] = {
-    "chapter": 11,
+SCENES["ch12_trial_passed"] = {
+    "chapter": 12,
     "text": [
         "「我命由我不由天！」",
         "",
@@ -9023,13 +9357,13 @@ SCENES["ch11_trial_passed"] = {
         "那就是——破界符！",
     ],
     "choices": [
-        {"text": "上前取走破界符", "next": "ch11_obtain_seal_breaker",
+        {"text": "上前取走破界符", "next": "ch12_obtain_seal_breaker",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_side_entrance"] = {
-    "chapter": 11,
+SCENES["ch12_side_entrance"] = {
+    "chapter": 12,
     "text": [
         "你没有走正门——而是绕到了宫殿的侧面。",
         "",
@@ -9044,14 +9378,14 @@ SCENES["ch11_side_entrance"] = {
         "你将这两件东西收好，从偏室的一个侧门进入了主殿——正好看到高台上的那枚金色破界符。",
     ],
     "choices": [
-        {"text": "上前取走破界符", "next": "ch11_obtain_seal_breaker",
+        {"text": "上前取走破界符", "next": "ch12_obtain_seal_breaker",
          "effects": {"add_item": "上古战甲（残）", "add_item": "断剑",
                      "comprehension": 1}},
     ]
 }
 
-SCENES["ch11_obtain_seal_breaker"] = {
-    "chapter": 11,
+SCENES["ch12_obtain_seal_breaker"] = {
+    "chapter": 12,
     "text": [
         "你走向高台——但就在你的手指即将触碰到破界符的瞬间——",
         "",
@@ -9072,16 +9406,16 @@ SCENES["ch11_obtain_seal_breaker"] = {
         "「余孽？」那修士冷笑，「血煞宗只不过是我圣教的一个分支罢了。本座——圣教左护法，血无涯！」",
     ],
     "choices": [
-        {"text": "迎战——元婴后期又如何！", "next": "ch11_fight_blood",
+        {"text": "迎战——元婴后期又如何！", "next": "ch12_fight_blood",
          "effects": {"hp": -10, "spiritual_power": 5}},
-        {"text": "先用言语拖住他，寻找战机", "next": "ch11_blood_talk",
+        {"text": "先用言语拖住他，寻找战机", "next": "ch12_blood_talk",
          "effects": {"comprehension": 1},
          "hint": "以智取胜"},
     ]
 }
 
-SCENES["ch11_blood_talk"] = {
-    "chapter": 11,
+SCENES["ch12_blood_talk"] = {
+    "chapter": 12,
     "text": [
         "你表面上不动声色，暗中却将玄天镜和天火调整到最佳状态。",
         "",
@@ -9096,13 +9430,13 @@ SCENES["ch11_blood_talk"] = {
         "玄天镜在身前展开，镜面中射出一道刺目的金光！与此同时，天火在掌心凝聚成一把金色长剑，直刺血无涯的咽喉！",
     ],
     "choices": [
-        {"text": "全力进攻——抢占先机", "next": "ch11_fight_blood",
+        {"text": "全力进攻——抢占先机", "next": "ch12_fight_blood",
          "effects": {"hp": -8, "spiritual_power": 8}},
     ]
 }
 
-SCENES["ch11_fight_blood"] = {
-    "chapter": 11,
+SCENES["ch12_fight_blood"] = {
+    "chapter": 12,
     "text": [
         "你与血无涯的大战在主殿中展开！",
         "",
@@ -9117,17 +9451,17 @@ SCENES["ch11_fight_blood"] = {
         "他暴喝一声——周身血光大放！一道血色的巨人虚影在他身后浮现，散发出的威压让整座大殿都在颤抖！",
     ],
     "choices": [
-        {"text": "燃烧精血——催动天火全力一击", "next": "ch11_blood_final",
+        {"text": "燃烧精血——催动天火全力一击", "next": "ch12_blood_final",
          "effects": {"hp": -20, "spiritual_power": 15},
          "hint": "孤注一掷"},
-        {"text": "利用大殿的地形游斗——消耗对方", "next": "ch11_blood_final",
+        {"text": "利用大殿的地形游斗——消耗对方", "next": "ch12_blood_final",
          "effects": {"hp": -15, "comprehension": 1},
          "hint": "以柔克刚"},
     ]
 }
 
-SCENES["ch11_blood_final"] = {
-    "chapter": 11,
+SCENES["ch12_blood_final"] = {
+    "chapter": 12,
     "text": [
         "你咬紧牙关——玄天镜在你面前急速旋转，镜面上的光芒越来越耀眼。",
         "",
@@ -9148,13 +9482,13 @@ SCENES["ch11_blood_final"] = {
         "他踉跄后退了几步，瞪大眼睛看着你——然后轰然倒下。",
     ],
     "choices": [
-        {"text": "取走破界符", "next": "ch11_seal_breaker_got",
+        {"text": "取走破界符", "next": "ch12_seal_breaker_got",
          "effects": {"add_item": "破界符", "spiritual_power": 10, "spirit_stones": 50}},
     ]
 }
 
-SCENES["ch11_seal_breaker_got"] = {
-    "chapter": 11,
+SCENES["ch12_seal_breaker_got"] = {
+    "chapter": 12,
     "text": [
         "你走上前——从血无涯的尸体旁捡起了一枚储物戒指，然后走到高台前，伸手拿起了那枚金色的破界符。",
         "",
@@ -9169,13 +9503,13 @@ SCENES["ch11_seal_breaker_got"] = {
         "五大阵眼——只要破坏其中两个，封印就会产生不可逆的崩溃。",
     ],
     "choices": [
-        {"text": "带着破界符离开秘境", "next": "ch11_leave_realm",
+        {"text": "带着破界符离开秘境", "next": "ch12_leave_realm",
          "effects": {"comprehension": 2}},
     ]
 }
 
-SCENES["ch11_leave_realm"] = {
-    "chapter": 11,
+SCENES["ch12_leave_realm"] = {
+    "chapter": 12,
     "text": [
         "你带着破界符和圣教密卷离开了万古秘境。",
         "",
@@ -9192,13 +9526,13 @@ SCENES["ch11_leave_realm"] = {
         "你握紧了拳头——路还很长，但你已经看到了终点。",
     ],
     "choices": [
-        {"text": "回七玄门闭关", "next": "ch11_return_to_sect",
+        {"text": "回七玄门闭关", "next": "ch12_return_to_sect",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_return_to_sect"] = {
-    "chapter": 11,
+SCENES["ch12_return_to_sect"] = {
+    "chapter": 12,
     "text": [
         "你回到了七玄门。",
         "",
@@ -9215,13 +9549,13 @@ SCENES["ch11_return_to_sect"] = {
         "你需要——元婴后期，甚至元婴后期圆满。",
     ],
     "choices": [
-        {"text": "闭关冲击元婴后期", "next": "ch11_breakthrough_late",
+        {"text": "闭关冲击元婴后期", "next": "ch12_breakthrough_late",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch11_breakthrough_late"] = {
-    "chapter": 11,
+SCENES["ch12_breakthrough_late"] = {
+    "chapter": 12,
     "text": [
         "元婴后期——是元婴期的最后一个境界。",
         "",
@@ -9242,13 +9576,13 @@ SCENES["ch11_breakthrough_late"] = {
         "你的道——从来不是按部就班。你的道——是逆天而行！",
     ],
     "choices": [
-        {"text": "以逆天之意冲击瓶颈", "next": "ch11_late_success",
+        {"text": "以逆天之意冲击瓶颈", "next": "ch12_late_success",
          "effects": {"hp": -10, "spiritual_power": 15}},
     ]
 }
 
-SCENES["ch11_late_success"] = {
-    "chapter": 11,
+SCENES["ch12_late_success"] = {
+    "chapter": 12,
     "text": [
         "「逆天——破！」",
         "",
@@ -9267,13 +9601,13 @@ SCENES["ch11_late_success"] = {
         "这就是元婴后期的力量——掌控一方天地，洞悉万物运转。",
     ],
     "choices": [
-        {"text": "稳固境界，感受新的力量", "next": "ch11_late_power",
+        {"text": "稳固境界，感受新的力量", "next": "ch12_late_power",
          "effects": {"cultivation": "元婴后期", "max_hp": 80, "hp": 40, "spiritual_power": 50}},
     ]
 }
 
-SCENES["ch11_late_power"] = {
-    "chapter": 11,
+SCENES["ch12_late_power"] = {
+    "chapter": 12,
     "text": [
         "你走出密室，站在青云峰顶。",
         "",
@@ -9298,13 +9632,13 @@ SCENES["ch11_late_power"] = {
         "化神之路，就在前方。",
     ],
     "choices": [
-        {"text": "眺望远方——为化神做准备", "next": "ch11_chapter_end",
+        {"text": "眺望远方——为化神做准备", "next": "ch12_chapter_end",
          "effects": {"spiritual_power": 10}},
     ]
 }
 
-SCENES["ch11_chapter_end"] = {
-    "chapter": 11,
+SCENES["ch12_chapter_end"] = {
+    "chapter": 12,
     "is_end": True,
     "text": [
         "===== 第十一章 · 完 =====\n",
@@ -9332,19 +9666,332 @@ SCENES["ch11_chapter_end"] = {
         "",
         "「化神——我来了。」",
         "",
-        "（第十二章即将开启：破阵之战）",
+        "（第十四章即将开启：破阵之战）",
     ],
     "choices": []
 }
 
 # ═══════════════════════════════════════════
-# 第十二章：破阵之战
+# 第十三章：元婴问道
 # ═══════════════════════════════════════════
 
-SCENES["ch12_prepare"] = {
-    "chapter": 12,
+SCENES["ch13_yuanying_depth"] = {
+    "chapter": 13,
     "text": [
-        "===== 第十二章：破阵之战 =====\n",
+        "===== 第十三章：元婴问道 =====\n",
+        "",
+        "元婴后期的你——站在了此界的巅峰。",
+        "",
+        "回望来时路，从青云镇的一个打柴少年到如今的元婴修士——这一路走来，你已经超越了无数人。",
+        "",
+        "但你并没有满足。",
+        "",
+        "元婴后期距离化神只有一步之遥——但这一步，也是天壤之别。",
+        "",
+        "你翻阅了七玄门中所有关于化神的记载——没有找到任何有用的信息。仿佛化神在这个世界中被人刻意抹去了一般。",
+        "",
+        "但你手中还有一张牌——天机老人提到的五行封天阵。",
+        "",
+        "你决定亲自前往天机老人的听雪山，了解更多关于封印的细节。",
+    ],
+    "choices": [
+        {"text": "前往听雪山拜访天机老人", "next": "ch13_visit_hermit",
+         "effects": {"comprehension": 1}, "hint": "知彼知己"},
+        {"text": "用自己的力量感知封印的脉络", "next": "ch13_sense_seal",
+         "effects": {"spiritual_power": 5}, "hint": "亲自探索"},
+    ]
+}
+
+SCENES["ch13_visit_hermit"] = {
+    "chapter": 13,
+    "text": [
+        "你再次来到听雪山。",
+        "",
+        "天机老人依然坐在那张石桌前，独自对弈。但这一次——他抬起头看向你时，眼中多了一丝惊讶。",
+        "",
+        "「元婴后期……你修炼的速度，比老夫预想的快了整整十年。」",
+        "",
+        "你在他对面坐下：「前辈——我想知道关于五行封天阵更多的细节。」",
+        "",
+        "天机老人落下一枚白子，缓缓道：",
+        "",
+        "「五行封天阵——以上古五大神兽的分魂镇守五大阵眼。你要打破封印，至少要摧毁两处阵眼。」",
+        "",
+        "「但阵眼不是那么好破的——那些神兽分魂虽然只有本体的百分之一实力，但也不是元婴修士能够轻易抗衡的。」",
+        "",
+        "「你现在的实力——还不够。」",
+    ],
+    "choices": [
+        {"text": "'那我该如何提升实力？'", "next": "ch13_hermit_advice",
+         "effects": {"comprehension": 1}},
+    ]
+}
+
+SCENES["ch13_hermit_advice"] = {
+    "chapter": 13,
+    "text": [
+        "天机老人看了你一眼，微笑道：",
+        "",
+        "「元婴期的修炼核心在于法则领悟。你的天火和玄天镜都是上等货色——但你没有真正将它们的力量发挥出来。」",
+        "",
+        "「老夫建议你——去找『万剑冢』。」",
+        "",
+        "「万剑冢？」你皱眉。",
+        "",
+        "「那是远古时期一位化神剑修坐化之地。他毕生修炼剑道，将毕生修为封印在了万剑冢中。」",
+        "",
+        "「那里不仅有丰富的天材地宝，更重要的是——那里残留着他关于法则的感悟。若能领悟一二，对你的实力提升大有裨益。」",
+        "",
+        "「位置在听雪山以北一千五百里的断龙山脉深处。」",
+    ],
+    "choices": [
+        {"text": "前往万剑冢——寻找化神剑修的传承", "next": "ch13_sword_tomb_journey",
+         "effects": {"comprehension": 1}, "hint": "剑道即天道"},
+    ]
+}
+
+SCENES["ch13_sense_seal"] = {
+    "chapter": 13,
+    "text": [
+        "你闭上眼睛，将元婴之力扩散到天地之间。",
+        "",
+        "元婴后期的你——已经可以让神识覆盖方圆万丈。在这一范围内，你能感知到天地灵气的流动、山川的脉动、还有——那若有若无的封印之力。",
+        "",
+        "封印之力如同无形的蛛网，覆盖了整个天幕。而在你的感知中——那蛛网在五个方向上最为浓厚：东、南、西、北、中。",
+        "",
+        "那就是五大阵眼。",
+        "",
+        "你记下了五个方位——然后睁开了眼睛。",
+        "",
+        "你意识到——仅凭你现在的力量，直接面对那些神兽分魂几乎没有胜算。你需要在突破之前进一步提升实力。",
+        "",
+        "你想起了天机老人曾提过的一处秘境——「万剑冢」，据说是远古化神剑修坐化之地。那里或许有突破的契机。",
+    ],
+    "choices": [
+        {"text": "前往万剑冢", "next": "ch13_sword_tomb_journey",
+         "effects": {"comprehension": 2, "spiritual_power": 5}},
+    ]
+}
+
+SCENES["ch13_sword_tomb_journey"] = {
+    "chapter": 13,
+    "text": [
+        "断龙山脉——横亘在大陆北方的巨大山脉，如同一头卧倒的巨龙。",
+        "",
+        "传说远古时期有一条真龙在此陨落，它的尸体化成了这片山脉——因此得名断龙山脉。",
+        "",
+        "而万剑冢——就在山脉最深处的一座山谷中。",
+        "",
+        "你御剑而行，不到半日便来到了断龙山脉上空。",
+        "",
+        "你低头看去——下方有一座被浓雾笼罩的山谷。即便以你的神识，也无法穿透那层浓雾。",
+        "",
+        "但你能感觉到——谷中传出一股凌厉的剑意。那剑意如同一柄出鞘的利剑，锋芒毕露，直冲云霄。",
+        "",
+        "那就是万剑冢。",
+    ],
+    "choices": [
+        {"text": "降下飞剑——徒步进入山谷", "next": "ch13_valley_entry",
+         "effects": {"hp": -5, "spiritual_power": 3}},
+    ]
+}
+
+SCENES["ch13_valley_entry"] = {
+    "chapter": 13,
+    "text": [
+        "你降落在山谷入口处。",
+        "",
+        "浓雾在你面前翻涌——你伸手触碰，感受到了一股寒意。这不是普通的雾——而是由剑意凝聚而成的剑雾。",
+        "",
+        "普通人走进这种剑雾，瞬间就会被无处不在的剑意切成碎片。",
+        "",
+        "但你——是元婴修士。",
+        "",
+        "你运转灵力在身周形成一层护罩——然后踏步走入了浓雾之中。",
+        "",
+        "剑雾如同无数细小的刀刃切割在你的护罩上——发出密集的噼啪声。你感到灵力在快速消耗——但还在可承受的范围内。",
+        "",
+        "走了约一炷香的时间——浓雾渐渐散去。",
+        "",
+        "你来到了山谷的中央——那里矗立着无数把剑。",
+    ],
+    "choices": [
+        {"text": "仔细观察万剑冢", "next": "ch13_sword_field",
+         "effects": {"comprehension": 1}},
+    ]
+}
+
+SCENES["ch13_sword_field"] = {
+    "chapter": 13,
+    "text": [
+        "万剑冢——名副其实。",
+        "",
+        "整个山谷中插满了剑——成千上万把剑。有的是完整的，有的是断剑，有的已经锈蚀不堪，有的依然锋芒毕露。",
+        "",
+        "每一把剑都散发着不同的剑意——有的刚猛，有的阴柔，有的霸道，有的飘逸……",
+        "",
+        "这些剑的主人——都是曾经追随那位化神剑修的弟子和门人。他们在此地坐化后，剑也随之留在了这里。",
+        "",
+        "山谷的中央——有一座高台。高台上插着一柄通体漆黑的长剑。与其他剑不同——这把剑没有散发任何剑意，仿佛只是一把普通的铁剑。",
+        "",
+        "但你的直觉告诉你——那就是化神剑修的本命之剑。",
+    ],
+    "choices": [
+        {"text": "走向高台——观察那把黑剑", "next": "ch13_black_sword",
+         "effects": {"comprehension": 1}},
+        {"text": "在剑林中穿行——领悟那些剑意", "next": "ch13_sword_insight",
+         "effects": {"comprehension": 1},
+         "hint": "博采众长"},
+    ]
+}
+
+SCENES["ch13_sword_insight"] = {
+    "chapter": 13,
+    "text": [
+        "你没有直接走向高台——而是在剑林中缓步穿行。",
+        "",
+        "每经过一把剑，你就停下来感受片刻。那些剑意如同一个个灵魂在向你诉说着它们的故事——",
+        "",
+        "一把布满裂纹的青色长剑——它的主人生前是一个快意恩仇的剑客，一生与人斗剑三千场，未尝一败。最终在与更强的对手战斗时剑折人亡。",
+        "",
+        "一把通体赤红的短剑——它的主人生前是一个情感炽烈的女子，为情所困，最终在此地坐化。剑意中带着深深的哀伤和不舍。",
+        "",
+        "你闭上眼——感受着这些剑意。它们虽然各有不同，但都蕴含着同样的东西——求道之心。",
+        "",
+        "你的元婴在你体内微微震颤——这些剑意触动了你对法则的理解。",
+    ],
+    "choices": [
+        {"text": "继续感受——领悟剑道真谛", "next": "ch13_sword_enlightenment",
+         "effects": {"comprehension": 2, "spiritual_power": 5}},
+    ]
+}
+
+SCENES["ch13_sword_enlightenment"] = {
+    "chapter": 13,
+    "text": [
+        "你盘膝坐在剑林之中——周围是万千剑意。",
+        "",
+        "你将神识展开——不是去压制它们，而是去「聆听」它们。每一把剑的剑意都是一个独立的法则碎片，组合在一起就是一部完整的剑道真经。",
+        "",
+        "三天三夜过去了。",
+        "",
+        "第四天清晨——你睁开了眼睛。",
+        "",
+        "你的气息变了——变得更加锋利。你抬起手，一道无形的剑气从指尖射出，在十丈外的崖壁上留下了一道深深的剑痕。",
+        "",
+        "你以剑入道——将剑道的法则融入了自己的修炼体系中。",
+        "",
+        "你站起身来——走向高台。现在——是时候面对那柄黑剑了。",
+    ],
+    "choices": [
+        {"text": "走上高台——面对化神之剑", "next": "ch13_black_sword",
+         "effects": {"comprehension": 1, "spiritual_power": 8}},
+    ]
+}
+
+SCENES["ch13_black_sword"] = {
+    "chapter": 13,
+    "text": [
+        "你走上高台——站在了那柄黑剑前。",
+        "",
+        "近距离观察之下——你发现黑剑的剑身上刻着一行小字：",
+        "",
+        "「吾一生求道，三百年化神，五百年圆满。然天道有缺，此界不容化神之上。吾不愿受封印之辱——故自封于此，等待有缘人。」",
+        "",
+        "你伸手握住剑柄——",
+        "",
+        "一瞬间——一股浩瀚的剑意从剑身中涌入你的体内！那是化神剑修毕生的修为感悟——关于法则的理解、关于天道的参悟、关于化神的奥秘——",
+        "",
+        "你感觉自己的元婴在疯狂成长——对法则的理解在以惊人的速度提升。元婴后期的瓶颈开始松动——",
+    ],
+    "choices": [
+        {"text": "吸收剑意——冲击元婴后期圆满", "next": "ch13_yy_breakthrough",
+         "effects": {"hp": -12, "spiritual_power": 12}},
+    ]
+}
+
+SCENES["ch13_yy_breakthrough"] = {
+    "chapter": 13,
+    "text": [
+        "化神剑修的剑意如同一条奔流的大河涌入你的体内！",
+        "",
+        "你的元婴在疯狂吸收这股力量——它从孩童大小长成了少年模样。元婴的眼中闪烁着剑芒一般的精光——那是剑道法则融入元婴的象征。",
+        "",
+        "你的神识扩展到了万丈之外——整座断龙山脉都在你的感知之中。你能感受到山腹中的每一块岩石、地底深处的每一条灵脉。",
+        "",
+        "你对法则的领悟达到了一个新的高度——不仅仅是「理解」法则，而是开始「掌握」法则。",
+        "",
+        "元婴后期圆满——你已经达到了这个境界的巅峰。",
+        "",
+        "再进一步——就是化神。",
+        "",
+        "你睁开眼——手中的黑剑发出一声清鸣，剑身上的文字缓缓消失。它的使命——完成了。",
+    ],
+    "choices": [
+        {"text": "感受元婴圆满的力量", "next": "ch13_perfect_feeling",
+         "effects": {"cultivation": "元婴后期圆满", "max_hp": 80, "hp": 40, "spiritual_power": 40}},
+    ]
+}
+
+SCENES["ch13_perfect_feeling"] = {
+    "chapter": 13,
+    "text": [
+        "你站在高台上——感受着体内澎湃的力量。",
+        "",
+        "元婴后期圆满——这是此界能够承受的最高境界。再往上——就是化神了。",
+        "",
+        "但化神需要的不仅仅是力量——还需要打破五行封天阵的勇气。",
+        "",
+        "你握着那把黑剑——它虽然已经失去了剑意，但剑身依然锋利。你决定将它作为自己的佩剑——以纪念那位化神剑修。",
+        "",
+        "你离开万剑冢时——回头看了一眼那片剑林。数千把剑在风中微微颤动，发出低沉的剑鸣，仿佛在向你告别。",
+        "",
+        "「我会回来的——带着打破封印的消息。」",
+        "",
+        "你御剑而起——向着七玄门的方向飞去。",
+        "",
+        "接下来——就是筹划打破五行封天阵的行动了。你手中的圣教密卷中记载着五大阵眼的具体位置——你需要决定先从哪一个开始。",
+    ],
+    "choices": [
+        {"text": "回到七玄门——筹划破阵", "next": "ch13_yy_chapter_end",
+         "effects": {"add_item": "无名黑剑", "spiritual_power": 10}},
+    ]
+}
+
+SCENES["ch13_yy_chapter_end"] = {
+    "chapter": 13,
+    "is_end": True,
+    "text": [
+        "===== 第十三章 · 完 =====\n",
+        "",
+        "你回到了七玄门。",
+        "",
+        "元婴后期圆满——你已经站在了此界的巅峰。在你的感知中，天地间的封印如同一张大网覆盖在苍穹之上。而你已经看到了那些网的节点——五行封天阵的五大阵眼。",
+        "",
+        "打破它们——化神之路就会开启。",
+        "",
+        "但圣教的阴影仍然存在。那个自称圣教的神秘组织，他们的教主厉苍天——据说也是元婴后期圆满的修为。",
+        "",
+        "他也在等——等一个替他去打破封印的人。",
+        "",
+        "还是说——那个人就是你？",
+        "",
+        "你握紧了拳头。无论圣教的目的是什么——化神之路，你一定会走上去。",
+        "",
+        "（第十四章即将开启：破阵之战）",
+    ],
+    "choices": []
+}
+
+
+# ═══════════════════════════════════════════
+# 第十四章：破阵之战
+# ═══════════════════════════════════════════
+
+SCENES["ch13_prepare"] = {
+    "chapter": 14,
+    "text": [
+        "===== 第十四章：破阵之战 =====\n",
         "",
         "青云峰上，云海翻涌。",
         "",
@@ -9359,16 +10006,16 @@ SCENES["ch12_prepare"] = {
         "你摸了摸丹田——距离后期圆满，还有一线之隔。",
     ],
     "choices": [
-        {"text": "闭关冲击元婴后期圆满", "next": "ch12_breakthrough_perfect",
+        {"text": "闭关冲击元婴后期圆满", "next": "ch13_breakthrough_perfect",
          "effects": {"spiritual_power": 5}},
-        {"text": "先研究破界符——从中感悟空间法则", "next": "ch12_study_seal_breaker",
+        {"text": "先研究破界符——从中感悟空间法则", "next": "ch13_study_seal_breaker",
          "effects": {"comprehension": 1},
          "hint": "破界符中蕴含天地至理"},
     ]
 }
 
-SCENES["ch12_study_seal_breaker"] = {
-    "chapter": 12,
+SCENES["ch13_study_seal_breaker"] = {
+    "chapter": 14,
     "text": [
         "你将灵力注入破界符——金色的符文在虚空中浮现，组成一个复杂的立体图案。",
         "",
@@ -9383,13 +10030,13 @@ SCENES["ch12_study_seal_breaker"] = {
         "元婴后期圆满的瓶颈——松动了。",
     ],
     "choices": [
-        {"text": "趁势冲击元婴后期圆满", "next": "ch12_breakthrough_perfect",
+        {"text": "趁势冲击元婴后期圆满", "next": "ch13_breakthrough_perfect",
          "effects": {"comprehension": 2, "spiritual_power": 10}},
     ]
 }
 
-SCENES["ch12_breakthrough_perfect"] = {
-    "chapter": 12,
+SCENES["ch13_breakthrough_perfect"] = {
+    "chapter": 14,
     "text": [
         "你在密室中盘膝而坐。玄天镜悬浮于顶，将天地灵气倾泻而下；天火在丹田中燃烧，淬炼着元婴的每一寸。",
         "",
@@ -9408,13 +10055,13 @@ SCENES["ch12_breakthrough_perfect"] = {
         "元婴后期圆满——成了。",
     ],
     "choices": [
-        {"text": "感受圆满之境的力量", "next": "ch12_perfect_power",
+        {"text": "感受圆满之境的力量", "next": "ch13_perfect_power",
          "effects": {"cultivation": "元婴后期圆满", "max_hp": 100, "hp": 50, "spiritual_power": 50}},
     ]
 }
 
-SCENES["ch12_perfect_power"] = {
-    "chapter": 12,
+SCENES["ch13_perfect_power"] = {
+    "chapter": 14,
     "text": [
         "你站在青云峰顶，伸出一只手——",
         "",
@@ -9429,13 +10076,13 @@ SCENES["ch12_perfect_power"] = {
         "你向掌门微微一礼：「弟子要去做一件事——一件可能会颠覆此界的事。」",
     ],
     "choices": [
-        {"text": "向掌门说明计划", "next": "ch12_choose_seal",
+        {"text": "向掌门说明计划", "next": "ch13_choose_seal",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch12_choose_seal"] = {
-    "chapter": 12,
+SCENES["ch13_choose_seal"] = {
+    "chapter": 14,
     "text": [
         "你向掌门解释了五行封天阵和化神封印的真相。",
         "",
@@ -9458,17 +10105,17 @@ SCENES["ch12_choose_seal"] = {
         "「麒麟柱」——位于此界正中天柱山，由麒麟神兽分魂守护。麒麟为万兽之首，五行兼备，最难攻破。",
     ],
     "choices": [
-        {"text": "第一个目标——朱雀柱（南疆火山，天火有加成）", "next": "ch12_departure_south",
+        {"text": "第一个目标——朱雀柱（南疆火山，天火有加成）", "next": "ch13_departure_south",
          "effects": {"set_flag": "first_zhuque", "spiritual_power": 3}, "hint": "天火克火，出其不意"},
-        {"text": "第一个目标——青龙柱（东极之海，水能灭火但有天火护体）", "next": "ch12_departure_east",
+        {"text": "第一个目标——青龙柱（东极之海，水能灭火但有天火护体）", "next": "ch13_departure_east",
          "effects": {"set_flag": "first_qinglong", "spiritual_power": 3}, "hint": "水亦载舟，亦能覆舟"},
-        {"text": "第一个目标——白虎柱（西荒沙漠，正面决胜负）", "next": "ch12_departure_west",
+        {"text": "第一个目标——白虎柱（西荒沙漠，正面决胜负）", "next": "ch13_departure_west",
          "effects": {"set_flag": "first_baihu", "luck": 1}, "hint": "真金不怕火炼"},
     ]
 }
 
-SCENES["ch12_departure_south"] = {
-    "chapter": 12,
+SCENES["ch13_departure_south"] = {
+    "chapter": 14,
     "text": [
         "你御剑向南——目标南疆万丈火山，朱雀柱。",
         "",
@@ -9485,16 +10132,16 @@ SCENES["ch12_departure_south"] = {
         "身周的天火自动形成一层护罩，将外界的岩浆和热气隔绝开来。你如同一颗金色的流星，穿透层层岩浆，向地心深处坠落。",
     ],
     "choices": [
-        {"text": "以天火开路，全速下潜", "next": "ch12_volcano_depth",
+        {"text": "以天火开路，全速下潜", "next": "ch13_volcano_depth",
          "effects": {"hp": -5, "spiritual_power": 3}},
-        {"text": "放缓速度，沿途观察岩浆中的异常", "next": "ch12_volcano_explore",
+        {"text": "放缓速度，沿途观察岩浆中的异常", "next": "ch13_volcano_explore",
          "effects": {"comprehension": 1},
          "hint": "小心使得万年船"},
     ]
 }
 
-SCENES["ch12_volcano_explore"] = {
-    "chapter": 12,
+SCENES["ch13_volcano_explore"] = {
+    "chapter": 14,
     "text": [
         "你放慢了速度，一边下潜一边仔细观察周围的岩浆。",
         "",
@@ -9509,14 +10156,14 @@ SCENES["ch12_volcano_explore"] = {
         "你花了些时间收集了二十余块品质最好的火晶，然后继续下潜。",
     ],
     "choices": [
-        {"text": "继续深入地下", "next": "ch12_volcano_depth",
+        {"text": "继续深入地下", "next": "ch13_volcano_depth",
          "effects": {"add_item": "地心火晶", "add_item": "地心火晶", "add_item": "地心火晶",
                      "add_item": "地心火晶", "add_item": "地心火晶", "spiritual_power": 3}},
     ]
 }
 
-SCENES["ch12_volcano_depth"] = {
-    "chapter": 12,
+SCENES["ch13_volcano_depth"] = {
+    "chapter": 14,
     "text": [
         "你穿透了最后一层岩浆——下方竟然出现了一片巨大的地下空间！",
         "",
@@ -9533,16 +10180,16 @@ SCENES["ch12_volcano_depth"] = {
         "那双金色的瞳孔中，映出了你的身影。",
     ],
     "choices": [
-        {"text": "拱手行礼——'晚辈为破封印而来，请前辈赐教'", "next": "ch12_zhuque_talk",
+        {"text": "拱手行礼——'晚辈为破封印而来，请前辈赐教'", "next": "ch13_zhuque_talk",
          "effects": {"comprehension": 1}, "hint": "先礼后兵"},
-        {"text": "先发制人——趁它刚醒，全力出手！", "next": "ch12_zhuque_fight",
+        {"text": "先发制人——趁它刚醒，全力出手！", "next": "ch13_zhuque_fight",
          "effects": {"hp": -10, "spiritual_power": 5},
          "hint": "先下手为强"},
     ]
 }
 
-SCENES["ch12_zhuque_talk"] = {
-    "chapter": 12,
+SCENES["ch13_zhuque_talk"] = {
+    "chapter": 14,
     "text": [
         "朱雀歪了歪头，金色的瞳孔中闪过一丝玩味的光芒。",
         "",
@@ -9557,16 +10204,16 @@ SCENES["ch12_zhuque_talk"] = {
         "但说服它——一头镇守封印三万年的神兽分魂——又谈何容易？",
     ],
     "choices": [
-        {"text": "展示天火——以天火之道说服朱雀", "next": "ch12_zhuque_persuade",
+        {"text": "展示天火——以天火之道说服朱雀", "next": "ch13_zhuque_persuade",
          "effects": {"comprehension": 1}, "hint": "天火同源，或许能共鸣"},
-        {"text": "没什么好说的——战！", "next": "ch12_zhuque_fight",
+        {"text": "没什么好说的——战！", "next": "ch13_zhuque_fight",
          "effects": {"hp": -5, "spiritual_power": 5},
          "hint": "实力才是最好的语言"},
     ]
 }
 
-SCENES["ch12_zhuque_persuade"] = {
-    "chapter": 12,
+SCENES["ch13_zhuque_persuade"] = {
+    "chapter": 14,
     "text": [
         "你深吸一口气——将天火从丹田中引出。",
         "",
@@ -9587,13 +10234,13 @@ SCENES["ch12_zhuque_persuade"] = {
         "最终——它发出了一声长长的叹息。",
     ],
     "choices": [
-        {"text": "等待朱雀的回应", "next": "ch12_zhuque_agreement",
+        {"text": "等待朱雀的回应", "next": "ch13_zhuque_agreement",
          "effects": {"comprehension": 1, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch12_zhuque_agreement"] = {
-    "chapter": 12,
+SCENES["ch13_zhuque_agreement"] = {
+    "chapter": 14,
     "text": [
         "「三万年了……老夫守在这里三万年，看着下界的灵气越来越稀薄，修士越来越弱小。」",
         "",
@@ -9612,13 +10259,13 @@ SCENES["ch12_zhuque_agreement"] = {
         "「来吧——让老夫看看，天火选中的人，究竟有多大的本事！」",
     ],
     "choices": [
-        {"text": "接受朱雀的试炼——全力一战", "next": "ch12_zhuque_fight",
+        {"text": "接受朱雀的试炼——全力一战", "next": "ch13_zhuque_fight",
          "effects": {"set_flag": "zhuque_respect", "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch12_zhuque_fight"] = {
-    "chapter": 12,
+SCENES["ch13_zhuque_fight"] = {
+    "chapter": 14,
     "text": [
         "你与朱雀的大战在地下熔岩空间中爆发！",
         "",
@@ -9635,17 +10282,17 @@ SCENES["ch12_zhuque_fight"] = {
         "你暴喝一声——天火在身前凝聚成一面金色的巨盾！玄天镜悬浮在盾后，为其提供源源不断的灵力支持！",
     ],
     "choices": [
-        {"text": "硬撼朱雀火柱——以天火对天火！", "next": "ch12_zhuque_climax",
+        {"text": "硬撼朱雀火柱——以天火对天火！", "next": "ch13_zhuque_climax",
          "effects": {"hp": -15, "spiritual_power": 10},
          "hint": "针锋相对"},
-        {"text": "避其锋芒——以玄天镜洞察朱雀的破绽", "next": "ch12_zhuque_climax",
+        {"text": "避其锋芒——以玄天镜洞察朱雀的破绽", "next": "ch13_zhuque_climax",
          "effects": {"hp": -10, "comprehension": 1},
          "hint": "以智取胜"},
     ]
 }
 
-SCENES["ch12_zhuque_climax"] = {
-    "chapter": 12,
+SCENES["ch13_zhuque_climax"] = {
+    "chapter": 14,
     "text": [
         "火柱与天火盾牌碰撞的瞬间——整座地下空间都在剧烈震动！熔岩湖掀起了滔天巨浪，穹顶上落下了无数碎石。",
         "",
@@ -9664,13 +10311,13 @@ SCENES["ch12_zhuque_climax"] = {
         "它侧身让开——露出了身后的赤红玉柱。",
     ],
     "choices": [
-        {"text": "上前摧毁朱雀柱", "next": "ch12_destroy_zhuque",
+        {"text": "上前摧毁朱雀柱", "next": "ch13_destroy_zhuque",
          "effects": {"spiritual_power": 10}},
     ]
 }
 
-SCENES["ch12_destroy_zhuque"] = {
-    "chapter": 12,
+SCENES["ch13_destroy_zhuque"] = {
+    "chapter": 14,
     "text": [
         "你走到朱雀柱前。",
         "",
@@ -9695,14 +10342,14 @@ SCENES["ch12_destroy_zhuque"] = {
         "封印——被打破了一个缺口！",
     ],
     "choices": [
-        {"text": "感受封印的变化", "next": "ch12_first_seal_broken",
+        {"text": "感受封印的变化", "next": "ch13_first_seal_broken",
          "effects": {"add_item": "朱雀柱碎片", "spiritual_power": 10,
                      "set_flag": "zhuque_broken"}},
     ]
 }
 
-SCENES["ch12_first_seal_broken"] = {
-    "chapter": 12,
+SCENES["ch13_first_seal_broken"] = {
+    "chapter": 14,
     "text": [
         "朱雀柱断裂的瞬间——你感受到整片天地都震动了一下。",
         "",
@@ -9721,23 +10368,23 @@ SCENES["ch12_first_seal_broken"] = {
         "你点了点头——然后看了一眼地图，向第二个目标进发。",
     ],
     "choices": [
-        {"text": "前往第二个阵眼——青龙柱（东极之海）", "next": "ch12_departure_east",
+        {"text": "前往第二个阵眼——青龙柱（东极之海）", "next": "ch13_departure_east",
          "effects": {"spiritual_power": 5},
          "conditions": {"no_flag": "first_qinglong"},
          "condition_label": "未选择青龙柱为第一目标"},
-        {"text": "前往第二个阵眼——白虎柱（西荒沙漠）", "next": "ch12_departure_west",
+        {"text": "前往第二个阵眼——白虎柱（西荒沙漠）", "next": "ch13_departure_west",
          "effects": {"spiritual_power": 5},
          "conditions": {"no_flag": "first_baihu"},
          "condition_label": "未选择白虎柱为第一目标"},
-        {"text": "前往第二个阵眼——玄武柱（北极冰原）", "next": "ch12_departure_north",
+        {"text": "前往第二个阵眼——玄武柱（北极冰原）", "next": "ch13_departure_north",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
 # ── 青龙柱路线 ──
 
-SCENES["ch12_departure_east"] = {
-    "chapter": 12,
+SCENES["ch13_departure_east"] = {
+    "chapter": 14,
     "text": [
         "你向东飞去——目标东极之海，青龙柱。",
         "",
@@ -9752,16 +10399,16 @@ SCENES["ch12_departure_east"] = {
         "你深吸一口气，玄天镜在身前展开形成一个护罩——然后一头扎入了海中！",
     ],
     "choices": [
-        {"text": "快速下潜——直接前往海底", "next": "ch12_ocean_depth",
+        {"text": "快速下潜——直接前往海底", "next": "ch13_ocean_depth",
          "effects": {"hp": -8, "spiritual_power": 3}},
-        {"text": "沿途留意海洋中的生物和遗迹", "next": "ch12_ocean_explore",
+        {"text": "沿途留意海洋中的生物和遗迹", "next": "ch13_ocean_explore",
          "effects": {"comprehension": 1, "luck": 1},
          "hint": "海底往往藏着秘密"},
     ]
 }
 
-SCENES["ch12_ocean_explore"] = {
-    "chapter": 12,
+SCENES["ch13_ocean_explore"] = {
+    "chapter": 14,
     "text": [
         "你一边下潜一边释放神识探索周围的海域。",
         "",
@@ -9776,14 +10423,14 @@ SCENES["ch12_ocean_explore"] = {
         "玉简中记载了一门上古水系功法——「太阴覆海诀」。这门功法虽然残缺不全，但其中关于「以水化冰」的技巧对你应对青龙很有帮助。",
     ],
     "choices": [
-        {"text": "收好收获，继续下潜", "next": "ch12_ocean_depth",
+        {"text": "收好收获，继续下潜", "next": "ch13_ocean_depth",
          "effects": {"add_item": "太阴覆海诀（残）", "add_item": "三叉戟（残）",
                      "comprehension": 1}},
     ]
 }
 
-SCENES["ch12_ocean_depth"] = {
-    "chapter": 12,
+SCENES["ch13_ocean_depth"] = {
+    "chapter": 14,
     "text": [
         "你穿过了层层海水——从阳光明媚的海面到幽暗无光的海底。",
         "",
@@ -9802,16 +10449,16 @@ SCENES["ch12_ocean_depth"] = {
         "而在玉柱旁边——一条巨大的青龙盘着身体，正用一双琥珀色的眼睛静静地看着你。",
     ],
     "choices": [
-        {"text": "向青龙行礼——说明来意", "next": "ch12_qinglong_talk",
+        {"text": "向青龙行礼——说明来意", "next": "ch13_qinglong_talk",
          "effects": {"comprehension": 1}, "hint": "以礼相待"},
-        {"text": "观察青龙——寻找弱点", "next": "ch12_qinglong_observe",
+        {"text": "观察青龙——寻找弱点", "next": "ch13_qinglong_observe",
          "effects": {"comprehension": 1},
          "hint": "知己知彼"},
     ]
 }
 
-SCENES["ch12_qinglong_observe"] = {
-    "chapter": 12,
+SCENES["ch13_qinglong_observe"] = {
+    "chapter": 14,
     "text": [
         "你没有急着开口，而是在暗中观察青龙。",
         "",
@@ -9826,13 +10473,13 @@ SCENES["ch12_qinglong_observe"] = {
         "「本座知道你为何而来——朱雀柱被毁的消息本座已经感应到了。你是来破坏青龙柱的。」",
     ],
     "choices": [
-        {"text": "'前辈既然知道，那前辈打算如何？'", "next": "ch12_qinglong_talk",
+        {"text": "'前辈既然知道，那前辈打算如何？'", "next": "ch13_qinglong_talk",
          "effects": {"comprehension": 1, "set_flag": "observed_dragon"}},
     ]
 }
 
-SCENES["ch12_qinglong_talk"] = {
-    "chapter": 12,
+SCENES["ch13_qinglong_talk"] = {
+    "chapter": 14,
     "text": [
         "青龙缓缓抬起头，琥珀色的瞳孔中倒映着你的身影。",
         "",
@@ -9849,13 +10496,13 @@ SCENES["ch12_qinglong_talk"] = {
         "「如果你真能打破封印——本座倒也不算失职。」",
     ],
     "choices": [
-        {"text": "'请前辈赐教——晚辈需要怎么做？'", "next": "ch12_qinglong_trial",
+        {"text": "'请前辈赐教——晚辈需要怎么做？'", "next": "ch13_qinglong_trial",
          "effects": {"comprehension": 1}},
     ]
 }
 
-SCENES["ch12_qinglong_trial"] = {
-    "chapter": 12,
+SCENES["ch13_qinglong_trial"] = {
+    "chapter": 14,
     "text": [
         "青龙站起身——庞大的身躯舒展开来，几乎占据了半个宫殿。",
         "",
@@ -9874,13 +10521,13 @@ SCENES["ch12_qinglong_trial"] = {
         "青龙已经做好了战斗姿态——龙尾缓缓摆动，龙爪紧扣地面，龙口中隐隐有雷光闪烁。",
     ],
     "choices": [
-        {"text": "全力迎战青龙", "next": "ch12_qinglong_fight",
+        {"text": "全力迎战青龙", "next": "ch13_qinglong_fight",
          "effects": {"hp": -10, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch12_qinglong_fight"] = {
-    "chapter": 12,
+SCENES["ch13_qinglong_fight"] = {
+    "chapter": 14,
     "text": [
         "你与青龙的战斗在水下宫殿中展开！",
         "",
@@ -9897,17 +10544,17 @@ SCENES["ch12_qinglong_fight"] = {
         "它龙尾一甩——如同一条巨鞭横扫而来！你腾空而起，但龙尾带起的冲击波还是将你震飞了出去。",
     ],
     "choices": [
-        {"text": "以天火凝聚成剑——近身搏斗", "next": "ch12_qinglong_climax",
+        {"text": "以天火凝聚成剑——近身搏斗", "next": "ch13_qinglong_climax",
          "effects": {"hp": -15, "spiritual_power": 8},
          "hint": "近战破防"},
-        {"text": "利用海底地形——引青龙撞向宫殿石柱", "next": "ch12_qinglong_climax",
+        {"text": "利用海底地形——引青龙撞向宫殿石柱", "next": "ch13_qinglong_climax",
          "effects": {"hp": -10, "comprehension": 1},
          "hint": "借力打力"},
     ]
 }
 
-SCENES["ch12_qinglong_climax"] = {
-    "chapter": 12,
+SCENES["ch13_qinglong_climax"] = {
+    "chapter": 14,
     "text": [
         "你改变战术——天火在手中凝聚成一柄金色长剑！与此同时，你催动玄天镜，在青龙周围制造出无数个镜面幻影。",
         "",
@@ -9928,13 +10575,13 @@ SCENES["ch12_qinglong_climax"] = {
         "青龙发出一声震耳欲聋的龙吟——但不是痛苦的咆哮，而是认可的轰鸣。",
     ],
     "choices": [
-        {"text": "趁势摧毁青龙柱", "next": "ch12_destroy_qinglong",
+        {"text": "趁势摧毁青龙柱", "next": "ch13_destroy_qinglong",
          "effects": {"spiritual_power": 10}},
     ]
 }
 
-SCENES["ch12_destroy_qinglong"] = {
-    "chapter": 12,
+SCENES["ch13_destroy_qinglong"] = {
+    "chapter": 14,
     "text": [
         "青龙缓缓退开——腹部的伤口在快速愈合，但它没有继续攻击。",
         "",
@@ -9959,7 +10606,7 @@ SCENES["ch12_destroy_qinglong"] = {
         "整片东极之海都在剧烈翻涌——海面上掀起了百丈高的巨浪！",
     ],
     "choices": [
-        {"text": "感受两处阵眼被破后的变化", "next": "ch12_two_seals_broken",
+        {"text": "感受两处阵眼被破后的变化", "next": "ch13_two_seals_broken",
          "effects": {"add_item": "青龙柱碎片", "spiritual_power": 10,
                      "set_flag": "qinglong_broken"}},
     ]
@@ -9967,8 +10614,8 @@ SCENES["ch12_destroy_qinglong"] = {
 
 # ── 白虎柱路线 ──
 
-SCENES["ch12_departure_west"] = {
-    "chapter": 12,
+SCENES["ch13_departure_west"] = {
+    "chapter": 14,
     "text": [
         "你御剑向西——目标西荒大漠，白虎柱。",
         "",
@@ -9983,16 +10630,16 @@ SCENES["ch12_departure_west"] = {
         "终于——在第三天的傍晚，你的神识触碰到了一个巨大的地下空间。地下空间中，一股凌厉的杀伐之气冲天而起——那就是白虎的气息！",
     ],
     "choices": [
-        {"text": "轰开流沙——强行进入地下殿堂", "next": "ch12_desert_temple",
+        {"text": "轰开流沙——强行进入地下殿堂", "next": "ch13_desert_temple",
          "effects": {"hp": -8, "spiritual_power": 3}},
-        {"text": "寻找隐秘入口——避免惊动守护者", "next": "ch12_desert_secret",
+        {"text": "寻找隐秘入口——避免惊动守护者", "next": "ch13_desert_secret",
          "effects": {"comprehension": 1},
          "hint": "暗度陈仓"},
     ]
 }
 
-SCENES["ch12_desert_secret"] = {
-    "chapter": 12,
+SCENES["ch13_desert_secret"] = {
+    "chapter": 14,
     "text": [
         "你没有选择暴力破门——而是在附近仔细搜索。",
         "",
@@ -10007,13 +10654,13 @@ SCENES["ch12_desert_secret"] = {
         "玉柱旁边——一头通体雪白的巨虎正卧在地上假寐。它似乎没有察觉你的到来。",
     ],
     "choices": [
-        {"text": "悄然靠近白虎柱——先观察再行动", "next": "ch12_baihu_encounter",
+        {"text": "悄然靠近白虎柱——先观察再行动", "next": "ch13_baihu_encounter",
          "effects": {"comprehension": 1, "set_flag": "stealth_entry"}},
     ]
 }
 
-SCENES["ch12_desert_temple"] = {
-    "chapter": 12,
+SCENES["ch13_desert_temple"] = {
+    "chapter": 14,
     "text": [
         "你一掌拍在流沙上——灵力震开了厚厚的沙层，露出了下方的一座石质穹顶。",
         "",
@@ -10032,16 +10679,16 @@ SCENES["ch12_desert_temple"] = {
         "「你是自己滚——还是让本座把你撕碎了再扔出去?」",
     ],
     "choices": [
-        {"text": "'晚辈为破封而来——请前辈赐教！'", "next": "ch12_baihu_fight",
+        {"text": "'晚辈为破封而来——请前辈赐教！'", "next": "ch13_baihu_fight",
          "effects": {"hp": -5, "spiritual_power": 5}},
-        {"text": "先展示天火——以理服人", "next": "ch12_baihu_persuade",
+        {"text": "先展示天火——以理服人", "next": "ch13_baihu_persuade",
          "effects": {"comprehension": 1},
          "hint": "天火或许能引起它的兴趣"},
     ]
 }
 
-SCENES["ch12_baihu_encounter"] = {
-    "chapter": 12,
+SCENES["ch13_baihu_encounter"] = {
+    "chapter": 14,
     "text": [
         "你轻手轻脚地靠近白虎柱。但就在你距离玉柱只有十丈时——",
         "",
@@ -10062,13 +10709,13 @@ SCENES["ch12_baihu_encounter"] = {
         "「想破白虎柱——踩着本座的尸体过去。」",
     ],
     "choices": [
-        {"text": "废话少说——战！", "next": "ch12_baihu_fight",
+        {"text": "废话少说——战！", "next": "ch13_baihu_fight",
          "effects": {"hp": -8, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch12_baihu_persuade"] = {
-    "chapter": 12,
+SCENES["ch13_baihu_persuade"] = {
+    "chapter": 14,
     "text": [
         "你抬手亮出天火——金色的火焰在掌心跳跃。",
         "",
@@ -10083,13 +10730,13 @@ SCENES["ch12_baihu_persuade"] = {
         "「来吧——让本座看看，天火选中的人，究竟有多少斤两！」",
     ],
     "choices": [
-        {"text": "全力迎战白虎", "next": "ch12_baihu_fight",
+        {"text": "全力迎战白虎", "next": "ch13_baihu_fight",
          "effects": {"hp": -8, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch12_baihu_fight"] = {
-    "chapter": 12,
+SCENES["ch13_baihu_fight"] = {
+    "chapter": 14,
     "text": [
         "你与白虎的战斗是截然不同的体验！",
         "",
@@ -10108,17 +10755,17 @@ SCENES["ch12_baihu_fight"] = {
         "白虎的声音从不同方向传来——它在以极快的速度绕着你移动，制造出无数个残影。",
     ],
     "choices": [
-        {"text": "以玄天镜的广域感知锁定白虎的位置", "next": "ch12_baihu_climax",
+        {"text": "以玄天镜的广域感知锁定白虎的位置", "next": "ch13_baihu_climax",
          "effects": {"hp": -12, "comprehension": 1},
          "hint": "快对快——以镜为眼"},
-        {"text": "以天火在身周形成防御火环——逼退白虎", "next": "ch12_baihu_climax",
+        {"text": "以天火在身周形成防御火环——逼退白虎", "next": "ch13_baihu_climax",
          "effects": {"hp": -15, "spiritual_power": 8},
          "hint": "以静制动"},
     ]
 }
 
-SCENES["ch12_baihu_climax"] = {
-    "chapter": 12,
+SCENES["ch13_baihu_climax"] = {
+    "chapter": 14,
     "text": [
         "你闭上眼睛——玄天镜在身前旋转，无数道镜光向四面八方射出！每一道镜光都在反射周围的信息——你虽然没有看到，但玄天镜已经将方圆百丈内的一切「映射」在了你的脑海中。",
         "",
@@ -10133,13 +10780,13 @@ SCENES["ch12_baihu_climax"] = {
         "「痛快——！」白虎的眼中第一次出现了兴奋之色，「很久没有遇到能让本座认真起来的对手了！」",
     ],
     "choices": [
-        {"text": "一鼓作气——全力压制白虎", "next": "ch12_baihu_victory",
+        {"text": "一鼓作气——全力压制白虎", "next": "ch13_baihu_victory",
          "effects": {"hp": -10, "spiritual_power": 8}},
     ]
 }
 
-SCENES["ch12_baihu_victory"] = {
-    "chapter": 12,
+SCENES["ch13_baihu_victory"] = {
+    "chapter": 14,
     "text": [
         "你与白虎的激战持续了整整一个时辰。",
         "",
@@ -10156,13 +10803,13 @@ SCENES["ch12_baihu_victory"] = {
         "「拿去吧——白虎柱是你的了。」",
     ],
     "choices": [
-        {"text": "摧毁白虎柱", "next": "ch12_destroy_baihu",
+        {"text": "摧毁白虎柱", "next": "ch13_destroy_baihu",
          "effects": {"spiritual_power": 10}},
     ]
 }
 
-SCENES["ch12_destroy_baihu"] = {
-    "chapter": 12,
+SCENES["ch13_destroy_baihu"] = {
+    "chapter": 14,
     "text": [
         "你用天火包裹住白虎柱。",
         "",
@@ -10181,7 +10828,7 @@ SCENES["ch12_destroy_baihu"] = {
         "整座地下殿堂开始剧烈震动——失去了白虎柱的支撑，这座埋藏在黄沙下的古老建筑即将坍塌。",
     ],
     "choices": [
-        {"text": "离开地下殿堂", "next": "ch12_two_seals_broken",
+        {"text": "离开地下殿堂", "next": "ch13_two_seals_broken",
          "effects": {"add_item": "白虎柱碎片", "spiritual_power": 10,
                      "set_flag": "baihu_broken"}},
     ]
@@ -10189,8 +10836,8 @@ SCENES["ch12_destroy_baihu"] = {
 
 # ── 玄武柱路线（简短分支）──
 
-SCENES["ch12_departure_north"] = {
-    "chapter": 12,
+SCENES["ch13_departure_north"] = {
+    "chapter": 14,
     "text": [
         "你转向北方——目标北极冰原，玄武柱。",
         "",
@@ -10207,7 +10854,7 @@ SCENES["ch12_departure_north"] = {
         "但最终——你凭借天火对玄冰的克制，成功摧毁了玄武柱。",
     ],
     "choices": [
-        {"text": "返回中土——查看封印崩溃的情况", "next": "ch12_two_seals_broken",
+        {"text": "返回中土——查看封印崩溃的情况", "next": "ch13_two_seals_broken",
          "effects": {"add_item": "玄武柱碎片", "spiritual_power": 10,
                      "set_flag": "xuanwu_broken"}},
     ]
@@ -10215,8 +10862,8 @@ SCENES["ch12_departure_north"] = {
 
 # ── 封印崩溃 ──
 
-SCENES["ch12_two_seals_broken"] = {
-    "chapter": 12,
+SCENES["ch13_two_seals_broken"] = {
+    "chapter": 14,
     "text": [
         "两处阵眼——已毁！",
         "",
@@ -10237,13 +10884,13 @@ SCENES["ch12_two_seals_broken"] = {
         "「干得不错——省了本座不少功夫。」",
     ],
     "choices": [
-        {"text": "转身——警惕地看向来人", "next": "ch12_sacred_appears",
+        {"text": "转身——警惕地看向来人", "next": "ch13_sacred_appears",
          "effects": {"spiritual_power": 3}},
     ]
 }
 
-SCENES["ch12_sacred_appears"] = {
-    "chapter": 12,
+SCENES["ch13_sacred_appears"] = {
+    "chapter": 14,
     "text": [
         "你猛地转身——",
         "",
@@ -10264,13 +10911,13 @@ SCENES["ch12_sacred_appears"] = {
         "厉苍天伸出手——你的破界符不受控制地从怀中飞出，落入了他的手中。",
     ],
     "choices": [
-        {"text": "'你一直在利用我？'", "next": "ch12_sacred_confront",
+        {"text": "'你一直在利用我？'", "next": "ch13_sacred_confront",
          "effects": {"spiritual_power": 3}},
     ]
 }
 
-SCENES["ch12_sacred_confront"] = {
-    "chapter": 12,
+SCENES["ch13_sacred_confront"] = {
+    "chapter": 14,
     "text": [
         "厉苍天把玩着手中的破界符，嘴角露出一丝得意的笑容：",
         "",
@@ -10287,16 +10934,16 @@ SCENES["ch12_sacred_confront"] = {
         "「所以——你现在想做什么？」",
     ],
     "choices": [
-        {"text": "'你想独吞化神通道？'", "next": "ch12_fight_leader",
+        {"text": "'你想独吞化神通道？'", "next": "ch13_fight_leader",
          "effects": {"hp": -5, "spiritual_power": 5}},
-        {"text": "'你以为——你真的掌控了一切？'", "next": "ch12_fight_leader",
+        {"text": "'你以为——你真的掌控了一切？'", "next": "ch13_fight_leader",
          "effects": {"comprehension": 1},
          "hint": "我命由我不由他"},
     ]
 }
 
-SCENES["ch12_fight_leader"] = {
-    "chapter": 12,
+SCENES["ch13_fight_leader"] = {
+    "chapter": 14,
     "text": [
         "厉苍天将破界符收入怀中：",
         "",
@@ -10315,13 +10962,13 @@ SCENES["ch12_fight_leader"] = {
         "你一拳轰向厉苍天！天火在拳头上凝聚成实质——拳罡撕裂空间，发出尖锐的破空声！",
     ],
     "choices": [
-        {"text": "全力爆发——夺回破界符！", "next": "ch12_sacred_battle",
+        {"text": "全力爆发——夺回破界符！", "next": "ch13_sacred_battle",
          "effects": {"hp": -15, "spiritual_power": 10}},
     ]
 }
 
-SCENES["ch12_sacred_battle"] = {
-    "chapter": 12,
+SCENES["ch13_sacred_battle"] = {
+    "chapter": 14,
     "text": [
         "你与厉苍天的战斗惊天动地！",
         "",
@@ -10342,17 +10989,17 @@ SCENES["ch12_sacred_battle"] = {
         "你依靠的——一直都是自己！",
     ],
     "choices": [
-        {"text": "燃烧元婴——以全部力量施展玄天破虚！", "next": "ch12_sacred_final",
+        {"text": "燃烧元婴——以全部力量施展玄天破虚！", "next": "ch13_sacred_final",
          "effects": {"hp": -25, "spiritual_power": 20},
          "hint": "拼死一搏"},
-        {"text": "假意败退——引他露出破绽", "next": "ch12_sacred_final",
+        {"text": "假意败退——引他露出破绽", "next": "ch13_sacred_final",
          "effects": {"hp": -18, "comprehension": 1},
          "hint": "兵不厌诈"},
     ]
 }
 
-SCENES["ch12_sacred_final"] = {
-    "chapter": 12,
+SCENES["ch13_sacred_final"] = {
+    "chapter": 14,
     "text": [
         "你假装不敌——踉跄后退了几步，手中的天火也黯淡了下来。",
         "",
@@ -10369,13 +11016,13 @@ SCENES["ch12_sacred_final"] = {
         "「啊——！！」厉苍天发出一声惨叫，捂着胸口倒飞出去。他怀中的破界符跌落在地——你眼疾手快，一把抢了回来！",
     ],
     "choices": [
-        {"text": "趁他重伤——彻底了结他", "next": "ch12_leader_defeated",
+        {"text": "趁他重伤——彻底了结他", "next": "ch13_leader_defeated",
          "effects": {"hp": -8, "spiritual_power": 8}},
     ]
 }
 
-SCENES["ch12_leader_defeated"] = {
-    "chapter": 12,
+SCENES["ch13_leader_defeated"] = {
+    "chapter": 14,
     "text": [
         "你手持天火长剑，一步步走向厉苍天。",
         "",
@@ -10394,13 +11041,13 @@ SCENES["ch12_leader_defeated"] = {
         "圣教教主——陨落。",
     ],
     "choices": [
-        {"text": "收好破界符——仰望天空", "next": "ch12_path_opens",
+        {"text": "收好破界符——仰望天空", "next": "ch13_path_opens",
          "effects": {"spiritual_power": 10, "spirit_stones": 100}},
     ]
 }
 
-SCENES["ch12_path_opens"] = {
-    "chapter": 12,
+SCENES["ch13_path_opens"] = {
+    "chapter": 14,
     "text": [
         "你站在荒原上，仰望天空。",
         "",
@@ -10423,13 +11070,13 @@ SCENES["ch12_path_opens"] = {
         "百日之后，通道就会关闭。下一次开启——又要等三千年。",
     ],
     "choices": [
-        {"text": "回七玄门——做最后的准备", "next": "ch12_return_final",
+        {"text": "回七玄门——做最后的准备", "next": "ch13_return_final",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch12_return_final"] = {
-    "chapter": 12,
+SCENES["ch13_return_final"] = {
+    "chapter": 14,
     "text": [
         "你回到了七玄门。",
         "",
@@ -10452,13 +11099,13 @@ SCENES["ch12_return_final"] = {
         "「你说——修仙之路，不进则退。」",
     ],
     "choices": [
-        {"text": "安排宗门后事——准备飞升", "next": "ch12_chapter_end",
+        {"text": "安排宗门后事——准备飞升", "next": "ch13_chapter_end",
          "effects": {"reputation": {"七玄门": 50}, "spirit_stones": 100}},
     ]
 }
 
-SCENES["ch12_chapter_end"] = {
-    "chapter": 12,
+SCENES["ch13_chapter_end"] = {
+    "chapter": 13,
     "is_end": True,
     "text": [
         "===== 第十二章 · 完 =====\n",
@@ -10481,19 +11128,19 @@ SCENES["ch12_chapter_end"] = {
         "",
         "你深吸一口气——然后踏上了那条路。",
         "",
-        "（第十三章即将开启——最终章：飞升之路·化神）",
+        "（第十五章即将开启——最终章：飞升之路·化神）",
     ],
     "choices": []
 }
 
 # ═══════════════════════════════════════════
-# 第十三章：飞升之路·化神（最终章）
+# 第十五章：飞升之路·化神（最终章）
 # ═══════════════════════════════════════════
 
-SCENES["ch13_first_step"] = {
-    "chapter": 13,
+SCENES["ch14_first_step"] = {
+    "chapter": 14,
     "text": [
-        "===== 第十三章：飞升之路·化神 =====\n",
+        "===== 第十五章：飞升之路·化神 =====\n",
         "",
         "你的脚踏上金色道路的那一刻——整个世界安静了。",
         "",
@@ -10510,13 +11157,13 @@ SCENES["ch13_first_step"] = {
         "前方——是无尽的星空。",
     ],
     "choices": [
-        {"text": "坚定前行——踏上化神之路", "next": "ch13_path_journey",
+        {"text": "坚定前行——踏上化神之路", "next": "ch14_path_journey",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch13_path_journey"] = {
-    "chapter": 13,
+SCENES["ch14_path_journey"] = {
+    "chapter": 14,
     "text": [
         "你在金色道路上行走。",
         "",
@@ -10535,13 +11182,13 @@ SCENES["ch13_path_journey"] = {
         "「天路之门」——第一关。",
     ],
     "choices": [
-        {"text": "推开天门——接受考验", "next": "ch13_gate_trial",
+        {"text": "推开天门——接受考验", "next": "ch14_gate_trial",
          "effects": {"spiritual_power": 3}},
     ]
 }
 
-SCENES["ch13_gate_trial"] = {
-    "chapter": 13,
+SCENES["ch14_gate_trial"] = {
+    "chapter": 14,
     "text": [
         "你推开石门的瞬间——周围的景象猛地一变！",
         "",
@@ -10560,17 +11207,17 @@ SCENES["ch13_gate_trial"] = {
         "「天路第一关——本心之试。凡登天路者，需直面自己的本心。你——为何修仙？」",
     ],
     "choices": [
-        {"text": "'为了变强——不被命运摆布！'", "next": "ch13_trial_ambition",
+        {"text": "'为了变强——不被命运摆布！'", "next": "ch14_trial_ambition",
          "effects": {"comprehension": 1}, "hint": "雄心壮志"},
-        {"text": "'为了守护——守护我想守护的人和事！'", "next": "ch13_trial_protect",
+        {"text": "'为了守护——守护我想守护的人和事！'", "next": "ch14_trial_protect",
          "effects": {"comprehension": 1}, "hint": "大爱无疆"},
-        {"text": "'为了……看看这天之上的风景。'", "next": "ch13_trial_curiosity",
+        {"text": "'为了……看看这天之上的风景。'", "next": "ch14_trial_curiosity",
          "effects": {"comprehension": 1}, "hint": "求道之心"},
     ]
 }
 
-SCENES["ch13_trial_ambition"] = {
-    "chapter": 13,
+SCENES["ch14_trial_ambition"] = {
+    "chapter": 14,
     "text": [
         "「为了变强——不被命运摆布！」",
         "",
@@ -10589,13 +11236,13 @@ SCENES["ch13_trial_ambition"] = {
         "你通过了第一关。",
     ],
     "choices": [
-        {"text": "继续前行", "next": "ch13_path_storm",
+        {"text": "继续前行", "next": "ch14_path_storm",
          "effects": {"comprehension": 1, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch13_trial_protect"] = {
-    "chapter": 13,
+SCENES["ch14_trial_protect"] = {
+    "chapter": 14,
     "text": [
         "「为了守护——守护我想守护的人和事！」",
         "",
@@ -10614,13 +11261,13 @@ SCENES["ch13_trial_protect"] = {
         "你回到了金色道路上，石门敞开。",
     ],
     "choices": [
-        {"text": "继续前行", "next": "ch13_path_storm",
+        {"text": "继续前行", "next": "ch14_path_storm",
          "effects": {"comprehension": 1, "spiritual_power": 6}},
     ]
 }
 
-SCENES["ch13_trial_curiosity"] = {
-    "chapter": 13,
+SCENES["ch14_trial_curiosity"] = {
+    "chapter": 14,
     "text": [
         "「为了……看看这天之上的风景。」",
         "",
@@ -10639,13 +11286,13 @@ SCENES["ch13_trial_curiosity"] = {
         "幻境消散。石门大开。你感到自己对天地法则的理解又深了一层。",
     ],
     "choices": [
-        {"text": "继续前行", "next": "ch13_path_storm",
+        {"text": "继续前行", "next": "ch14_path_storm",
          "effects": {"comprehension": 2, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch13_path_storm"] = {
-    "chapter": 13,
+SCENES["ch14_path_storm"] = {
+    "chapter": 14,
     "text": [
         "通过了第一关——前方的道路开始变得更加艰难。",
         "",
@@ -10656,16 +11303,16 @@ SCENES["ch13_path_storm"] = {
         "前方的道路被一片肆虐的时空风暴笼罩——你需要穿越这片风暴才能继续前进。",
     ],
     "choices": [
-        {"text": "以玄天镜护体——强行穿越风暴", "next": "ch13_storm_force",
+        {"text": "以玄天镜护体——强行穿越风暴", "next": "ch14_storm_force",
          "effects": {"hp": -12, "spiritual_power": 5}},
-        {"text": "观察风暴的规律——寻找间隙穿行", "next": "ch13_storm_smart",
+        {"text": "观察风暴的规律——寻找间隙穿行", "next": "ch14_storm_smart",
          "effects": {"comprehension": 1, "hp": -6},
          "hint": "智慧胜过蛮力"},
     ]
 }
 
-SCENES["ch13_storm_smart"] = {
-    "chapter": 13,
+SCENES["ch14_storm_smart"] = {
+    "chapter": 14,
     "text": [
         "你停下脚步，仔细观察时空风暴的规律。",
         "",
@@ -10682,13 +11329,13 @@ SCENES["ch13_storm_smart"] = {
         "三息之后——你穿过了风暴区域。毫发无伤。",
     ],
     "choices": [
-        {"text": "继续前行", "next": "ch13_will_remnants",
+        {"text": "继续前行", "next": "ch14_will_remnants",
          "effects": {"comprehension": 1, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch13_storm_force"] = {
-    "chapter": 13,
+SCENES["ch14_storm_force"] = {
+    "chapter": 14,
     "text": [
         "你催动玄天镜——镜面扩大到方圆一丈，将你整个人笼罩其中。天火在镜面外层形成第二道防御。",
         "",
@@ -10705,13 +11352,13 @@ SCENES["ch13_storm_force"] = {
         "玄天镜上布满了细密的裂纹，你的嘴角溢出一丝鲜血——但你活下来了。",
     ],
     "choices": [
-        {"text": "修复玄天镜——继续前行", "next": "ch13_will_remnants",
+        {"text": "修复玄天镜——继续前行", "next": "ch14_will_remnants",
          "effects": {"hp": -8, "spiritual_power": 3}},
     ]
 }
 
-SCENES["ch13_will_remnants"] = {
-    "chapter": 13,
+SCENES["ch14_will_remnants"] = {
+    "chapter": 14,
     "text": [
         "你继续前行。金色道路两旁开始出现一些残缺的人影。",
         "",
@@ -10730,13 +11377,13 @@ SCENES["ch13_will_remnants"] = {
         "你心中一震——天玄宗！那不就是万古秘境中留下玄天镜的那个宗门吗？",
     ],
     "choices": [
-        {"text": "向厉云啸行礼——'晚辈见过前辈'", "next": "ch13_remnant_talk",
+        {"text": "向厉云啸行礼——'晚辈见过前辈'", "next": "ch14_remnant_talk",
          "effects": {"comprehension": 1}},
     ]
 }
 
-SCENES["ch13_remnant_talk"] = {
-    "chapter": 13,
+SCENES["ch14_remnant_talk"] = {
+    "chapter": 14,
     "text": [
         "厉云啸的虚影微微颔首：",
         "",
@@ -10759,13 +11406,13 @@ SCENES["ch13_remnant_talk"] = {
         "「鸿天道人拒绝了——于是大战爆发。」",
     ],
     "choices": [
-        {"text": "'那场大战——结果如何？'", "next": "ch13_war_story",
+        {"text": "'那场大战——结果如何？'", "next": "ch14_war_story",
          "effects": {"comprehension": 1, "set_flag": "heard_truth"}},
     ]
 }
 
-SCENES["ch13_war_story"] = {
-    "chapter": 13,
+SCENES["ch14_war_story"] = {
+    "chapter": 14,
     "text": [
         "「结果是——我们败了。」厉云啸的声音中带着深深的悲凉：",
         "",
@@ -10786,13 +11433,13 @@ SCENES["ch13_war_story"] = {
         "「这是老夫最后的力量——希望能助你一臂之力。」",
     ],
     "choices": [
-        {"text": "谢过前辈——继续前行", "next": "ch13_remnant_gift",
+        {"text": "谢过前辈——继续前行", "next": "ch14_remnant_gift",
          "effects": {"comprehension": 1, "spiritual_power": 10}},
     ]
 }
 
-SCENES["ch13_remnant_gift"] = {
-    "chapter": 13,
+SCENES["ch14_remnant_gift"] = {
+    "chapter": 14,
     "text": [
         "厉云啸的力量融入你的体内——你对天地法则的理解瞬间提升了一大截。元婴后期的瓶颈在松动——化神的门槛近在咫尺。",
         "",
@@ -10815,13 +11462,13 @@ SCENES["ch13_remnant_gift"] = {
         "也是——化神的起点。",
     ],
     "choices": [
-        {"text": "走向祭坛——迎接最终试炼", "next": "ch13_final_altar",
+        {"text": "走向祭坛——迎接最终试炼", "next": "ch14_final_altar",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch13_final_altar"] = {
-    "chapter": 13,
+SCENES["ch14_final_altar"] = {
+    "chapter": 14,
     "text": [
         "你踏上平台的那一刻——天地骤变！",
         "",
@@ -10842,13 +11489,13 @@ SCENES["ch13_final_altar"] = {
         "九九八十一道天雷——渡过去，化神。渡不过去——烟消云散。",
     ],
     "choices": [
-        {"text": "引动天劫——以天火对抗天雷！", "next": "ch13_tribulation_first",
+        {"text": "引动天劫——以天火对抗天雷！", "next": "ch14_tribulation_first",
          "effects": {"hp": -10, "spiritual_power": 10}},
     ]
 }
 
-SCENES["ch13_tribulation_first"] = {
-    "chapter": 13,
+SCENES["ch14_tribulation_first"] = {
+    "chapter": 14,
     "text": [
         "轰隆隆——！！！",
         "",
@@ -10869,13 +11516,13 @@ SCENES["ch13_tribulation_first"] = {
         "但你的灵力消耗了接近一半。而你面前——还有七十八道天雷。",
     ],
     "choices": [
-        {"text": "调整呼吸——迎接下一波天雷", "next": "ch13_tribulation_mid",
+        {"text": "调整呼吸——迎接下一波天雷", "next": "ch14_tribulation_mid",
          "effects": {"hp": -8, "spiritual_power": 5}},
     ]
 }
 
-SCENES["ch13_tribulation_mid"] = {
-    "chapter": 13,
+SCENES["ch14_tribulation_mid"] = {
+    "chapter": 14,
     "text": [
         "天雷一波接一波地落下——你从一开始的从容应对，渐渐变得吃力。",
         "",
@@ -10896,17 +11543,17 @@ SCENES["ch13_tribulation_mid"] = {
         "「但如果你现在放弃——本座可以让你做一个此界的守护者。虽不是化神，但也能长寿数千年。」",
     ],
     "choices": [
-        {"text": "绝不放弃——燃我元婴，逆天而上！", "next": "ch13_tribulation_final",
+        {"text": "绝不放弃——燃我元婴，逆天而上！", "next": "ch14_tribulation_final",
          "effects": {"hp": -20, "spiritual_power": 15},
          "hint": "宁为玉碎"},
-        {"text": "'你是谁？——为什么要阻止我？'", "next": "ch13_voice_question",
+        {"text": "'你是谁？——为什么要阻止我？'", "next": "ch14_voice_question",
          "effects": {"comprehension": 1},
          "hint": "先问清楚再战"},
     ]
 }
 
-SCENES["ch13_voice_question"] = {
-    "chapter": 13,
+SCENES["ch14_voice_question"] = {
+    "chapter": 14,
     "text": [
         "「本座——天宫守门人，奉天宫之命镇守此界通道三万载。」",
         "",
@@ -10927,13 +11574,13 @@ SCENES["ch13_voice_question"] = {
         "「冥顽不灵——那你就去死吧！」",
     ],
     "choices": [
-        {"text": "燃我元婴——化神天雷，来！", "next": "ch13_tribulation_final",
+        {"text": "燃我元婴——化神天雷，来！", "next": "ch14_tribulation_final",
          "effects": {"hp": -15, "spiritual_power": 12}},
     ]
 }
 
-SCENES["ch13_tribulation_final"] = {
-    "chapter": 13,
+SCENES["ch14_tribulation_final"] = {
+    "chapter": 14,
     "text": [
         "你燃烧了元婴中最后的力量——天火从你的丹田中冲天而起！",
         "",
@@ -10952,13 +11599,13 @@ SCENES["ch13_tribulation_final"] = {
         "轰隆隆隆隆——！！！！",
     ],
     "choices": [
-        {"text": "守住心神——破而后立！", "next": "ch13_breakthrough",
+        {"text": "守住心神——破而后立！", "next": "ch14_breakthrough",
          "effects": {"hp": -30, "spiritual_power": 25}},
     ]
 }
 
-SCENES["ch13_breakthrough"] = {
-    "chapter": 13,
+SCENES["ch14_breakthrough"] = {
+    "chapter": 14,
     "text": [
         "不知过了多久——",
         "",
@@ -10983,14 +11630,14 @@ SCENES["ch13_breakthrough"] = {
         "化神期——突破了！",
     ],
     "choices": [
-        {"text": "感受化神的力量", "next": "ch13_divine_power",
+        {"text": "感受化神的力量", "next": "ch14_divine_power",
          "effects": {"cultivation": "化神初期", "max_hp": 200, "hp": 100, "spiritual_power": 100},
          "hint": "化神已成，大道在手"},
     ]
 }
 
-SCENES["ch13_divine_power"] = {
-    "chapter": 13,
+SCENES["ch14_divine_power"] = {
+    "chapter": 14,
     "text": [
         "化神期——",
         "",
@@ -11010,13 +11657,13 @@ SCENES["ch13_divine_power"] = {
         "它没有出手阻止你渡劫。是因为不能——还是因为不敢？",
     ],
     "choices": [
-        {"text": "直面守门人——'现在可以谈谈了吗？'", "next": "ch13_guardian_final",
+        {"text": "直面守门人——'现在可以谈谈了吗？'", "next": "ch14_guardian_final",
          "effects": {"spiritual_power": 5}},
     ]
 }
 
-SCENES["ch13_guardian_final"] = {
-    "chapter": 13,
+SCENES["ch14_guardian_final"] = {
+    "chapter": 14,
     "text": [
         "虚空中——一道身影缓缓浮现。",
         "",
@@ -11029,13 +11676,13 @@ SCENES["ch13_guardian_final"] = {
         "「按照天宫的规矩，你现在有两个选择——」",
     ],
     "choices": [
-        {"text": "倾听守门人的条件", "next": "ch13_final_choice",
+        {"text": "倾听守门人的条件", "next": "ch14_final_choice",
          "effects": {"comprehension": 1}},
     ]
 }
 
-SCENES["ch13_final_choice"] = {
-    "chapter": 13,
+SCENES["ch14_final_choice"] = {
+    "chapter": 14,
     "text": [
         "守门人看着你，缓缓道：",
         "",
@@ -11054,19 +11701,19 @@ SCENES["ch13_final_choice"] = {
         "「选择吧——是走向更广阔的天地，还是守护你的故乡。」",
     ],
     "choices": [
-        {"text": "飞升——前往天宫", "next": "ch13_ending_ascend",
+        {"text": "飞升——前往天宫", "next": "ch14_ending_ascend",
          "effects": {"comprehension": 1}, "hint": "追求更高的境界"},
-        {"text": "留下——做此界的守护者", "next": "ch13_ending_guardian",
+        {"text": "留下——做此界的守护者", "next": "ch14_ending_guardian",
          "effects": {"comprehension": 1}, "hint": "守护故土"},
-        {"text": "'我两样都不选——我有我的路。'", "next": "ch13_ending_own_path",
+        {"text": "'我两样都不选——我有我的路。'", "next": "ch14_ending_own_path",
          "effects": {"comprehension": 2}, "hint": "我命由我不由天"},
     ]
 }
 
 # ── 结局1：飞升 ──
 
-SCENES["ch13_ending_ascend"] = {
-    "chapter": 13,
+SCENES["ch14_ending_ascend"] = {
+    "chapter": 14,
     "text": [
         "你沉默了片刻，然后说：",
         "",
@@ -11091,15 +11738,15 @@ SCENES["ch13_ending_ascend"] = {
         "而你的故事——才刚刚开始。",
     ],
     "choices": [
-        {"text": "—— 完 ——", "next": "ch13_ending",
+        {"text": "—— 完 ——", "next": "ch14_ending",
          "effects": {"set_flag": "ending_ascend"}},
     ]
 }
 
 # ── 结局2：守护者 ──
 
-SCENES["ch13_ending_guardian"] = {
-    "chapter": 13,
+SCENES["ch14_ending_guardian"] = {
+    "chapter": 14,
     "text": [
         "你看着下方的世界，缓缓道：",
         "",
@@ -11122,15 +11769,15 @@ SCENES["ch13_ending_guardian"] = {
         "从此——你成了此界与上界之间的守护者。",
     ],
     "choices": [
-        {"text": "—— 完 ——", "next": "ch13_ending",
+        {"text": "—— 完 ——", "next": "ch14_ending",
          "effects": {"set_flag": "ending_guardian"}},
     ]
 }
 
 # ── 结局3：我命由我不由天 ──
 
-SCENES["ch13_ending_own_path"] = {
-    "chapter": 13,
+SCENES["ch14_ending_own_path"] = {
+    "chapter": 14,
     "text": [
         "你笑了——那是一切尽在掌握的自信笑容。",
         "",
@@ -11155,13 +11802,13 @@ SCENES["ch13_ending_own_path"] = {
         "「如果我将整片天地封印——彻底粉碎呢？」",
     ],
     "choices": [
-        {"text": "打破虚空——彻底摧毁封印！", "next": "ch13_break_all",
+        {"text": "打破虚空——彻底摧毁封印！", "next": "ch14_break_all",
          "effects": {"hp": -20, "spiritual_power": 20}},
     ]
 }
 
-SCENES["ch13_break_all"] = {
-    "chapter": 13,
+SCENES["ch14_break_all"] = {
+    "chapter": 14,
     "text": [
         "你全力一拳轰出！",
         "",
@@ -11188,15 +11835,15 @@ SCENES["ch13_break_all"] = {
         "「我做的——是让此界恢复它本该有的样子。」",
     ],
     "choices": [
-        {"text": "—— 完 ——", "next": "ch13_ending",
+        {"text": "—— 完 ——", "next": "ch14_ending",
          "effects": {"set_flag": "ending_break_free"}},
     ]
 }
 
 # ── 终章 ──
 
-SCENES["ch13_ending"] = {
-    "chapter": 13,
+SCENES["ch14_ending"] = {
+    "chapter": 14,
     "is_end": True,
     "text": [
         "===== 第十三章 · 完 =====\n",
@@ -11234,13 +11881,13 @@ SCENES["ch13_ending"] = {
         "「我命由我不由天。」",
     ],
     "choices": [
-        {"text": "重新开始游戏", "next": "ch13_restart",
+        {"text": "重新开始游戏", "next": "ch14_restart",
          "effects": {}},
     ]
 }
 
-SCENES["ch13_restart"] = {
-    "chapter": 13,
+SCENES["ch14_restart"] = {
+    "chapter": 14,
     "text": [
         "故事讲完了——但修仙之路，永远不会结束。",
         "",
@@ -11257,7 +11904,7 @@ SCENES["ch13_restart"] = {
         "「我命由我不由天。」",
     ],
     "choices": [
-        {"text": "🔄 重新开始", "next": "ch13_restart",
+        {"text": "🔄 重新开始", "next": "ch14_restart",
          "effects": {},
          "hint": "一个新的开始……"},
     ]
