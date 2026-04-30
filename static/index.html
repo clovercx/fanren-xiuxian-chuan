@@ -684,17 +684,16 @@ setInterval(showRandomQuote, 10000);
 // ── 初始化和启动 ──
 async function init() {
   try {
-    // 检查自动存档
-    const res = await fetch(API + '/api/auto-save');
-    const data = await res.json();
-    if (data.exists) {
+    // 检查本地自动存档（每个浏览器独立，天然用户隔离）
+    const autoSave = localStorage.getItem('frwd_auto_save');
+    if (autoSave) {
       $('landingContinue').disabled = false;
       $('landingContinue').textContent = '📂 继续冒险';
     } else {
       $('landingContinue').disabled = true;
       $('landingContinue').textContent = '📂 无存档';
     }
-    // 加载游玩次数
+    // 加载游玩次数（仅统计信息，留在服务端）
     fetch(API + '/api/stats').then(function(r){return r.json();}).then(function(d){
       var el = document.getElementById('landingPlayCount');
       if (el) el.textContent = '✦ 已有 ' + d.play_count + ' 位道友踏上修仙之路 ✦';
@@ -708,17 +707,28 @@ async function init() {
 }
 
 
-// ── 从自动存档继续 ──
+// ── 从自动存档继续（localStorage 版）──
 async function startFromSave() {
   try {
-    const res = await fetch(API + '/api/auto-save');
-    const data = await res.json();
-    if (!data.exists) {
+    const raw = localStorage.getItem('frwd_auto_save');
+    if (!raw) {
       showLoadModal();
       return;
     }
+    const data = JSON.parse(raw);
     gameState = data.state;
-    currentScene = data.scene;
+    // 从服务端获取场景数据（场景文本是只读的，不存在隔离问题）
+    const res = await fetch(API + '/api/scene', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        state: gameState,
+        scene_id: gameState.current_scene || 'start',
+      })
+    });
+    const result = await res.json();
+    gameState = result.state;
+    currentScene = result.scene;
     $('landingScreen').style.display = 'none';
     $('actionBar').style.display = 'flex';
     renderAll();
@@ -749,17 +759,16 @@ async function startNewGame() {
 }
 
 
-// ── 自动存档 ──
+// ── 自动存档（localStorage 版，天然用户隔离）──
 async function autoSave() {
   if (!gameState || gameState.turn_count === undefined) return;
   try {
-    await fetch(API + '/api/auto-save', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({state: gameState})
-    });
+    localStorage.setItem('frwd_auto_save', JSON.stringify({
+      state: gameState,
+      timestamp: Date.now()
+    }));
   } catch(e) {
-    // silently fail
+    // silently fail - localStorage might be full
   }
 }
 
@@ -1270,32 +1279,33 @@ function showEffectNotification(effects) {
   }
 }
 
-// ── 存档 ──
+// ── 存档（localStorage 版）──
 async function saveGame() {
   const slotsDiv = $('saveSlots');
   slotsDiv.innerHTML = '<div class="loading-text">加载存档列表...</div>';
   $('saveModal').classList.add('active');
 
-  // Get existing saves
-  let saves = {};
-  try {
-    const res = await fetch(API + '/api/saves');
-    const data = await res.json();
-    saves = data.saves || {};
-  } catch(e) {}
-
   let html = '';
   for (let i = 1; i <= 5; i++) {
-    const save = saves[i];
-    if (save) {
-      const d = new Date(save.timestamp * 1000);
-      html += `<div class="save-slot" onclick="doSave(${i})">
-        <div class="slot-info">
-          <strong>存档 ${i}</strong><br>
-          <span>${save.cultivation} | 第${save.chapter}章 | ${d.toLocaleDateString()} ${d.toLocaleTimeString()}</span>
-        </div>
-        <div class="slot-action">覆盖</div>
-      </div>`;
+    const local = localStorage.getItem(`frwd_save_${i}`);
+    if (local) {
+      try {
+        const parsed = JSON.parse(local);
+        const s = parsed.state || {};
+        const d = new Date(parsed.timestamp);
+        html += `<div class="save-slot" onclick="doSave(${i})">
+          <div class="slot-info">
+            <strong>存档 ${i}</strong><br>
+            <span>${s.cultivation || '?'} | 第${s.chapter || '?'}章 | ${d.toLocaleDateString()} ${d.toLocaleTimeString()}</span>
+          </div>
+          <div class="slot-action">覆盖</div>
+        </div>`;
+      } catch(e) {
+        html += `<div class="save-slot empty" onclick="doSave(${i})">
+          <div class="slot-info"><strong>存档 ${i}</strong> (损坏)</div>
+          <div class="slot-action">覆盖</div>
+        </div>`;
+      }
     } else {
       html += `<div class="save-slot empty" onclick="doSave(${i})">
         <div class="slot-info">
@@ -1310,73 +1320,45 @@ async function saveGame() {
 
 async function doSave(slot) {
   try {
-    const res = await fetch(API + `/api/save/${slot}`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({state: gameState})
-    });
-    const data = await res.json();
-    if (data.success) {
-      showEffectNotification({message: `已存档至第 ${slot} 栏`});
-    } else {
-      throw new Error('save failed');
-    }
+    localStorage.setItem(`frwd_save_${slot}`, JSON.stringify({
+      state: gameState,
+      timestamp: Date.now()
+    }));
+    showEffectNotification({message: `已存档至第 ${slot} 栏`});
     closeSaveModal();
   } catch(e) {
-    // Fallback to localStorage
-    localStorage.setItem(`frwd_save_${slot}`, JSON.stringify({state: gameState, timestamp: Date.now()}));
-    showEffectNotification({message: `已存档至第 ${slot} 栏 (本地)`});
-    closeSaveModal();
+    showEffectNotification({message: '存档失败：本地存储空间不足'});
   }
 }
 
 function closeSaveModal() { $('saveModal').classList.remove('active'); }
 
-// ── 读档 ──
+// ── 读档（localStorage 版）──
 async function showLoadModal() {
   const slotsDiv = $('loadSlots');
   slotsDiv.innerHTML = '<div class="loading-text">加载存档列表...</div>';
   $('loadModal').classList.add('active');
 
-  let saves = {};
-  try {
-    const res = await fetch(API + '/api/saves');
-    const data = await res.json();
-    saves = data.saves || {};
-  } catch(e) {}
-
   let html = '';
   for (let i = 1; i <= 5; i++) {
-    const save = saves[i];
-    if (save) {
-      const d = new Date(save.timestamp * 1000);
-      html += `<div class="save-slot" onclick="doLoad(${i})">
-        <div class="slot-info">
-          <strong>存档 ${i}</strong><br>
-          <span>${save.cultivation} | 第${save.chapter}章 | ${d.toLocaleDateString()} ${d.toLocaleTimeString()}</span>
-        </div>
-        <div class="slot-action">读档</div>
-      </div>`;
-    } else {
-      // Try localStorage
-      const local = localStorage.getItem(`frwd_save_${i}`);
-      if (local) {
-        try {
-          const parsed = JSON.parse(local);
-          const s = parsed.state || {};
-          html += `<div class="save-slot" onclick="doLoadLocal(${i})">
-            <div class="slot-info">
-              <strong>存档 ${i}</strong> (本地)<br>
-              <span>${s.cultivation || '?'} | 第${s.chapter || '?'}章</span>
-            </div>
-            <div class="slot-action">读档</div>
-          </div>`;
-        } catch(e) {
-          html += `<div class="save-slot empty"><div class="slot-info"><strong>存档 ${i}</strong> (损坏)</div></div>`;
-        }
-      } else {
-        html += `<div class="save-slot empty"><div class="slot-info"><strong>存档 ${i}</strong> (空)</div></div>`;
+    const local = localStorage.getItem(`frwd_save_${i}`);
+    if (local) {
+      try {
+        const parsed = JSON.parse(local);
+        const s = parsed.state || {};
+        const d = new Date(parsed.timestamp);
+        html += `<div class="save-slot" onclick="doLoad(${i})">
+          <div class="slot-info">
+            <strong>存档 ${i}</strong><br>
+            <span>${s.cultivation || '?'} | 第${s.chapter || '?'}章 | ${d.toLocaleDateString()} ${d.toLocaleTimeString()}</span>
+          </div>
+          <div class="slot-action">读档</div>
+        </div>`;
+      } catch(e) {
+        html += `<div class="save-slot empty"><div class="slot-info"><strong>存档 ${i}</strong> (损坏)</div></div>`;
       }
+    } else {
+      html += `<div class="save-slot empty"><div class="slot-info"><strong>存档 ${i}</strong> (空)</div></div>`;
     }
   }
   slotsDiv.innerHTML = html;
@@ -1384,29 +1366,26 @@ async function showLoadModal() {
 
 async function doLoad(slot) {
   try {
-    const res = await fetch(API + `/api/save/${slot}`);
-    const data = await res.json();
+    const raw = localStorage.getItem(`frwd_save_${slot}`);
+    if (!raw) throw new Error('no save');
+    const data = JSON.parse(raw);
     gameState = data.state;
-    currentScene = data.scene;
+    // 从服务端获取场景数据
+    const res = await fetch(API + '/api/scene', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        state: gameState,
+        scene_id: gameState.current_scene || 'start',
+      })
+    });
+    const result = await res.json();
+    gameState = result.state;
+    currentScene = result.scene;
     $('landingScreen').style.display = 'none';
     $('actionBar').style.display = 'flex';
     renderAll();
     showEffectNotification({message: `已读取存档 ${slot}`});
-    closeLoadModal();
-  } catch(e) {
-    // Fallback to localStorage
-    doLoadLocal(slot);
-  }
-}
-
-function doLoadLocal(slot) {
-  try {
-    const data = JSON.parse(localStorage.getItem(`frwd_save_${slot}`));
-    if (!data || !data.state) throw new Error('no save');
-    gameState = data.state;
-    // Need to fetch the scene from server
-    fetchSceneAndRender(gameState.current_scene || 'start');
-    showEffectNotification({message: `已读取本地存档 ${slot}`});
     closeLoadModal();
   } catch(e) {
     alert('读档失败');
