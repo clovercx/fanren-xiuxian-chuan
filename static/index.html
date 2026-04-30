@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>凡人修仙传</title>
+<style>
+/* ══════════════════════════════════
+   古风仙侠主题 CSS
+   ══════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700;900&display=swap');
+
+:root {
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #efe8dc;
+  --bg-card: #faf5ed;
+  --text-primary: #2a1a0a;
+  --text-secondary: #6a5a4a;
+  --text-dim: #9a8a7a;
+  --accent-gold: #b8943a;
+  --accent-red: #b04040;
+  --accent-teal: #3a7a6a;
+  --accent-green: #4a8a5a;
+  --border-color: #d4c8b0;
+  --gold-gradient: linear-gradient(135deg, #c9a84c, #d4b84a, #b8943a);
+  --shadow-soft: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(ellipse at 10% 20%, rgba(74,138,90,0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 90% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+/* 背景纹理 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(139,47,47,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(58,122,122,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.04) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 顶部标题 ── */
+.header {
+  text-align: center;
+  padding: 20px 0 10px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+}
+.header h1 {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 2.5em;
+  color: var(--text-primary);
+  letter-spacing: 8px;
+  position: relative;
+}
+.header h1::after {
+  content: '✦';
+  position: absolute;
+  font-size: 0.3em;
+  top: -10px;
+  right: -20px;
+  -webkit-text-fill-color: var(--accent-gold);
+}
+.header .subtitle {
+  font-size: 0.75em;
+  color: var(--text-secondary);
+  letter-spacing: 4px;
+  margin-top: 4px;
+}
+
+/* ── 主布局 ── */
+.main-layout {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+/* ── 左侧状态面板 ── */
+.stats-panel {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 0.85em;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+  box-shadow: var(--shadow-soft);
+}
+.stats-panel .stat-section {
+  margin-bottom: 14px;
+}
+.stats-panel .stat-section:last-child { margin-bottom: 0; }
+.stats-panel .section-title {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 1em;
+  color: var(--accent-gold);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  color: var(--text-secondary);
+}
+.stat-row .stat-label { color: var(--text-dim); }
+.stat-row .stat-value { color: var(--text-primary); }
+.stat-row.highlight .stat-value { color: var(--accent-gold); }
+.hp-bar, .sp-bar {
+  height: 4px;
+  background: #d4c8b0;
+  border-radius: 2px;
+  margin-top: 4px;
+  overflow: hidden;
+}
+.hp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-red), #c04040);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+.sp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-teal), #5ab0b0);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+.cultivation-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #2a1f1a, #3a2a20);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  letter-spacing: 1px;
+}
+.item-list {
+  list-style: none;
+}
+.item-list li {
+  padding: 2px 0;
+  font-size: 0.85em;
+  color: var(--text-secondary);
+}
+.item-list li::before {
+  content: '◆';
+  color: var(--accent-gold);
+  margin-right: 4px;
+  font-size: 0.6em;
+}
+
+/* ── 右侧故事区域 ── */
+.story-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 故事文本容器 */
+.story-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 24px;
+  min-height: 350px;
+  flex: 1;
+}
+
+.story-text {
+  line-height: 1.9;
+  font-size: 1em;
+}
+
+.story-text p {
+  margin-bottom: 0.6em;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+.story-text p:nth-child(1) { animation-delay: 0s; }
+.story-text p:nth-child(2) { animation-delay: 0.08s; }
+.story-text p:nth-child(3) { animation-delay: 0.16s; }
+.story-text p:nth-child(4) { animation-delay: 0.24s; }
+.story-text p:nth-child(5) { animation-delay: 0.32s; }
+.story-text p:nth-child(6) { animation-delay: 0.4s; }
+.story-text p:nth-child(7) { animation-delay: 0.48s; }
+.story-text p:nth-child(8) { animation-delay: 0.56s; }
+.story-text p:nth-child(9) { animation-delay: 0.64s; }
+.story-text p:nth-child(10) { animation-delay: 0.72s; }
+.story-text p:nth-child(n+11) { animation-delay: 0.8s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.story-separator {
+  text-align: center;
+  color: var(--accent-gold);
+  opacity: 0.6;
+  margin: 12px 0;
+  letter-spacing: 6px;
+}
+
+.chapter-title {
+  text-align: center;
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 1.5em;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+}
+
+/* ── 选择按钮 ── */
+.choices-area {
+  margin-top: 20px;
+}
+.choice-btn {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  margin-bottom: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  box-shadow: var(--shadow-soft);
+}
+.choice-btn::before {
+  content: '▸';
+  color: var(--accent-gold);
+  margin-right: 10px;
+  opacity: 0.6;
+}
+.choice-btn:hover {
+  border-color: var(--accent-gold);
+  background: #f5edd8;
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.choice-btn:hover::before {
+  opacity: 1;
+}
+.choice-btn:active {
+  transform: translateX(2px);
+}
+
+/* ── 按钮栏 ── */
+.action-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.action-btn {
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.action-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  background: rgba(201,168,76,0.05);
+}
+
+/* ── 存档/读档弹窗 ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal h2 {
+  font-family: 'Ma Shan Zheng', cursive;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+.save-slot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.save-slot:hover {
+  border-color: var(--accent-gold);
+  background: #2a1f1a;
+}
+.save-slot .slot-info {
+  color: var(--text-secondary);
+  font-size: 0.85em;
+}
+.save-slot .slot-info span {
+  color: var(--text-dim);
+}
+.save-slot .slot-action {
+  color: var(--accent-gold);
+  font-size: 0.85em;
+}
+.save-slot.empty {
+  opacity: 0.5;
+}
+.modal-close {
+  display: block;
+  margin: 16px auto 0;
+  padding: 8px 32px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-family: 'Noto Serif SC', serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.modal-close:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* ── 突破提示 ── */
+.advance-notification {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #1a1210, #2a1f1a);
+  border: 2px solid var(--accent-gold);
+  border-radius: 16px;
+  padding: 32px 48px;
+  text-align: center;
+  z-index: 2000;
+  box-shadow: 0 0 60px rgba(201,168,76,0.2);
+  animation: pulse 2s ease-in-out;
+}
+.advance-notification.active {
+  display: block;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 60px rgba(201,168,76,0.2); }
+  50% { box-shadow: 0 0 100px rgba(201,168,76,0.4); }
+}
+.advance-notification h2 {
+  font-family: 'Ma Shan Zheng', cursive;
+  color: var(--accent-gold);
+  font-size: 2em;
+  margin-bottom: 8px;
+  letter-spacing: 6px;
+}
+.advance-notification p {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+.advance-btn {
+  padding: 10px 32px;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: 6px;
+  color: #1a1210;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 1em;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.advance-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ── 动画加载 ── */
+.loading-text {
+  text-align: center;
+  color: var(--text-dim);
+  padding: 40px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 720px) {
+  .main-layout { flex-direction: column; }
+  .stats-panel {
+    width: 100%;
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .stats-panel .stat-section { margin-bottom: 0; }
+  .header h1 { font-size: 1.8em; }
+  #app { padding: 12px; }
+  .story-container { padding: 16px; }
+}
+
+/* ── 人物形象与突破动画 ── */
+.character-portrait { text-align:center; padding:8px 0; }
+.portrait-frame { width:72px; height:72px; margin:0 auto 8px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--bg-card); border:2px solid var(--accent-gold); position:relative; }
+.portrait-frame::before { content:''; position:absolute; inset:-4px; border-radius:50%; opacity:0.4; z-index:-1; background:conic-gradient(var(--accent-gold),var(--bg-primary),var(--accent-gold)); animation:portraitPulse 3s ease-in-out infinite; }
+@keyframes portraitPulse { 0%,100%{opacity:0.3} 50%{opacity:0.6} }
+.breakthrough-overlay { display:none; position:fixed; inset:0; z-index:9999; background:radial-gradient(ellipse at center,rgba(255,255,255,0.3) 0%,rgba(0,0,0,0.5) 70%); justify-content:center; align-items:center; flex-direction:column; }
+.breakthrough-overlay.active { display:flex; }
+.bt-circle { width:280px; height:280px; border-radius:50%; position:relative; display:flex; align-items:center; justify-content:center; }
+.bt-circle .ring { position:absolute; inset:0; border-radius:50%; border:2px solid var(--accent-gold); opacity:0; animation:ringExpand 2.5s ease-out infinite; }
+.bt-circle .ring:nth-child(2) { animation-delay:0.5s; }
+@keyframes ringExpand { 0%{transform:scale(0.5);opacity:0.8} 100%{transform:scale(1.8);opacity:0} }
+.bt-center-icon { font-size:4em; z-index:2; animation:btPulse 1.5s ease-in-out infinite; }
+@keyframes btPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+.bt-text { text-align:center; margin-top:20px; }
+.bt-text h2 { font-family:'Ma Shan Zheng',cursive; font-size:2.2em; color:var(--accent-gold); text-shadow:0 0 20px rgba(184,148,58,0.5); opacity:0; animation:btReveal 1s forwards; }
+.bt-text p { font-size:1.1em; color:#fff; margin-top:6px; opacity:0; animation:btReveal 1s 0.3s forwards; }
+@keyframes btReveal { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── 滚动条 ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- 标题 -->
+  <div class="header">
+    <h1>凡人修仙传</h1>
+    <div class="subtitle">A Mortal's Journey to Immortality</div>
+  </div>
+
+  <!-- 主布局 -->
+  <div class="main-layout">
+    <!-- 状态面板 -->
+    <div class="stats-panel" id="statsPanel"></div>
+
+    <!-- 故事区 -->
+    <div class="story-area">
+      <div class="story-container" id="storyContainer">
+        <div class="loading-text">☯ 天地初开，缘起未定...</div>
+      </div>
+
+      <div class="choices-area" id="choicesArea"></div>
+
+      <div class="action-bar" id="actionBar" style="display:none;">
+        <button class="action-btn" onclick="saveGame()">💾 存档</button>
+        <button class="action-btn" onclick="showLoadModal()">📂 读档</button>
+        <button class="action-btn" onclick="newGame()">🔄 重开</button>
+        <button class="action-btn" onclick="toggleAutoAdvance()">⚡ 自动突破</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 存档弹窗 -->
+<div class="modal-overlay" id="saveModal">
+  <div class="modal">
+    <h2>💾 存档</h2>
+    <div id="saveSlots"></div>
+    <button class="modal-close" onclick="closeSaveModal()">关闭</button>
+  </div>
+</div>
+
+<!-- 读档弹窗 -->
+<div class="modal-overlay" id="loadModal">
+  <div class="modal">
+    <h2>📂 读档</h2>
+    <div id="loadSlots"></div>
+    <button class="modal-close" onclick="closeLoadModal()">关闭</button>
+  </div>
+</div>
+
+<!-- 突破通知 -->
+<div class="advance-notification" id="advanceModal">
+  <h2>✦ 突破 ✦</h2>
+  <p id="advanceMessage">修为圆满，可突破至下一境界！</p>
+  <button class="advance-btn" onclick="doAdvance()">运功突破</button>
+</div>
+
+<script>
+// ══════════════════════════════════
+// 游戏引擎 (前端)
+// ══════════════════════════════════
+
+let gameState = null;
+let currentScene = null;
+let autoAdvance = true;
+const API = '';
+
+function $(id) { return document.getElementById(id); }
+
+// ── 初始化和启动 ──
+async function init() {
+  try {
+    const res = await fetch(API + '/api/init');
+    const data = await res.json();
+    gameState = data.state;
+    currentScene = data.scene;
+    gameState.auto_advance = autoAdvance;
+    renderAll();
+    $('actionBar').style.display = 'flex';
+    showNameModal();
+  } catch(e) {
+    $('storyContainer').innerHTML = `<p style="color:var(--accent-red);">连接服务器失败: ${e.message}</p>`;
+  }
+}
+
+// ── 全部渲染 ──
+function renderAll() {
+  renderStats();
+  renderScene();
+}
+
+// ── 渲染状态面板 ──
+function renderStats() {
+  if (!gameState) return;
+  const s = gameState;
+  const hpPct = Math.max(0, Math.min(100, (s.hp / s.max_hp) * 100));
+  const maxSp = 100 + REALM_LEVEL(s.cultivation) * 20;
+  const spPct = Math.min(100, (s.spiritual_power / maxSp) * 100);
+
+  $('statsPanel').innerHTML = `
+    <div class="stat-section">
+      <div class="character-portrait">
+      <div class="portrait-frame" id="portraitFrame"><span id="portraitIcon" style="font-size:2em;">🌱</span></div>
+      <div class="portrait-name" id="portraitName" style="font-family:'Ma Shan Zheng',cursive;font-size:0.9em;">${s.name || '无名'}</div>
+      <div class="portrait-realm" id="portraitRealm" style="font-size:0.75em;color:var(--accent-gold);margin-top:2px;">凡人</div>
+    </div>
+    <div class="section-title">✦ 人物</div>
+      <div class="stat-row"><span class="stat-label">姓名</span><span class="stat-value">${s.name || '无名'}</span></div>
+      <div class="stat-row"><span class="stat-label">境界</span><span class="cultivation-badge">${s.cultivation}</span></div>
+      <div class="stat-row"><span class="stat-label">回合</span><span class="stat-value">${s.turn_count}</span></div>
+    </div>
+    <div class="stat-section">
+      <div class="section-title">✦ 状态</div>
+      <div class="stat-row"><span class="stat-label">气血</span><span class="stat-value">${s.hp}/${s.max_hp}</span></div>
+      <div class="hp-bar"><div class="hp-bar-fill" style="width:${hpPct}%"></div></div>
+      <div class="stat-row" style="margin-top:6px;"><span class="stat-label">灵力</span><span class="stat-value">${s.spiritual_power}/${maxSp}</span></div>
+      <div class="sp-bar"><div class="sp-bar-fill" style="width:${spPct}%"></div></div>
+    </div>
+    <div class="stat-section">
+      <div class="section-title">✦ 资质</div>
+      <div class="stat-row"><span class="stat-label">根骨</span><span class="stat-value">${s.talent}/10</span></div>
+      <div class="stat-row"><span class="stat-label">悟性</span><span class="stat-value">${s.comprehension}/10</span></div>
+      <div class="stat-row"><span class="stat-label">气运</span><span class="stat-value highlight">${s.luck}/10</span></div>
+    </div>
+    <div class="stat-section">
+      <div class="section-title">✦ 财物</div>
+      <div class="stat-row"><span class="stat-label">灵石</span><span class="stat-value">${s.spirit_stones}</span></div>
+    </div>
+    ${s.items && s.items.length ? `
+    <div class="stat-section">
+      <div class="section-title">✦ 物品</div>
+      <ul class="item-list">${s.items.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>` : ''}
+    ${s.techniques && s.techniques.length ? `
+    <div class="stat-section">
+      <div class="section-title">✦ 功法</div>
+      <ul class="item-list">${s.techniques.map(t => `<li>${t}</li>`).join('')}</ul>
+    </div>` : ''}
+    ${s.pills && s.pills.length ? `
+    <div class="stat-section">
+      <div class="section-title">✦ 丹药</div>
+      <ul class="item-list">${s.pills.map(p => `<li>${p}</li>`).join('')}</ul>
+    </div>` : ''}
+  `;
+}
+
+function REALM_LEVEL(name) {
+  const realms = ['凡人','练气初期','练气中期','练气后期','筑基初期','筑基中期','筑基后期','结丹初期','结丹中期','结丹后期','元婴初期','元婴中期','元婴后期','化神初期','化神中期','化神后期'];
+  return realms.indexOf(name);
+}
+
+// ── 渲染场景 ──
+function renderScene() {
+  if (!currentScene) return;
+  const lines = currentScene.text || [];
+  const isChapterEnd = currentScene.is_end;
+
+  // 处理章节标题
+  let html = '';
+  const ch = currentScene.chapter || 1;
+var chNames = {1:'第一章：缘起青云',2:'第二章：初入仙途',3:'第三章：血色试炼',4:'第四章：筑基风云',5:'第五章：丹鼎之秘',6:'第六章：风云再起',7:'第七章：上古丹宗'};
+  if (ch && chNames[ch] && lines[0] && lines[0].includes(chNames[ch])) {
+    html += `<div class="chapter-title">${chNames[ch]}</div>`;
+    lines.shift();
+  }
+
+  // 分隔符处理
+  lines.forEach((line, i) => {
+    if (line.startsWith('=====') && line.endsWith('=====')) {
+      html += `<div class="story-separator">✦ ✦ ✦</div>`;
+    } else if (line === '') {
+      html += '<br>';
+    } else {
+html += '<p>' + escapeHtml(line).replace(/\{name\}/g, gameState ? gameState.name || '道友' : '道友') + '</p>';
+    }
+  });
+
+  $('storyContainer').innerHTML = `<div class="story-text">${html}</div>`;
+
+  // 选择按钮
+  const choices = currentScene.choices || [];
+  let choicesHtml = '';
+  if (isChapterEnd) {
+    // 章节结束，显示下一章按钮
+    choicesHtml = `
+      <div style="text-align:center;margin-top:20px;color:var(--text-secondary);font-size:0.9em;">
+        ${gameState.chapter < 3 ? '后续章节开发中...' : '故事未完待续...'}
+      </div>
+      <button class="choice-btn" onclick="continueStory()" style="text-align:center;border-color:var(--accent-gold);">
+        继续冒险...
+      </button>`;
+  } else if (choices.length > 0) {
+    choices.forEach((c, i) => {
+choicesHtml += '<button class="choice-btn" onclick="makeChoice(' + i + ')">' + escapeHtml(c.text).replace(/\{name\}/g, gameState ? gameState.name || '道友' : '道友') + '</button>';
+    });
+  }
+
+  $('choicesArea').innerHTML = choicesHtml;
+  $('storyContainer').scrollTop = 0;
+
+  // 检查是否可突破
+  checkAdvance();
+}
+
+// ── 取名与境界 ──
+var prevCultivation = null;
+
+function showNameModal() {
+  var m = document.getElementById('nameModal');
+  var i = document.getElementById('nameInput');
+  if (gameState && gameState.name && gameState.name !== '无名少年') return;
+  i.value = '';
+  document.getElementById('nameError').textContent = '';
+  m.classList.add('active');
+  setTimeout(function(){ i.focus(); }, 200);
+}
+
+function confirmName() {
+  var n = document.getElementById('nameInput').value.trim();
+  var errEl = document.getElementById('nameError');
+  // 验证：1-4个汉字
+  var chineseChars = n.replace(/[^\u4e00-\u9fff]/g, '');
+  if (n.length === 0 || chineseChars.length !== n.length || n.length < 1 || n.length > 4) {
+    errEl.textContent = '请输入1-4个汉字';
+    return;
+  }
+  errEl.textContent = '';
+  gameState.name = n;
+  document.getElementById('nameModal').classList.remove('active');
+  renderAll();
+  showEffectNotification({message: '欢迎踏上修仙之路，' + n + '！'});
+}
+
+var REALM_CONFIG = {
+  '凡人':{icon:'🌱',cls:'',label:'凡人'},
+  '练气初期':{icon:'🔥',cls:'',label:'练气期'},
+  '练气中期':{icon:'🔥',cls:'',label:'练气期'},
+  '练气后期':{icon:'🔥',cls:'',label:'练气期'},
+  '筑基初期':{icon:'🏛️',cls:'',label:'筑基期'},
+  '筑基中期':{icon:'🏛️',cls:'',label:'筑基期'},
+  '筑基后期':{icon:'🏛️',cls:'',label:'筑基期'},
+  '结丹初期':{icon:'💫',cls:'',label:'结丹期'},
+  '结丹中期':{icon:'💫',cls:'',label:'结丹期'},
+  '结丹后期':{icon:'💫',cls:'',label:'结丹期'},
+  '元婴初期':{icon:'🌙',cls:'',label:'元婴期'},
+  '元婴中期':{icon:'🌙',cls:'',label:'元婴期'},
+  '元婴后期':{icon:'🌙',cls:'',label:'元婴期'},
+  '化神初期':{icon:'☀️',cls:'',label:'化神期'},
+  '化神中期':{icon:'☀️',cls:'',label:'化神期'},
+  '化神后期':{icon:'☀️',cls:'',label:'化神期'},
+};
+
+function renderPortrait() {
+  if (!gameState) return;
+  var cult = gameState.cultivation;
+  var cfg = REALM_CONFIG[cult] || REALM_CONFIG['凡人'];
+  var majorMap = {'凡人':'凡人','练气初期':'练气期','练气中期':'练气期','练气后期':'练气期','筑基初期':'筑基期','筑基中期':'筑基期','筑基后期':'筑基期','结丹初期':'结丹期','结丹中期':'结丹期','结丹后期':'结丹期','元婴初期':'元婴期','元婴中期':'元婴期','元婴后期':'元婴期','化神初期':'化神期','化神中期':'化神期','化神后期':'化神期'};
+  if (prevCultivation && prevCultivation !== cult) {
+    var pm = majorMap[prevCultivation] || '凡人';
+    var cm = majorMap[cult];
+    if (pm !== cm) triggerBreakthrough(prevCultivation, cult, cfg);
+  }
+  prevCultivation = cult;
+}
+
+function triggerBreakthrough(from, to, cfg) {
+  var ov = document.getElementById('breakthroughOverlay');
+  var ic = document.getElementById('btIcon');
+  var t = document.getElementById('btTitle');
+  var d = document.getElementById('btDesc');
+  ic.textContent = cfg.icon;
+  var fm = '凡人', tm = '练气';
+  for (var k in REALM_CONFIG) {
+    if (k === from) fm = REALM_CONFIG[k].label;
+    if (k === to) tm = REALM_CONFIG[k].label;
+  }
+  t.textContent = '✦ 大境界突破 ✦';
+  d.textContent = fm + ' → ' + tm;
+  ov.classList.add('active');
+  setTimeout(function(){ ov.classList.remove('active'); }, 3500);
+}
+
+// 改写renderAll
+var origRenderAll = renderAll;
+renderAll = function() {
+  renderPortrait();
+  origRenderAll();
+};
+
+// ── 做出选择 ──
+async function makeChoice(index) {
+  const btn = document.querySelectorAll('.choice-btn')[index];
+  if (btn) {
+    btn.style.opacity = '0.5';
+    btn.disabled = true;
+  }
+
+  try {
+    const res = await fetch(API + '/api/action', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        state: gameState,
+        choice_index: index,
+        player_name: gameState.name,
+      })
+    });
+    const data = await res.json();
+    gameState = data.state;
+    gameState.auto_advance = autoAdvance;
+    currentScene = data.scene;
+    renderAll();
+    window.scrollTo(0, 0);
+
+    // 显示效果反馈
+    if (data.applied_effects && Object.keys(data.applied_effects).length > 0) {
+      showEffectNotification(data.applied_effects);
+    }
+  } catch(e) {
+    alert('操作失败: ' + e.message);
+  }
+}
+
+// ── 继续故事 ──
+async function continueStory() {
+  const nextChapter = gameState.chapter + 1;
+  if (nextChapter > 3) {
+    alert('故事未完待续...敬请期待后续章节！');
+    return;
+  }
+  // 跳转到下一章入口
+  await makeChoice(0); // Just use first choice if available
+  // Fallback: set scene manually
+  if (currentScene && currentScene.choices && currentScene.choices.length === 0) {
+    const chapterScenes = {2: 'chapter2_start', 3: 'blood_trial_signup'};
+    const target = chapterScenes[nextChapter];
+    if (target) {
+      try {
+        const res = await fetch(API + '/api/action', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            state: {...gameState, current_scene: target},
+            choice_index: 0,
+          })
+        });
+        const data = await res.json();
+        gameState = data.state;
+        gameState.auto_advance = autoAdvance;
+        currentScene = data.scene;
+        renderAll();
+      } catch(e) {
+        // Silently fail
+      }
+    }
+  }
+}
+
+// ── 突破系统 ──
+function checkAdvance() {
+  if (!gameState || !autoAdvance) return;
+  // Check via API
+  fetch(API + '/api/advance', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({state: gameState})
+  }).then(r => r.json()).then(data => {
+    if (data.new_realm) {
+      $('advanceMessage').textContent = `修为圆满，可突破至【${data.new_realm}】！`;
+      $('advanceModal').classList.add('active');
+    }
+  }).catch(() => {});
+}
+
+async function doAdvance() {
+  try {
+    const res = await fetch(API + '/api/advance', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({state: gameState})
+    });
+    const data = await res.json();
+    gameState = data.state;
+    gameState.auto_advance = autoAdvance;
+    $('advanceModal').classList.remove('active');
+    renderStats();
+    showEffectNotification({message: data.message || '突破成功！'});
+  } catch(e) {
+    alert('突破失败: ' + e.message);
+  }
+}
+
+function toggleAutoAdvance() {
+  autoAdvance = !autoAdvance;
+  if (gameState) gameState.auto_advance = autoAdvance;
+  const btn = document.querySelectorAll('.action-btn')[3];
+  if (btn) btn.style.borderColor = autoAdvance ? 'var(--accent-green)' : 'var(--accent-red)';
+}
+
+// ── 效果提示 ──
+var EFFECT_LABELS = {
+  'hp': '气血', 'max_hp': '最大气血',
+  'spiritual_power': '灵力', 'spirit_stones': '灵石',
+  'talent': '根骨', 'comprehension': '悟性', 'luck': '气运',
+  'cultivation': '境界',
+  'add_item': '获得物品', 'remove_item': '失去物品',
+  'add_technique': '获得功法', 'add_artifact': '获得法器',
+  'add_pill': '获得丹药',
+};
+function showEffectNotification(effects) {
+  const lines = [];
+  if (effects.message) {
+    lines.push(effects.message);
+  } else {
+    for (const [k, v] of Object.entries(effects)) {
+      if (k === 'set_flag' || k === 'clear_flag') continue;
+      var label = EFFECT_LABELS[k] || k;
+      if (typeof v === 'number') {
+        lines.push(label + ': ' + (v > 0 ? '+' : '') + v);
+      } else if (typeof v === 'object' && v !== null) {
+        for (const [kk, vv] of Object.entries(v)) {
+          lines.push(kk + ' ' + (vv > 0 ? '+' : '') + vv);
+        }
+      } else if (typeof v === 'string') {
+        lines.push('获得【' + v + '】');
+      }
+    }
+  }
+  if (lines.length > 0) {
+    // Use a small toast-like notification
+    const oldToast = document.querySelector('.effect-toast');
+    if (oldToast) oldToast.remove();
+    const toast = document.createElement('div');
+    toast.className = 'effect-toast';
+    toast.style.cssText = `
+      position:fixed; bottom:24px; right:24px;
+      background:var(--bg-card); border:1px solid var(--accent-gold);
+      border-radius:8px; padding:12px 20px;
+      color:var(--accent-gold); font-size:0.85em;
+      z-index:3000; animation:fadeIn 0.3s ease;
+      max-width:300px;
+    `;
+    toast.innerHTML = lines.join('<br>');
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.5s';
+      setTimeout(() => toast.remove(), 500);
+    }, 2000);
+  }
+}
+
+// ── 存档 ──
+async function saveGame() {
+  const slotsDiv = $('saveSlots');
+  slotsDiv.innerHTML = '<div class="loading-text">加载存档列表...</div>';
+  $('saveModal').classList.add('active');
+
+  // Get existing saves
+  let saves = {};
+  try {
+    const res = await fetch(API + '/api/saves');
+    const data = await res.json();
+    saves = data.saves || {};
+  } catch(e) {}
+
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    const save = saves[i];
+    if (save) {
+      const d = new Date(save.timestamp * 1000);
+      html += `<div class="save-slot" onclick="doSave(${i})">
+        <div class="slot-info">
+          <strong>存档 ${i}</strong><br>
+          <span>${save.cultivation} | 第${save.chapter}章 | ${d.toLocaleDateString()} ${d.toLocaleTimeString()}</span>
+        </div>
+        <div class="slot-action">覆盖</div>
+      </div>`;
+    } else {
+      html += `<div class="save-slot empty" onclick="doSave(${i})">
+        <div class="slot-info">
+          <strong>存档 ${i}</strong> (空)
+        </div>
+        <div class="slot-action">保存</div>
+      </div>`;
+    }
+  }
+  slotsDiv.innerHTML = html;
+}
+
+async function doSave(slot) {
+  try {
+    const res = await fetch(API + `/api/save/${slot}`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({state: gameState})
+    });
+    const data = await res.json();
+    if (data.success) {
+      showEffectNotification({message: `已存档至第 ${slot} 栏`});
+    } else {
+      throw new Error('save failed');
+    }
+    closeSaveModal();
+  } catch(e) {
+    // Fallback to localStorage
+    localStorage.setItem(`frwd_save_${slot}`, JSON.stringify({state: gameState, timestamp: Date.now()}));
+    showEffectNotification({message: `已存档至第 ${slot} 栏 (本地)`});
+    closeSaveModal();
+  }
+}
+
+function closeSaveModal() { $('saveModal').classList.remove('active'); }
+
+// ── 读档 ──
+async function showLoadModal() {
+  const slotsDiv = $('loadSlots');
+  slotsDiv.innerHTML = '<div class="loading-text">加载存档列表...</div>';
+  $('loadModal').classList.add('active');
+
+  let saves = {};
+  try {
+    const res = await fetch(API + '/api/saves');
+    const data = await res.json();
+    saves = data.saves || {};
+  } catch(e) {}
+
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    const save = saves[i];
+    if (save) {
+      const d = new Date(save.timestamp * 1000);
+      html += `<div class="save-slot" onclick="doLoad(${i})">
+        <div class="slot-info">
+          <strong>存档 ${i}</strong><br>
+          <span>${save.cultivation} | 第${save.chapter}章 | ${d.toLocaleDateString()} ${d.toLocaleTimeString()}</span>
+        </div>
+        <div class="slot-action">读档</div>
+      </div>`;
+    } else {
+      // Try localStorage
+      const local = localStorage.getItem(`frwd_save_${i}`);
+      if (local) {
+        try {
+          const parsed = JSON.parse(local);
+          const s = parsed.state || {};
+          html += `<div class="save-slot" onclick="doLoadLocal(${i})">
+            <div class="slot-info">
+              <strong>存档 ${i}</strong> (本地)<br>
+              <span>${s.cultivation || '?'} | 第${s.chapter || '?'}章</span>
+            </div>
+            <div class="slot-action">读档</div>
+          </div>`;
+        } catch(e) {
+          html += `<div class="save-slot empty"><div class="slot-info"><strong>存档 ${i}</strong> (损坏)</div></div>`;
+        }
+      } else {
+        html += `<div class="save-slot empty"><div class="slot-info"><strong>存档 ${i}</strong> (空)</div></div>`;
+      }
+    }
+  }
+  slotsDiv.innerHTML = html;
+}
+
+async function doLoad(slot) {
+  try {
+    const res = await fetch(API + `/api/save/${slot}`);
+    const data = await res.json();
+    gameState = data.state;
+    gameState.auto_advance = autoAdvance;
+    currentScene = data.scene;
+    renderAll();
+    showEffectNotification({message: `已读取存档 ${slot}`});
+    closeLoadModal();
+  } catch(e) {
+    // Fallback to localStorage
+    doLoadLocal(slot);
+  }
+}
+
+function doLoadLocal(slot) {
+  try {
+    const data = JSON.parse(localStorage.getItem(`frwd_save_${slot}`));
+    if (!data || !data.state) throw new Error('no save');
+    gameState = data.state;
+    gameState.auto_advance = autoAdvance;
+    // Need to fetch the scene from server
+    fetchSceneAndRender(gameState.current_scene || 'start');
+    showEffectNotification({message: `已读取本地存档 ${slot}`});
+    closeLoadModal();
+  } catch(e) {
+    alert('读档失败');
+  }
+}
+
+async function fetchSceneAndRender(sceneId) {
+  try {
+    const res = await fetch(API + '/api/action', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({state: gameState, choice_index: 0})
+    });
+    const data = await res.json();
+    gameState = data.state;
+    gameState.auto_advance = autoAdvance;
+    currentScene = data.scene;
+    renderAll();
+  } catch(e) {
+    renderAll();
+  }
+}
+
+function closeLoadModal() { $('loadModal').classList.remove('active'); }
+
+// ── 新游戏 ──
+async function newGame() {
+  if (gameState && gameState.turn_count > 0) {
+    if (!confirm('确定要重新开始吗？当前进度将丢失。')) return;
+  }
+  await init();
+  window.scrollTo(0, 0);
+}
+
+// ── 工具函数 ──
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ── 启动 ──
+init();
+</script>
+<!-- 取名弹窗 -->
+<div class="modal-overlay" id="nameModal" style="z-index:10001;">
+  <div class="modal" style="max-width:400px;text-align:center;">
+    <h2 style="font-family:'Ma Shan Zheng',cursive;color:var(--accent-gold);font-size:1.5em;margin-bottom:8px;letter-spacing:4px;">✦ 问道求名 ✦</h2>
+    <p style="color:var(--text-secondary);margin-bottom:16px;font-size:0.9em;">踏入修仙之路，你叫什么名字？</p>
+    <input id="nameInput" type="text" maxlength="4" placeholder="输入你的道号..."
+      style="width:100%;padding:10px 14px;background:var(--bg-primary);border:1px solid var(--accent-gold);border-radius:6px;color:var(--text-primary);font-family:'Noto Serif SC',serif;font-size:1.1em;text-align:center;outline:none;"
+      onkeydown="if(event.key==='Enter')confirmName()">
+    <div id="nameError" style="color:var(--accent-red);font-size:0.8em;margin-top:6px;min-height:1.2em;"></div>
+    <button onclick="confirmName()" style="margin-top:14px;padding:10px 36px;background:var(--gold-gradient);border:none;border-radius:6px;color:#1a1210;font-family:'Noto Serif SC',serif;font-size:1em;font-weight:700;cursor:pointer;">✦ 确认 ✦</button>
+  </div>
+</div>
+
+<!-- 突破动画 -->
+<div class="breakthrough-overlay" id="breakthroughOverlay">
+  <div class="bt-circle">
+    <div class="ring"></div><div class="ring"></div>
+    <div class="bt-center-icon" id="btIcon">💫</div>
+  </div>
+  <div class="bt-text">
+    <h2 id="btTitle">✦ 大境界突破 ✦</h2>
+    <p id="btDesc">凡人 → 练气期</p>
+  </div>
+</div>
+</body>
+</html>
