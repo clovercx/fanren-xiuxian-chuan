@@ -569,6 +569,7 @@ body::before {
           <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
           <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
           <div style="margin-top:24px;font-size:0.8em;color:var(--text-dim);letter-spacing:1px;" id="landingPlayCount">✦ 加载中...</div>
+          <div style="margin-top:10px;font-size:0.85em;color:var(--accent-gold);opacity:0.7;font-style:italic;letter-spacing:0.5px;min-height:1.5em;" id="landingQuote"></div>
         </div>
       </div>
 
@@ -644,6 +645,40 @@ const API = '';
 
 function $(id) { return document.getElementById(id); }
 
+// ── 励志文案 ──
+var QUOTES = [
+  "我命由我不由天",
+  "逆天而行，方能成仙",
+  "天地不仁，以万物为刍狗",
+  "大道三千，殊途同归",
+  "一朝悟道，飞升九天",
+  "不疯魔，不成仙",
+  "修的是心，求的是道",
+  "天道酬勤，道不负人",
+  "心有乾坤，天地自宽",
+  "破而后立，否极泰来",
+  "仙途漫漫，唯有坚持",
+  "金丹大道，始于足下",
+  "道阻且长，行则将至",
+  "天地为炉，造化为工",
+  "一入仙途深似海，从此红尘是路人",
+  "不求长生，只求无愧于道",
+  "生死看淡，不服就干",
+  "修行如逆水行舟，不进则退",
+  "道心坚定，万法不侵",
+  "踏破凌霄，不负本心",
+];
+
+function showRandomQuote() {
+  var el = document.getElementById('landingQuote');
+  if (!el) return;
+  var q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+  el.textContent = '「' + q + '」';
+}
+
+// 每10秒换一句
+setInterval(showRandomQuote, 10000);
+
 // ── 初始化和启动 ──
 async function init() {
   try {
@@ -662,6 +697,8 @@ async function init() {
       var el = document.getElementById('landingPlayCount');
       if (el) el.textContent = '✦ 已有 ' + d.play_count + ' 位道友踏上修仙之路 ✦';
     }).catch(function(){});
+    // 显示励志文案
+    showRandomQuote();
     $('actionBar').style.display = 'none';
   } catch(e) {
     $('storyContainer').innerHTML = `<p style="color:var(--accent-red);">连接服务器失败: ${e.message}</p>`;
@@ -1459,6 +1496,7 @@ async function newGame() {
       <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
       <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
       <div style="margin-top:24px;font-size:0.8em;color:var(--text-dim);letter-spacing:1px;" id="landingPlayCount">✦ 加载中...</div>
+      <div style="margin-top:10px;font-size:0.85em;color:var(--accent-gold);opacity:0.7;font-style:italic;letter-spacing:0.5px;min-height:1.5em;" id="landingQuote"></div>
     </div>`;
   document.getElementById('choicesArea').innerHTML = '';
   init();
