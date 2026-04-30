@@ -569,7 +569,7 @@ body::before {
           <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
           <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
           <div style="margin-top:24px;font-size:0.8em;color:var(--text-dim);letter-spacing:1px;" id="landingPlayCount">✦ 加载中...</div>
-          <div style="margin-top:10px;font-size:0.85em;color:var(--accent-gold);opacity:0.7;font-style:italic;letter-spacing:0.5px;min-height:1.5em;" id="landingQuote"></div>
+          <div style="margin-top:10px;font-size:1em;color:var(--accent-gold);opacity:0.85;font-style:italic;letter-spacing:0.5px;min-height:1.5em;" id="landingQuote"></div>
         </div>
       </div>
 
@@ -827,7 +827,7 @@ function renderStats() {
       <ul class="item-list">${s.pills.map(p => `<li style="cursor:pointer;" onclick="showTooltip('${p}',ITEM_DESC['${p}']||'未知丹药')">${p}</li>`).join('')}</ul>
     </div>` : ''}
     <div class="stat-section" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border-color);">
-      <div style="font-size:0.75em;color:var(--accent-gold);opacity:0.6;font-style:italic;text-align:center;letter-spacing:0.5px;min-height:1.2em;" id="gameQuote"></div>
+      <div style="font-size:0.9em;color:var(--accent-gold);opacity:0.8;font-style:italic;text-align:center;letter-spacing:0.5px;min-height:1.2em;" id="gameQuote"></div>
     </div>
   `;
 }
@@ -846,7 +846,7 @@ function renderScene() {
   // 处理章节标题
   let html = '';
   const ch = currentScene.chapter || 1;
-var chNames = {1:'第一章：缘起青云',2:'第二章：初入仙途',3:'第三章：血色试炼',4:'第四章：筑基风云',5:'第五章：丹鼎之秘',6:'第六章：风云再起',7:'第七章：上古丹宗',8:'第八章：金丹大道',9:'第九章：金丹风云'};
+var chNames = {1:'第一章：缘起青云',2:'第二章：初入仙途',3:'第三章：血色试炼',4:'第四章：筑基风云',5:'第五章：丹鼎之秘',6:'第六章：风云再起',7:'第七章：上古丹宗',8:'第八章：金丹大道',9:'第九章：金丹风云',10:'第十章：元婴之劫'};
   if (ch && chNames[ch] && lines[0] && lines[0].includes(chNames[ch])) {
     html += `<div class="chapter-title">${chNames[ch]}</div>`;
     lines.shift();
@@ -883,11 +883,11 @@ html += '<p>' + escapeHtml(line).replace(/\{name\}/g, gameState ? gameState.name
     } else {
     // 章节结束，显示下一章按钮
     var nextCh = gameState.chapter + 1;
-    var chNames = {2:'第二章',3:'第三章',4:'第四章',5:'第五章',6:'第六章',7:'第七章',8:'第八章',9:'第九章'};
+    var chNames = {2:'第二章',3:'第三章',4:'第四章',5:'第五章',6:'第六章',7:'第七章',8:'第八章',9:'第九章',10:'第十章'};
     var nextLabel = chNames[nextCh] || '下一章';
     choicesHtml = `
       <div style="text-align:center;margin-top:20px;color:var(--text-secondary);font-size:0.9em;">
-        ${nextCh <= 9 ? '即将开启' + nextLabel : '修仙之路，永无止境！'}
+        ${nextCh <= 10 ? '即将开启' + nextLabel : '修仙之路，永无止境！'}
       </div>
       <button class="choice-btn" onclick="continueStory()" style="text-align:center;border-color:var(--accent-gold);">
         继续冒险...
@@ -1036,8 +1036,8 @@ async function makeChoice(index) {
 // ── 继续故事 ──
 async function continueStory() {
   const nextChapter = gameState.chapter + 1;
-  if (nextChapter > 9) {
-    alert('九章已毕，金丹风云！感谢游玩。');
+  if (nextChapter > 10) {
+    alert('十章已毕，元婴已成！感谢游玩。');
     return;
   }
   const chapterScenes = {
@@ -1049,6 +1049,7 @@ async function continueStory() {
     7: 'ch7_departure',
     8: 'ch8_departure',
     9: 'ch9_elder_days',
+    10: 'ch10_new_horizon',
   };
   const target = chapterScenes[nextChapter];
   if (!target) return;
@@ -1502,7 +1503,7 @@ async function newGame() {
       <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
       <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
       <div style="margin-top:24px;font-size:0.8em;color:var(--text-dim);letter-spacing:1px;" id="landingPlayCount">✦ 加载中...</div>
-      <div style="margin-top:10px;font-size:0.85em;color:var(--accent-gold);opacity:0.7;font-style:italic;letter-spacing:0.5px;min-height:1.5em;" id="landingQuote"></div>
+      <div style="margin-top:10px;font-size:1em;color:var(--accent-gold);opacity:0.85;font-style:italic;letter-spacing:0.5px;min-height:1.5em;" id="landingQuote"></div>
     </div>`;
   document.getElementById('choicesArea').innerHTML = '';
   init();
