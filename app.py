@@ -56,6 +56,24 @@ def init_new_game():
     }
 
 
+@app.post("/api/scene")
+def load_scene(data: dict):
+    """加载指定场景，不做选择"""
+    state = data.get("state", create_initial_state())
+    scene_id = data.get("scene_id", state.get("current_scene", "start"))
+    state["current_scene"] = scene_id
+    scene = SCENES.get(scene_id)
+    if not scene:
+        scene = SCENES["start"]
+    chapter = scene.get("chapter", 1)
+    state["chapter"] = chapter
+    return {
+        "state": state,
+        "scene": _process_scene(scene, state),
+        "can_advance": can_advance_cultivation(state),
+    }
+
+
 @app.get("/api/saves")
 def list_saves():
     saves = {}

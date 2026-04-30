@@ -666,9 +666,12 @@ html += '<p>' + escapeHtml(line).replace(/\{name\}/g, gameState ? gameState.name
   let choicesHtml = '';
   if (isChapterEnd) {
     // 章节结束，显示下一章按钮
+    var nextCh = gameState.chapter + 1;
+    var chNames = {2:'第二章',3:'第三章',4:'第四章',5:'第五章',6:'第六章',7:'第七章'};
+    var nextLabel = chNames[nextCh] || '下一章';
     choicesHtml = `
       <div style="text-align:center;margin-top:20px;color:var(--text-secondary);font-size:0.9em;">
-        ${gameState.chapter < 3 ? '后续章节开发中...' : '故事未完待续...'}
+        ${nextCh <= 7 ? '即将开启' + nextLabel : '修仙之路，永无止境！'}
       </div>
       <button class="choice-btn" onclick="continueStory()" style="text-align:center;border-color:var(--accent-gold);">
         继续冒险...
@@ -812,38 +815,33 @@ async function continueStory() {
     alert('修仙之路，永无止境！后续章节敬请期待。');
     return;
   }
-  // 跳转到下一章入口
-  await makeChoice(0); // Just use first choice if available
-  // Fallback: set scene manually
-  if (currentScene && currentScene.choices && currentScene.choices.length === 0) {
-    const chapterScenes = {
-      2: 'chapter2_start',
-      3: 'blood_trial_signup',
-      4: 'ch4_return_to_sect',
-      5: 'ch5_cauldron_awakening',
-      6: 'ch6_peaceful_days',
-      7: 'ch7_departure',
-    };
-    const target = chapterScenes[nextChapter];
-    if (target) {
-      try {
-        const res = await fetch(API + '/api/action', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            state: {...gameState, current_scene: target},
-            choice_index: 0,
-          })
-        });
-        const data = await res.json();
-        gameState = data.state;
-        gameState.auto_advance = autoAdvance;
-        currentScene = data.scene;
-        renderAll();
-      } catch(e) {
-        // Silently fail
-      }
-    }
+  const chapterScenes = {
+    2: 'chapter2_start',
+    3: 'ch3_enter_realm',
+    4: 'ch4_return_to_sect',
+    5: 'ch5_cauldron_awakening',
+    6: 'ch6_peaceful_days',
+    7: 'ch7_departure',
+  };
+  const target = chapterScenes[nextChapter];
+  if (!target) return;
+  try {
+    const res = await fetch(API + '/api/scene', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        state: gameState,
+        scene_id: target,
+      })
+    });
+    const data = await res.json();
+    gameState = data.state;
+    gameState.auto_advance = autoAdvance;
+    currentScene = data.scene;
+    renderAll();
+    window.scrollTo(0, 0);
+  } catch(e) {
+    location.reload();
   }
 }
 
