@@ -780,10 +780,14 @@ function renderAll() {
 
 // ── 声望渲染 ──
 function renderReputation(reputation) {
-  if (!reputation || Object.keys(reputation).length === 0) return '';
-  var entries = Object.entries(reputation).sort(function(a,b){return b[1]-a[1];});
   var html = '<div class="stat-section">';
   html += '<div class="section-title">✦ 声望</div>';
+  if (!reputation || Object.keys(reputation).length === 0) {
+    html += '<div style="color:var(--text-dim);font-size:0.8em;text-align:center;padding:6px 0;">尚未获得任何势力声望</div>';
+    html += '</div>';
+    return html;
+  }
+  var entries = Object.entries(reputation).sort(function(a,b){return b[1]-a[1];});
   entries.forEach(function(e){
     var faction = e[0], val = e[1];
     var levelLabel = '';
@@ -1266,12 +1270,12 @@ function showEffectNotification(effects) {
     `;
     toast.innerHTML = lines.join('<br>');
     document.body.appendChild(toast);
-    // Auto-dismiss after 1 second, or click to dismiss immediately
+    // Auto-dismiss after 1.5 seconds, or click to dismiss immediately
     var autoTimer = setTimeout(function(){
       toast.style.opacity = '0';
       toast.style.transition = 'opacity 0.5s';
       setTimeout(function(){ toast.remove(); }, 500);
-    }, 1000);
+    }, 1500);
     toast.addEventListener('click', function(){
       clearTimeout(autoTimer);
       toast.remove();
