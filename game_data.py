@@ -2592,12 +2592,18 @@ SCENES["ch3_palace_first_trial"] = {
     ],
     "choices": [
         {"text": "正面迎击！运转烈焰诀全力攻击", "next": "ch3_trial_fight_aggressive",
-         "effects": {"hp": -34, "spiritual_power": 5}},
+         "effects": {"hp": -34, "spiritual_power": 5},
+         "conditions": {"has_technique": "烈焰诀"}},
+        {"text": "正面迎击！以肉身硬碰硬（没有烈焰诀，凶多吉少）", "next": "ch3_trial_fight_aggressive",
+         "effects": {"hp": -51, "spiritual_power": 3}},
         {"text": "游走牵制，寻找弱点再出手", "next": "ch3_trial_fight_tactical",
          "effects": {"hp": -25, "comprehension": 1}},
         {"text": "运转土甲术防守，消耗它的体力", "next": "ch3_trial_fight_defensive",
          "effects": {"hp": -20, "talent": 1},
          "conditions": {"has_technique": "土甲术"}},
+        {"text": "尝试沟通——这头血煞兽或许有灵智", "next": "ch3_trial_fight_talk",
+         "effects": {"hp": -10},
+         "conditions": {"comprehension_min": 7}},
     ]
 }
 
@@ -2666,6 +2672,91 @@ SCENES["ch3_trial_fight_defensive"] = {
 }
 
 # ── 第二关 ──
+
+SCENES["ch3_trial_fight_talk"] = {
+    "chapter": 3,
+    "text": [
+        "你深吸一口气，没有摆出攻击架势，而是缓缓放下双手，直视着血煞兽燃烧的双眼。",
+        "",
+        "“你被困在这里多少年了？”你平静地开口，“我能感觉到你身上的不甘——你不是纯粹的煞气幻象，你曾经是真实的生灵。”",
+        "",
+        "血煞兽的动作猛地一滞。它眼中的血色火焰闪烁了一下，似乎有什么东西在动摇。",
+        "",
+        "你用悟性感知它的情绪——它确实残存着一丝灵智。被困在此地数百年，成为守关傀儡，这不是它的本意。",
+        "",
+        "“我若能获得传承，必设法解脱你的禁锢。”你郑重许诺。",
+        "",
+        "血煞兽沉默良久，最终低下了头，身形缓缓消散。它主动放你通过了。",
+    ],
+    "choices": [
+        {"text": "通过第一关！前往第二关", "next": "ch3_palace_second_trial",
+         "effects": {"hp": -10, "comprehension": 2, "spiritual_power": 10,
+                     "set_flag": "passed_first_trial", "set_flag": "talked_to_beast"}},
+    ]
+}
+
+# ── 第七章 终极BOSS ──
+
+SCENES["ch7_final_boss"] = {
+    "chapter": 7,
+    "text": [
+        "===== 第七章：上古丹宗 =====\u0020\u0020（终极之战）",
+        "",
+        "你踏入丹宗遗址最深处的大殿。大殿中央立着一尊巨大的丹炉，炉中燃烧着碧绿色的火焰——那是传说中的天火！",
+        "",
+        "但守护丹炉的，是一具身披盔甲的枯骨。枯骨的眼眶中燃着两点幽绿的光芒，手持一柄锈迹斑斑的长剑，散发着令人窒息的威压。",
+        "",
+        "“擅闯丹宗禁地者——死。”枯骨发出沙哑的声音，长剑指向你。",
+    ],
+    "choices": [
+        {"text": "运转玄元鼎之力——以鼎护体！", "next": "ch7_final_boss_victory",
+         "effects": {"hp": -25, "spiritual_power": 10},
+         "conditions": {"has_item": "玄元鼎"}},
+        {"text": "运转血煞真经——以煞克煞！", "next": "ch7_final_boss_victory",
+         "effects": {"hp": -42, "spiritual_power": 15},
+         "conditions": {"has_technique": "血煞真经"}},
+        {"text": "硬着头皮上——没有神兵利器，九死一生", "next": "ch7_final_boss_death",
+         "effects": {"hp": -68}},
+    ]
+}
+
+SCENES["ch7_final_boss_victory"] = {
+    "chapter": 7,
+    "text": [
+        "你与守关枯骨激战了数百回合。凭借着趁手的法器和功法，你逐渐占据了上风。",
+        "",
+        "最终，你一记重击击碎了枯骨的头颅。幽绿的火焰熄灭，枯骨化作一堆齑粉。",
+        "",
+        "丹炉中的天火似乎感应到了什么，火焰猛地窜高，一道金光从炉中飞出，直直没入你的眉心——",
+        "",
+        "你得到了丹宗的天火传承！",
+    ],
+    "choices": [
+        {"text": "接受传承——实力大增！", "next": "ch7_final_trial_gate",
+         "effects": {"max_hp": 50, "hp": 30, "spiritual_power": 30,
+                     "add_technique": "天火传承", "comprehension": 2, "talent": 1}},
+    ]
+}
+
+SCENES["ch7_final_boss_death"] = {
+    "chapter": 7,
+    "is_end": True,
+    "is_death": True,
+    "text": [
+        "===== 道途已断 =====\u0020\u0020（终极之战·陨落）",
+        "",
+        "你没有任何神兵利器，也没有强大的功法护身。面对这尊不知活了多少年的守关枯骨，你只能以血肉之躯硬拼。",
+        "",
+        "第一剑——你的兵器断了。",
+        "第二剑——你的左臂飞了出去。",
+        "第三剑——你的视野陷入了永恒的黑暗。",
+        "",
+        "☠️ 你在上古丹宗的遗址中陨落了。没有趁手的法器和功法，妄图挑战丹宗禁地的守护者，终究是一场毫无胜算的豪赌。",
+    ],
+    "choices": []
+}
+
+# ── 进入第二关 ──
 
 SCENES["ch3_palace_second_trial"] = {
     "chapter": 3,
@@ -5710,7 +5801,7 @@ SCENES["ch7_elder_legacy"] = {
         "他指向大殿深处的一道暗门：「那里面，有丹宗老祖留下的最后一关。只有通过试炼者，才能真正获得丹宗的完整传承。」",
     ],
     "choices": [
-        {"text": "接受试炼——进入暗门", "next": "ch7_final_trial_gate",
+        {"text": "接受试炼——进入暗门", "next": "ch7_final_boss",
          "effects": {"set_flag": "accepted_danzong_trial", "spiritual_power": 10}},
     ]
 }

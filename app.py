@@ -204,6 +204,28 @@ def handle_action(data: dict):
     effects = choice.get("effects", {})
     state = apply_effect(state, effects)
 
+    # 检查是否死亡
+    if not state.get("alive", True):
+        """玩家死亡，进入死亡画面"""
+        return {
+            "state": state,
+            "scene": {
+                "id": "__death__",
+                "chapter": state.get("chapter", 1),
+                "text": ["☠️ 道途已断", "",
+                         "你的伤势过重，最终倒在了修仙之路上……",
+                         "修仙界少了一个求道者，多了一堆枯骨。",
+                         "",
+                         "但大道五十，天衍四九，人遁其一。",
+                         "或许，你还有重来一次的机会？"],
+                "choices": [],
+                "is_end": True,
+                "is_death": True,
+            },
+            "applied_effects": effects,
+            "can_advance": None,
+        }
+
     next_scene_id = choice.get("next", "start")
     state["current_scene"] = next_scene_id
 

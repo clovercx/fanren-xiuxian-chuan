@@ -536,6 +536,9 @@ body::before {
   to { opacity: 1; transform: translate(-50%,-50%) scale(1); }
 }
 
+/* ── 死亡画面 ── */
+.death-text { color: var(--accent-red) !important; font-weight: 700; }
+
 /* ── 滚动条 ── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-primary); }
@@ -712,44 +715,49 @@ function renderStats() {
       <div class="character-portrait">
       <div class="portrait-frame" id="portraitFrame"><span id="portraitIcon" style="font-size:2em;">🌱</span></div>
       <div class="portrait-name" id="portraitName" style="font-family:'Ma Shan Zheng',cursive;font-size:0.9em;">${s.name || '无名'}</div>
-      <div class="portrait-realm" id="portraitRealm" style="font-size:0.75em;color:var(--accent-gold);margin-top:2px;">凡人</div>
+      <div class="portrait-realm" id="portraitRealm" style="font-size:0.75em;color:var(--accent-gold);margin-top:2px;">${s.cultivation}</div>
     </div>
     <div class="section-title">✦ 人物</div>
       <div class="stat-row"><span class="stat-label">姓名</span><span class="stat-value">${s.name || '无名'}</span></div>
-      <div class="stat-row"><span class="stat-label">境界</span><span class="cultivation-badge">${s.cultivation}</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('境界',STAT_DESC['cultivation'])"><span class="stat-label">境界</span><span class="cultivation-badge">${s.cultivation}</span></div>
       <div class="stat-row"><span class="stat-label">回合</span><span class="stat-value">${s.turn_count}</span></div>
     </div>
     <div class="stat-section">
       <div class="section-title">✦ 状态</div>
-      <div class="stat-row"><span class="stat-label">气血</span><span class="stat-value">${s.hp}/${s.max_hp}</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('气血',STAT_DESC['hp'])"><span class="stat-label">气血</span><span class="stat-value">${s.hp}/${s.max_hp}</span></div>
       <div class="hp-bar"><div class="hp-bar-fill" style="width:${hpPct}%"></div></div>
-      <div class="stat-row" style="margin-top:6px;"><span class="stat-label">灵力</span><span class="stat-value">${s.spiritual_power}/${maxSp}</span></div>
+      <div class="stat-row" style="cursor:pointer;margin-top:6px;" onclick="showTooltip('灵力',STAT_DESC['spiritual_power'])"><span class="stat-label">灵力</span><span class="stat-value">${s.spiritual_power}/${maxSp}</span></div>
       <div class="sp-bar"><div class="sp-bar-fill" style="width:${spPct}%"></div></div>
     </div>
     <div class="stat-section">
       <div class="section-title">✦ 资质</div>
-      <div class="stat-row"><span class="stat-label">根骨</span><span class="stat-value">${s.talent}/10</span></div>
-      <div class="stat-row"><span class="stat-label">悟性</span><span class="stat-value">${s.comprehension}/10</span></div>
-      <div class="stat-row"><span class="stat-label">气运</span><span class="stat-value highlight">${s.luck}/10</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('根骨',STAT_DESC['talent'])"><span class="stat-label">根骨</span><span class="stat-value">${s.talent}/10</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('悟性',STAT_DESC['comprehension'])"><span class="stat-label">悟性</span><span class="stat-value">${s.comprehension}/10</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('气运',STAT_DESC['luck'])"><span class="stat-label highlight">气运</span><span class="stat-value highlight">${s.luck}/10</span></div>
     </div>
     <div class="stat-section">
       <div class="section-title">✦ 财物</div>
-      <div class="stat-row"><span class="stat-label">灵石</span><span class="stat-value">${s.spirit_stones}</span></div>
+      <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('灵石',STAT_DESC['spirit_stones'])"><span class="stat-label">灵石</span><span class="stat-value">${s.spirit_stones}</span></div>
     </div>
     ${s.items && s.items.length ? `
     <div class="stat-section">
       <div class="section-title">✦ 物品</div>
-      <ul class="item-list">${s.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      <ul class="item-list">${s.items.map(i => `<li style="cursor:pointer;" onclick="showTooltip('${i}',ITEM_DESC['${i}']||'未知物品')">${i}</li>`).join('')}</ul>
     </div>` : ''}
     ${s.techniques && s.techniques.length ? `
     <div class="stat-section">
       <div class="section-title">✦ 功法</div>
-      <ul class="item-list">${s.techniques.map(t => `<li>${t}</li>`).join('')}</ul>
+      <ul class="item-list">${s.techniques.map(t => `<li style="cursor:pointer;" onclick="showTooltip('${t}','已习得的功法秘籍')">${t}</li>`).join('')}</ul>
+    </div>` : ''}
+    ${s.artifacts && s.artifacts.length ? `
+    <div class="stat-section">
+      <div class="section-title">✦ 法器</div>
+      <ul class="item-list">${s.artifacts.map(a => `<li style="cursor:pointer;" onclick="showTooltip('${a}','已获得的法器')">${a}</li>`).join('')}</ul>
     </div>` : ''}
     ${s.pills && s.pills.length ? `
     <div class="stat-section">
       <div class="section-title">✦ 丹药</div>
-      <ul class="item-list">${s.pills.map(p => `<li>${p}</li>`).join('')}</ul>
+      <ul class="item-list">${s.pills.map(p => `<li style="cursor:pointer;" onclick="showTooltip('${p}',ITEM_DESC['${p}']||'未知丹药')">${p}</li>`).join('')}</ul>
     </div>` : ''}
   `;
 }
@@ -791,6 +799,18 @@ html += '<p>' + escapeHtml(line).replace(/\{name\}/g, gameState ? gameState.name
   const choices = currentScene.choices || [];
   let choicesHtml = '';
   if (isChapterEnd) {
+    // Check if it's a death scene
+    if (currentScene.is_death) {
+      choicesHtml = `
+        <div style="text-align:center;margin-top:24px;">
+          <button class="choice-btn" onclick="newGame()" style="text-align:center;border-color:var(--accent-red);margin-bottom:10px;">
+            🔄 重开一世
+          </button>
+          <button class="choice-btn" onclick="showLoadModal()" style="text-align:center;">
+            📂 读取存档
+          </button>
+        </div>`;
+    } else {
     // 章节结束，显示下一章按钮
     var nextCh = gameState.chapter + 1;
     var chNames = {2:'第二章',3:'第三章',4:'第四章',5:'第五章',6:'第六章',7:'第七章'};
@@ -802,6 +822,7 @@ html += '<p>' + escapeHtml(line).replace(/\{name\}/g, gameState ? gameState.name
       <button class="choice-btn" onclick="continueStory()" style="text-align:center;border-color:var(--accent-gold);">
         继续冒险...
       </button>`;
+    }
   } else if (choices.length > 0) {
     choices.forEach((c, i) => {
 choicesHtml += '<button class="choice-btn" onclick="makeChoice(' + i + ')">' + escapeHtml(c.text).replace(/\{name\}/g, gameState ? gameState.name || '道友' : '道友') + '</button>';
@@ -1027,6 +1048,54 @@ async function doAdvance() {
   } catch(e) {
     alert('突破失败: ' + e.message);
   }
+}
+
+// ── 物品/属性说明 ──
+var ITEM_DESC = {
+  '神秘玉简': '记载修仙基础功法的玉简，内含《长春功》口诀',
+  '三足小鼎': '青玄散人留下的炼丹小鼎，有凝练药力的功效',
+  '百草经': '灵药辨识和药性典籍，提升炼丹成功率',
+  '百炼丹方·抄本': '抄录的丹方集，记录了多种丹药配方',
+  '防御玉佩': '刻有防御法阵的玉佩，注入灵力可激活护罩',
+  '寒光匕首': '刻有符文的锋利匕首，战斗利器',
+  '古丹方残卷': '上古丹方残卷，记载了失传的聚灵散配方',
+  '玄元鼎': '玄鼎真人留下的传承法器，万象丹炉的核心',
+  '血玉灵芝': '血色秘境特产的灵药，炼制筑基丹的关键辅材',
+  '苏婉的玉佩': '天枢峰苏婉赠送的传讯玉佩，可凭此物找她',
+  '筑基丹': '突破筑基期的珍贵丹药，可大幅提升成功率',
+  '聚气丹': '最基础的修炼丹药，可加快真气积累',
+  '辟谷丹': '服用后可七日不食，方便长时间闭关修炼',
+  '凝血丹': '可快速恢复气血的疗伤丹药',
+  '天火之种': '上古丹宗封存的天火，蕴含恐怖的炼化之力',
+};
+
+var STAT_DESC = {
+  'hp': '气血 — 生命力的体现。归零则道途断绝。',
+  'max_hp': '最大气血 — 身体能承受的气血上限。',
+  'spiritual_power': '灵力 — 修为积累的体现。足够时可冲击更高境界。',
+  'spirit_stones': '灵石 — 修仙界的硬通货，可用于交易和修炼。',
+  'talent': '根骨 — 修炼资质。影响突破成功率和修炼速度。上限10。',
+  'comprehension': '悟性 — 领悟能力。影响功法学习、阵法理解和特殊事件。上限10。',
+  'luck': '气运 — 命运眷顾。影响奇遇触发的概率和机缘质量。上限10。',
+  'cultivation': '境界 — 修为层次。从凡人到化神，步步登天。',
+};
+
+function showTooltip(title, desc) {
+  var old = document.querySelector('.tooltip-popup');
+  if (old) old.remove();
+  var tip = document.createElement('div');
+  tip.className = 'tooltip-popup';
+  tip.style.cssText = `
+    position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+    background:var(--bg-card); border:1px solid var(--accent-gold);
+    border-radius:10px; padding:18px 24px; max-width:360px;
+    z-index:9998; text-align:center; line-height:1.7;
+    box-shadow:0 4px 24px rgba(0,0,0,0.15);
+    animation:toastFadeIn 0.3s ease;
+  `;
+  tip.innerHTML = '<strong style="color:var(--accent-gold);font-size:1.1em;">' + title + '</strong><br><span style="color:var(--text-secondary);font-size:0.9em;">' + desc + '</span><br><br><button onclick="this.parentElement.remove()" style="padding:4px 20px;background:var(--gold-gradient);border:none;border-radius:4px;color:#1a1210;cursor:pointer;font-size:0.85em;">知道了</button>';
+  tip.onclick = function(){ this.remove(); };
+  document.body.appendChild(tip);
 }
 
 // ── 效果提示 ──
