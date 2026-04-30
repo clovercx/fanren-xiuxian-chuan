@@ -70,7 +70,7 @@ SCENES["cave_entrance_rash"] = {
     ],
     "choices": [
         {"text": "挥刀斩蛇！", "next": "snake_fight",
-         "effects": {"hp": -15}},
+         "effects": {"hp": -25}},
         {"text": "冲向石桌抓起玉简再闪避", "next": "snake_dodge",
          "effects": {"add_item": "神秘玉简", "luck": 1}},
     ]
@@ -191,7 +191,7 @@ SCENES["leave_cave_respect"] = {
         {"text": "彻夜研读《长春功》", "next": "study_changchun_night",
          "effects": {"comprehension": 1, "spiritual_power": 5}},
         {"text": "先休息，明日再研究", "next": "study_changchun_morning",
-         "effects": {"hp": 20}},
+         "effects": {"hp": 10}},
     ]
 }
 
@@ -208,7 +208,7 @@ SCENES["leave_cave_quick"] = {
         {"text": "彻夜研读《长春功》", "next": "study_changchun_night",
          "effects": {"comprehension": 1, "spiritual_power": 5}},
         {"text": "先休息，明日再研究", "next": "study_changchun_morning",
-         "effects": {"hp": 20}},
+         "effects": {"hp": 10}},
     ]
 }
 
@@ -229,9 +229,9 @@ SCENES["study_changchun_night"] = {
     ],
     "choices": [
         {"text": "继续修炼，巩固感应", "next": "first_qi_refine",
-         "effects": {"spiritual_power": 10, "hp": -5}},
+         "effects": {"spiritual_power": 10, "hp": -10}},
         {"text": "先吃点东西恢复体力", "next": "first_qi_eat",
-         "effects": {"spiritual_power": 5, "hp": 15}},
+         "effects": {"spiritual_power": 5, "hp": 7}},
     ]
 }
 
@@ -246,7 +246,7 @@ SCENES["study_changchun_morning"] = {
     ],
     "choices": [
         {"text": "趁热打铁继续修炼", "next": "first_qi_refine",
-         "effects": {"spiritual_power": 8, "hp": -3}},
+         "effects": {"spiritual_power": 8, "hp": -6}},
         {"text": "循序渐进，先理解功法原理再去修炼", "next": "first_qi_understand",
          "effects": {"spiritual_power": 3, "comprehension": 1}},
     ]
@@ -268,10 +268,10 @@ SCENES["first_qi_refine"] = {
     "choices": [
         {"text": "决定前往七玄门拜师", "next": "journey_to_qixuan",
          "effects": {"cultivation": "练气初期", "spiritual_power": 15,
-                     "hp": 30, "max_hp": 30}},
+                     "hp": 15, "max_hp": 30}},
         {"text": "先在深山隐居修炼一段时间", "next": "seclusion_first",
          "effects": {"cultivation": "练气初期", "spiritual_power": 15,
-                     "hp": 30, "max_hp": 30, "talent": 1}},
+                     "hp": 15, "max_hp": 30, "talent": 1}},
     ]
 }
 
@@ -333,7 +333,7 @@ SCENES["seclusion_first"] = {
         {"text": "继续隐居，突破到更高境界再出山",
          "next": "seclusion_long",
          "conditions": {"talent_min": 6},
-         "effects": {"spiritual_power": 30, "talent": 1, "hp": 10}},
+         "effects": {"spiritual_power": 30, "talent": 1, "hp": 5}},
         {"text": "觉得火候够了，前往七玄门", "next": "journey_to_qixuan",
          "effects": {"spiritual_power": 20}},
     ]
@@ -354,7 +354,7 @@ SCENES["seclusion_long"] = {
     ],
     "choices": [
         {"text": "前往七玄门拜师", "next": "journey_to_qixuan",
-         "effects": {"spiritual_power": 35, "hp": 20, "max_hp": 10,
+         "effects": {"spiritual_power": 35, "hp": 10, "max_hp": 10,
                      "talent": 1}},
     ]
 }
@@ -741,7 +741,7 @@ SCENES["chapter2_start"] = {
     ],
     "choices": [
         {"text": "开始一天的杂役——又是枯燥的劈柴挑水", "next": "ch2_daily_chores",
-         "effects": {"set_flag": "qixuan_path", "hp": -5},
+         "effects": {"set_flag": "qixuan_path", "hp": -10},
          "conditions": {"flag": "qixuan_handyman"}},
         {"text": "去藏经阁看看，三个月从未踏足", "next": "ch2_library_first",
          "effects": {"set_flag": "qixuan_path"},
@@ -769,7 +769,7 @@ SCENES["ch2_daily_chores"] = {
     ],
     "choices": [
         {"text": "埋头苦干，趁机修炼", "next": "ch2_chores_end",
-         "effects": {"spiritual_power": 8, "hp": -8, "talent": 1}},
+         "effects": {"spiritual_power": 8, "hp": -16, "talent": 1}},
         {"text": "边干活边观察其他杂役弟子", "next": "ch2_chores_observe",
          "effects": {"spiritual_power": 3, "comprehension": 1}},
     ]
@@ -936,7 +936,7 @@ SCENES["ch2_alone_night"] = {
          "effects": {"add_item": "三足小鼎"},
          "conditions": {"has_item": "三足小鼎"}},
         {"text": "好好休息，明日再做打算", "next": "ch2_decision_point",
-         "effects": {"hp": 15}},
+         "effects": {"hp": 7}},
     ]
 }
 
@@ -1014,9 +1014,9 @@ SCENES["ch2_valley_explore"] = {
     ],
     "choices": [
         {"text": "迎战！两人联手未必打不过", "next": "ch2_valley_fight",
-         "effects": {"hp": -10, "spirit_stones": 5}},
+         "effects": {"hp": -20, "spirit_stones": 5}},
         {"text": "绕路，不与妖兽正面冲突", "next": "ch2_valley_stealth",
-         "effects": {"comprehension": 1, "hp": -3}},
+         "effects": {"comprehension": 1, "hp": -6}},
     ]
 }
 
@@ -1090,7 +1090,7 @@ SCENES["ch2_valley_settle"] = {
     ],
     "choices": [
         {"text": "潜心修炼一个月", "next": "ch2_month_pass",
-         "effects": {"spiritual_power": 40, "hp": 10}},
+         "effects": {"spiritual_power": 40, "hp": 5}},
     ]
 }
 
@@ -1109,7 +1109,7 @@ SCENES["ch2_valley_deep"] = {
         {"text": "见好就收，拿了黄精就走", "next": "ch2_valley_settle",
          "effects": {"add_item": "三百年黄精", "spirit_stones": 20}},
         {"text": "冒险进洞查看", "next": "ch2_valley_cave",
-         "effects": {"hp": -10, "luck": 2}},
+         "effects": {"hp": -20, "luck": 2}},
     ]
 }
 
@@ -1147,7 +1147,7 @@ SCENES["ch2_cave_loot"] = {
     ],
     "choices": [
         {"text": "全力逃跑！", "next": "ch2_escape_snake",
-         "effects": {"hp": -25, "add_item": "上品灵石", "add_item": "上品灵石",
+         "effects": {"hp": -37, "add_item": "上品灵石", "add_item": "上品灵石",
                      "add_item": "无名玉简", "add_item": "残破灵盾"}},
     ]
 }
@@ -1214,7 +1214,7 @@ SCENES["ch2_alchemy_slow"] = {
                      "add_pill": "回气丹", "spiritual_power": 5}},
         {"text": "休息，明日再练", "next": "ch2_decision_point",
          "effects": {"add_pill": "回气丹", "add_pill": "回气丹",
-                     "add_pill": "回气丹", "hp": 10}},
+                     "add_pill": "回气丹", "hp": 5}},
     ]
 }
 
@@ -1343,7 +1343,7 @@ SCENES["ch2_bully_intro"] = {
     ],
     "choices": [
         {"text": "去演武场会会赵峰", "next": "ch2_bully_meet",
-         "effects": {"hp": -5}},
+         "effects": {"hp": -10}},
         {"text": "不去，先找林逸商量对策", "next": "ch2_bully_ask_linyi",
          "effects": {"set_flag": "ask_linyi_help"},
          "conditions": {"flag": "friend_linyi"}},
@@ -1367,7 +1367,7 @@ SCENES["ch2_bully_meet"] = {
         {"text": "忍气吞声，交出部分灵石", "next": "ch2_bully_pay",
          "effects": {"spirit_stones": -15}},
         {"text": "硬顶回去——“我的钱关你什么事？”", "next": "ch2_bully_fight",
-         "effects": {"hp": -15}},
+         "effects": {"hp": -25}},
     ]
 }
 
@@ -1424,7 +1424,7 @@ SCENES["ch2_bully_fight"] = {
     ],
     "choices": [
         {"text": "此仇不报非君子——疯狂修炼", "next": "ch2_cultivation_montage",
-         "effects": {"spiritual_power": 20, "hp": -10, "talent": 1,
+         "effects": {"spiritual_power": 20, "hp": -20, "talent": 1,
                      "set_flag": "grudge_zhaofeng"}},
     ]
 }
@@ -1585,7 +1585,7 @@ SCENES["ch2_cultivation_montage"] = {
     ],
     "choices": [
         {"text": "服用丹药，全力冲击瓶颈", "next": "ch2_breakthrough_attempt",
-         "effects": {"spiritual_power": 30, "hp": -5}},
+         "effects": {"spiritual_power": 30, "hp": -10}},
         {"text": "不急不躁，水到渠成", "next": "ch2_breakthrough_natural",
          "effects": {"spiritual_power": 20, "comprehension": 1}},
     ]
@@ -1607,7 +1607,7 @@ SCENES["ch2_breakthrough_attempt"] = {
     "choices": [
         {"text": "稳固修为，感受新的力量", "next": "ch2_after_breakthrough",
          "effects": {"cultivation": "练气中期", "spiritual_power": 15,
-                     "max_hp": 20, "hp": 20}},
+                     "max_hp": 20, "hp": 10}},
     ]
 }
 
@@ -1625,7 +1625,7 @@ SCENES["ch2_breakthrough_natural"] = {
     "choices": [
         {"text": "稳固修为", "next": "ch2_after_breakthrough",
          "effects": {"cultivation": "练气中期", "spiritual_power": 10,
-                     "max_hp": 20, "hp": 20, "comprehension": 1}},
+                     "max_hp": 20, "hp": 10, "comprehension": 1}},
     ]
 }
 
@@ -1709,7 +1709,7 @@ SCENES["ch2_prep_cultivation"] = {
     ],
     "choices": [
         {"text": "继续苦修——拼了", "next": "ch2_prep_culti_result",
-         "effects": {"spiritual_power": 40, "hp": -10}},
+         "effects": {"spiritual_power": 40, "hp": -20}},
         {"text": "出关，换种方式提升实力", "next": "ch2_prep_gear",
          "effects": {"spiritual_power": 20}},
     ]
@@ -1798,7 +1798,7 @@ SCENES["ch2_final_prep"] = {
     ],
     "choices": [
         {"text": "静待黎明——血色试炼，我来了！", "next": "ch2_end",
-         "effects": {"set_flag": "ready_for_trial", "hp": 20, "spiritual_power": 10}},
+         "effects": {"set_flag": "ready_for_trial", "hp": 10, "spiritual_power": 10}},
     ]
 }
 
@@ -2021,9 +2021,9 @@ SCENES["ch3_gate_opening"] = {
     ],
     "choices": [
         {"text": "稳住心神，运转真气护体", "next": "ch3_landing_safe",
-         "effects": {"hp": -5, "spiritual_power": 5}},
+         "effects": {"hp": -10, "spiritual_power": 5}},
         {"text": "放松身体，任由传送之力牵引", "next": "ch3_landing_wild",
-         "effects": {"hp": -10, "luck": 1}},
+         "effects": {"hp": -20, "luck": 1}},
     ]
 }
 
@@ -2042,7 +2042,7 @@ SCENES["ch3_landing_safe"] = {
         {"text": "探索这片区域，寻找灵药和机缘", "next": "ch3_explore_plains",
          "effects": {}},
         {"text": "找一个安全的地方，先稳固境界", "next": "ch3_find_shelter",
-         "effects": {"hp": 10, "spiritual_power": 5}},
+         "effects": {"hp": 5, "spiritual_power": 5}},
     ]
 }
 
@@ -2059,7 +2059,7 @@ SCENES["ch3_landing_wild"] = {
     ],
     "choices": [
         {"text": "小心探索黑森林", "next": "ch3_black_forest",
-         "effects": {"hp": -8}},
+         "effects": {"hp": -16}},
         {"text": "先离开这片诡异的林子", "next": "ch3_leave_forest",
          "effects": {"comprehension": 1}},
     ]
@@ -2131,9 +2131,9 @@ SCENES["ch3_harvest_blood_herb"] = {
     ],
     "choices": [
         {"text": "迎战！一头畜生也敢拦我", "next": "ch3_fight_panther",
-         "effects": {"hp": -15}},
+         "effects": {"hp": -25}},
         {"text": "放弃这株，去寻找其他机缘", "next": "ch3_leave_forest",
-         "effects": {"hp": -10}},
+         "effects": {"hp": -20}},
     ]
 }
 
@@ -2171,7 +2171,7 @@ SCENES["ch3_explore_plains"] = {
     ],
     "choices": [
         {"text": "上前帮忙，结交盟友", "next": "ch3_help_fellow",
-         "effects": {"hp": -8, "reputation": {"七玄门": 10}},
+         "effects": {"hp": -16, "reputation": {"七玄门": 10}},
          "conditions": {"flag": "qixuan_path"}},
         {"text": "偷偷绕过去，不掺和", "next": "ch3_avoid_combat",
          "effects": {}},
@@ -2289,7 +2289,7 @@ SCENES["ch3_find_shelter"] = {
     ],
     "choices": [
         {"text": "前往中层区域", "next": "ch3_mid_layer_entrance",
-         "effects": {"spiritual_power": 15, "hp": 15}},
+         "effects": {"spiritual_power": 15, "hp": 7}},
     ]
 }
 
@@ -2308,11 +2308,11 @@ SCENES["ch3_mid_layer_entrance"] = {
     ],
     "choices": [
         {"text": "服用清心丹，闯过血雾", "next": "ch3_mist_trial_strong",
-         "effects": {"hp": -10, "spiritual_power": 5}},
+         "effects": {"hp": -20, "spiritual_power": 5}},
         {"text": "运转功法，以意志力硬闯", "next": "ch3_mist_trial_will",
-         "effects": {"hp": -15, "comprehension": 2}},
+         "effects": {"hp": -25, "comprehension": 2}},
         {"text": "寻找绕过血雾的路", "next": "ch3_mist_around",
-         "effects": {"hp": -5, "comprehension": 1}},
+         "effects": {"hp": -10, "comprehension": 1}},
     ]
 }
 
@@ -2356,7 +2356,7 @@ SCENES["ch3_mist_trial_will"] = {
     ],
     "choices": [
         {"text": "查看广场上的身影", "next": "ch3_mid_layer_meeting",
-         "effects": {"hp": -10, "comprehension": 2, "talent": 1,
+         "effects": {"hp": -20, "comprehension": 2, "talent": 1,
                      "set_flag": "passed_mist_by_will"}},
     ]
 }
@@ -2443,11 +2443,11 @@ SCENES["ch3_palace_first_trial"] = {
     ],
     "choices": [
         {"text": "正面迎击！运转烈焰诀全力攻击", "next": "ch3_trial_fight_aggressive",
-         "effects": {"hp": -20, "spiritual_power": 5}},
+         "effects": {"hp": -34, "spiritual_power": 5}},
         {"text": "游走牵制，寻找弱点再出手", "next": "ch3_trial_fight_tactical",
-         "effects": {"hp": -15, "comprehension": 1}},
+         "effects": {"hp": -25, "comprehension": 1}},
         {"text": "运转土甲术防守，消耗它的体力", "next": "ch3_trial_fight_defensive",
-         "effects": {"hp": -10, "talent": 1},
+         "effects": {"hp": -20, "talent": 1},
          "conditions": {"has_technique": "土甲术"}},
     ]
 }
@@ -2471,7 +2471,7 @@ SCENES["ch3_trial_fight_aggressive"] = {
     ],
     "choices": [
         {"text": "通过第一关！前往第二关", "next": "ch3_palace_second_trial",
-         "effects": {"hp": -15, "spiritual_power": 10,
+         "effects": {"hp": -25, "spiritual_power": 10,
                      "set_flag": "passed_first_trial"}},
     ]
 }
@@ -2493,7 +2493,7 @@ SCENES["ch3_trial_fight_tactical"] = {
     ],
     "choices": [
         {"text": "通过第一关！前往第二关", "next": "ch3_palace_second_trial",
-         "effects": {"hp": -10, "spiritual_power": 8,
+         "effects": {"hp": -20, "spiritual_power": 8,
                      "set_flag": "passed_first_trial", "comprehension": 1}},
     ]
 }
@@ -2511,7 +2511,7 @@ SCENES["ch3_trial_fight_defensive"] = {
     ],
     "choices": [
         {"text": "通过第一关！前往第二关", "next": "ch3_palace_second_trial",
-         "effects": {"hp": -5, "spiritual_power": 5,
+         "effects": {"hp": -10, "spiritual_power": 5,
                      "set_flag": "passed_first_trial", "talent": 1}},
     ]
 }
@@ -2533,7 +2533,7 @@ SCENES["ch3_palace_second_trial"] = {
     ],
     "choices": [
         {"text": "“我的路，我自己走！”——打碎幻象", "next": "ch3_heart_trial_break",
-         "effects": {"hp": -10, "comprehension": 2, "talent": 1,
+         "effects": {"hp": -20, "comprehension": 2, "talent": 1,
                      "set_flag": "passed_second_trial"}},
         {"text": "“变强没有错——但我不会出卖自己”", "next": "ch3_heart_trial_accept",
          "effects": {"spiritual_power": 15, "comprehension": 1,
@@ -2616,7 +2616,7 @@ SCENES["ch3_choice_technique"] = {
     "choices": [
         {"text": "离开秘境", "next": "ch3_escape",
          "effects": {"add_technique": "血煞真经", "spiritual_power": 20,
-                     "set_flag": "got_legacy", "hp": -10}},
+                     "set_flag": "got_legacy", "hp": -20}},
     ]
 }
 
@@ -2636,7 +2636,7 @@ SCENES["ch3_choice_power"] = {
     "choices": [
         {"text": "离开秘境", "next": "ch3_escape",
          "effects": {"spiritual_power": 80, "cultivation": "练气后期",
-                     "max_hp": 30, "hp": 20, "talent": 1,
+                     "max_hp": 30, "hp": 10, "talent": 1,
                      "set_flag": "absorbed_blood_crystal"}},
     ]
 }
@@ -2677,9 +2677,9 @@ SCENES["ch3_escape"] = {
     ],
     "choices": [
         {"text": "全速奔跑，赶往入口", "next": "ch3_escape_run",
-         "effects": {"hp": -10}},
+         "effects": {"hp": -20}},
         {"text": "运转真气，御风而行", "next": "ch3_escape_fly",
-         "effects": {"hp": -15, "spiritual_power": 5}},
+         "effects": {"hp": -25, "spiritual_power": 5}},
     ]
 }
 
@@ -2696,9 +2696,9 @@ SCENES["ch3_escape_run"] = {
     ],
     "choices": [
         {"text": "继续加快速度", "next": "ch3_escape_final",
-         "effects": {"hp": -5, "spiritual_power": 3}},
+         "effects": {"hp": -10, "spiritual_power": 3}},
         {"text": "帮助落后的弟子一把", "next": "ch3_escape_help",
-         "effects": {"hp": -10, "reputation": {"七玄门": 15}},
+         "effects": {"hp": -20, "reputation": {"七玄门": 15}},
          "conditions": {"flag": "team_liuchuang"}},
     ]
 }
@@ -2733,7 +2733,7 @@ SCENES["ch3_escape_help"] = {
     ],
     "choices": [
         {"text": "冲出入秘境！", "next": "ch3_ending_safe",
-         "effects": {"hp": -15, "set_flag": "saved_liuchuang",
+         "effects": {"hp": -25, "set_flag": "saved_liuchuang",
                      "reputation": {"七玄门": 20}}},
     ]
 }
@@ -2808,11 +2808,11 @@ SCENES["ch3_zhaofeng_encounter"] = {
     ],
     "choices": [
         {"text": "交出部分灵药，息事宁人", "next": "ch3_zhaofeng_submit",
-         "effects": {"spirit_stones": -20, "hp": -5}},
+         "effects": {"spirit_stones": -20, "hp": -10}},
         {"text": "冷眼相对——“秘境之中，各凭本事”", "next": "ch3_zhaofeng_defy",
-         "effects": {"hp": -10, "talent": 1}},
+         "effects": {"hp": -20, "talent": 1}},
         {"text": "趁其不备，先下手为强！", "next": "ch3_zhaofeng_attack",
-         "effects": {"hp": -20, "luck": 1},
+         "effects": {"hp": -34, "luck": 1},
          "conditions": {"flag": "grudge_zhaofeng"}},
     ]
 }
@@ -2870,7 +2870,7 @@ SCENES["ch3_zhaofeng_attack"] = {
     ],
     "choices": [
         {"text": "继续探索秘境", "next": "ch3_mid_layer_entrance",
-         "effects": {"hp": -15, "spiritual_power": 10, "talent": 1,
+         "effects": {"hp": -25, "spiritual_power": 10, "talent": 1,
                      "set_flag": "beat_zhaofeng", "reputation": {"七玄门": 10}}},
     ]
 }
@@ -2889,7 +2889,7 @@ SCENES["ch3_forest_encounter"] = {
     ],
     "choices": [
         {"text": "出手相救", "next": "ch3_save_female_disciple",
-         "effects": {"hp": -10}},
+         "effects": {"hp": -20}},
         {"text": "此地在秘境中，自顾不暇——离开", "next": "ch3_mid_layer_entrance",
          "effects": {}},
     ]
@@ -2908,7 +2908,7 @@ SCENES["ch3_save_female_disciple"] = {
     ],
     "choices": [
         {"text": "收下玉佩，继续探索", "next": "ch3_mid_layer_entrance",
-         "effects": {"add_item": "苏婉的玉佩", "hp": -8,
+         "effects": {"add_item": "苏婉的玉佩", "hp": -16,
                      "reputation": {"七玄门": 15}, "spirit_stones": 10}},
     ]
 }
@@ -3119,7 +3119,7 @@ SCENES["ch4_reward_humble"] = {
         {"text": "接下嘉奖，心中暗暗规划筑基之路", "next": "ch4_after_ceremony",
          "effects": {"set_flag": "promoted_outer", "spirit_stones": 50,
                      "add_pill": "聚气丹", "add_pill": "聚气丹", "reputation": {"七玄门": 20},
-                     "hp": 10}},
+                     "hp": 5}},
     ]
 }
 
@@ -3180,7 +3180,7 @@ SCENES["ch4_visitor"] = {
     ],
     "choices": [
         {"text": "和朋友们喝酒庆祝", "next": "ch4_celebration",
-         "effects": {"hp": 10, "reputation": {"七玄门": 10}, "spiritual_power": 5}},
+         "effects": {"hp": 5, "reputation": {"七玄门": 10}, "spiritual_power": 5}},
     ]
 }
 
@@ -3260,7 +3260,7 @@ SCENES["ch4_meet_linyi"] = {
     ],
     "choices": [
         {"text": "“随他来——我不怕他”", "next": "ch4_linyi_advice",
-         "effects": {"hp": -5}},
+         "effects": {"hp": -10}},
         {"text": "“先不理他，专心准备筑基”", "next": "ch4_linyi_advice",
          "effects": {"spiritual_power": 5}},
     ]
@@ -3338,11 +3338,11 @@ SCENES["ch4_zhaofeng_showdown"] = {
     ],
     "choices": [
         {"text": "“我没什么好给你看的”——冷静应对", "next": "ch4_zf_confront",
-         "effects": {"hp": -5, "talent": 1}},
+         "effects": {"hp": -10, "talent": 1}},
         {"text": "“秘境中各凭本事，你有本事自己去拿”——强硬回击", "next": "ch4_zf_stand_firm",
-         "effects": {"hp": -10, "spiritual_power": 5}},
+         "effects": {"hp": -20, "spiritual_power": 5}},
         {"text": "二话不说直接动手！", "next": "ch4_zf_fight",
-         "effects": {"hp": -20, "luck": 1},
+         "effects": {"hp": -34, "luck": 1},
          "conditions": {"flag": "beat_zhaofeng"}},
     ]
 }
@@ -3384,9 +3384,9 @@ SCENES["ch4_zf_stand_firm"] = {
     "choices": [
         {"text": "接受挑战——三日后演武场见", "next": "ch4_zf_duel_prep",
          "effects": {"set_flag": "accepted_duel", "reputation": {"七玄门": 15},
-                     "hp": -5, "talent": 1}},
+                     "hp": -10, "talent": 1}},
         {"text": "不理他，专心准备筑基", "next": "ch4_start_preparation",
-         "effects": {"hp": -5, "spiritual_power": 5}},
+         "effects": {"hp": -10, "spiritual_power": 5}},
     ]
 }
 
@@ -3409,7 +3409,7 @@ SCENES["ch4_zf_fight"] = {
     ],
     "choices": [
         {"text": "接受处罚，趁禁足期间闭关冲击筑基", "next": "ch4_start_preparation",
-         "effects": {"hp": -10, "spiritual_power": 10, "talent": 1,
+         "effects": {"hp": -20, "spiritual_power": 10, "talent": 1,
                      "set_flag": "fought_zhaofeng_again", "reputation": {"七玄门": 10}}},
     ]
 }
@@ -3427,7 +3427,7 @@ SCENES["ch4_zf_duel_prep"] = {
     ],
     "choices": [
         {"text": "服用丹药，全力备战", "next": "ch4_zf_duel",
-         "effects": {"spiritual_power": 15, "hp": 10}},
+         "effects": {"spiritual_power": 15, "hp": 5}},
         {"text": "研究赵峰的弱点，针对性准备", "next": "ch4_zf_duel",
          "effects": {"comprehension": 2}},
     ]
@@ -3449,11 +3449,11 @@ SCENES["ch4_zf_duel"] = {
     ],
     "choices": [
         {"text": "先发制人——全力进攻！", "next": "ch4_duel_aggressive",
-         "effects": {"hp": -15, "spiritual_power": 5}},
+         "effects": {"hp": -25, "spiritual_power": 5}},
         {"text": "稳扎稳打——防守反击", "next": "ch4_duel_defensive",
-         "effects": {"hp": -10, "comprehension": 1}},
+         "effects": {"hp": -20, "comprehension": 1}},
         {"text": "利用血煞之气震慑对手", "next": "ch4_duel_pressure",
-         "effects": {"hp": -20, "luck": 1},
+         "effects": {"hp": -34, "luck": 1},
          "conditions": {"has_technique": "血煞真经"}},
     ]
 }
@@ -3475,7 +3475,7 @@ SCENES["ch4_duel_aggressive"] = {
     ],
     "choices": [
         {"text": "乘胜追击——结束战斗！", "next": "ch4_duel_victory",
-         "effects": {"hp": -10, "spiritual_power": 8}},
+         "effects": {"hp": -20, "spiritual_power": 8}},
     ]
 }
 
@@ -3494,7 +3494,7 @@ SCENES["ch4_duel_defensive"] = {
     ],
     "choices": [
         {"text": "趁他没有武器——彻底击败他！", "next": "ch4_duel_victory",
-         "effects": {"hp": -5, "spiritual_power": 5}},
+         "effects": {"hp": -10, "spiritual_power": 5}},
     ]
 }
 
@@ -3513,7 +3513,7 @@ SCENES["ch4_duel_pressure"] = {
     ],
     "choices": [
         {"text": "留他一命——“你输了”", "next": "ch4_duel_victory",
-         "effects": {"hp": -15, "spiritual_power": 10, "reputation": {"七玄门": 20},
+         "effects": {"hp": -25, "spiritual_power": 10, "reputation": {"七玄门": 20},
                      "set_flag": "defeated_zhaofeng_by_power"}},
     ]
 }
@@ -3531,7 +3531,7 @@ SCENES["ch4_duel_victory"] = {
     ],
     "choices": [
         {"text": "享受胜利的果实——然后准备筑基", "next": "ch4_start_preparation",
-         "effects": {"set_flag": "beat_zhaofeng_public", "hp": 10,
+         "effects": {"set_flag": "beat_zhaofeng_public", "hp": 5,
                      "spiritual_power": 15, "reputation": {"七玄门": 25},
                      "spirit_stones": 30}},
     ]
@@ -3641,7 +3641,7 @@ SCENES["ch4_valley_breakthrough"] = {
     ],
     "choices": [
         {"text": "调整呼吸——开始突破！", "next": "ch4_breakthrough_start",
-         "effects": {"spiritual_power": 10, "hp": 15,
+         "effects": {"spiritual_power": 10, "hp": 7,
                      "set_flag": "got_cave", "set_flag": "valley_breakthrough"}},
     ]
 }
@@ -3663,13 +3663,13 @@ SCENES["ch4_breakthrough_start"] = {
     ],
     "choices": [
         {"text": "服用筑基丹辅助突破", "next": "ch4_breakthrough_pill",
-         "effects": {"hp": -15, "spiritual_power": 20},
+         "effects": {"hp": -25, "spiritual_power": 20},
          "conditions": {"has_pill": "筑基丹"}},
         {"text": "催动血煞真经，以煞气冲击瓶颈", "next": "ch4_breakthrough_blood",
-         "effects": {"hp": -25, "spiritual_power": 30},
+         "effects": {"hp": -37, "spiritual_power": 30},
          "conditions": {"has_technique": "血煞真经"}},
         {"text": "依靠自身积累，稳扎稳打", "next": "ch4_breakthrough_pure",
-         "effects": {"hp": -20, "spiritual_power": 15}},
+         "effects": {"hp": -34, "spiritual_power": 15}},
     ]
 }
 
@@ -3688,7 +3688,7 @@ SCENES["ch4_breakthrough_pill"] = {
     ],
     "choices": [
         {"text": "全力冲刺——凝聚真元！", "next": "ch4_breakthrough_climax",
-         "effects": {"spiritual_power": 30, "hp": -10}},
+         "effects": {"spiritual_power": 30, "hp": -20}},
     ]
 }
 
@@ -3705,7 +3705,7 @@ SCENES["ch4_breakthrough_blood"] = {
     ],
     "choices": [
         {"text": "以意志压制煞气——凝聚真元！", "next": "ch4_breakthrough_climax",
-         "effects": {"spiritual_power": 40, "hp": -20, "talent": 1}},
+         "effects": {"spiritual_power": 40, "hp": -34, "talent": 1}},
     ]
 }
 
@@ -3722,7 +3722,7 @@ SCENES["ch4_breakthrough_pure"] = {
     ],
     "choices": [
         {"text": "孤注一掷——全力压缩！", "next": "ch4_breakthrough_climax",
-         "effects": {"spiritual_power": 20, "hp": -25, "comprehension": 2}},
+         "effects": {"spiritual_power": 20, "hp": -37, "comprehension": 2}},
     ]
 }
 
@@ -3766,7 +3766,7 @@ SCENES["ch4_breakthrough_success"] = {
     ],
     "choices": [
         {"text": "感受筑基期的力量——脱胎换骨！", "next": "ch4_after_breakthrough",
-         "effects": {"cultivation": "筑基初期", "max_hp": 100, "hp": 50,
+         "effects": {"cultivation": "筑基初期", "max_hp": 100, "hp": 25,
                      "spiritual_power": 50, "set_flag": "foundation_established"}},
     ]
 }
@@ -3790,7 +3790,7 @@ SCENES["ch4_after_breakthrough"] = {
     ],
     "choices": [
         {"text": "出关——让所有人刮目相看", "next": "ch4_exit_cave",
-         "effects": {"hp": 20}},
+         "effects": {"hp": 10}},
     ]
 }
 
@@ -3943,7 +3943,7 @@ SCENES["ch5_cauldron_awakening"] = {
     ],
     "choices": [
         {"text": "继续注入真元，探索小鼎的秘密", "next": "ch5_cauldron_explore",
-         "effects": {"spiritual_power": 5, "hp": -5}},
+         "effects": {"spiritual_power": 5, "hp": -10}},
         {"text": "先不急——去找典籍查证", "next": "ch5_cauldron_research",
          "effects": {"comprehension": 1}},
     ]
@@ -4007,7 +4007,7 @@ SCENES["ch5_plan_expedition"] = {
     ],
     "choices": [
         {"text": "独自前往——速战速决", "next": "ch5_depart_alone",
-         "effects": {"hp": -5, "talent": 1}},
+         "effects": {"hp": -10, "talent": 1}},
         {"text": "邀约朋友同行", "next": "ch5_depart_team",
          "effects": {"reputation": {"七玄门": 5}},
          "conditions": {"flag": "friend_linyi"}},
@@ -4048,7 +4048,7 @@ SCENES["ch5_depart_team"] = {
     "choices": [
         {"text": "出发——前往十万大山", "next": "ch5_journey_start",
          "effects": {"set_flag": "team_expedition", "reputation": {"七玄门": 10},
-                     "hp": 10}},
+                     "hp": 5}},
     ]
 }
 
@@ -4066,7 +4066,7 @@ SCENES["ch5_depart_official"] = {
     "choices": [
         {"text": "接受条件——安全第一", "next": "ch5_journey_start",
          "effects": {"set_flag": "official_expedition", "reputation": {"七玄门": 15},
-                     "spiritual_power": 5, "hp": 15}},
+                     "spiritual_power": 5, "hp": 7}},
         {"text": "拒绝——还是不受束缚的好", "next": "ch5_depart_alone",
          "effects": {"spiritual_power": 3}},
     ]
@@ -4089,9 +4089,9 @@ SCENES["ch5_journey_start"] = {
     ],
     "choices": [
         {"text": "绕开狼群，谨慎前行", "next": "ch5_avoid_wolves",
-         "effects": {"hp": -3, "comprehension": 1}},
+         "effects": {"hp": -6, "comprehension": 1}},
         {"text": "直接冲过去——几头狼不足为惧", "next": "ch5_fight_wolves",
-         "effects": {"hp": -12, "spiritual_power": 3}},
+         "effects": {"hp": -20, "spiritual_power": 3}},
     ]
 }
 
@@ -4106,7 +4106,7 @@ SCENES["ch5_avoid_wolves"] = {
     ],
     "choices": [
         {"text": "继续向五指山前进", "next": "ch5_mountain_approach",
-         "effects": {"spiritual_power": 3, "hp": 5}},
+         "effects": {"spiritual_power": 3, "hp": 2}},
     ]
 }
 
@@ -4121,7 +4121,7 @@ SCENES["ch5_fight_wolves"] = {
     ],
     "choices": [
         {"text": "简单包扎后继续前进", "next": "ch5_mountain_approach",
-         "effects": {"hp": -8, "spiritual_power": 5, "talent": 1}},
+         "effects": {"hp": -16, "spiritual_power": 5, "talent": 1}},
     ]
 }
 
@@ -4312,7 +4312,7 @@ SCENES["ch5_all_items"] = {
     ],
     "choices": [
         {"text": "继续炼化玄元鼎，使其认主", "next": "ch5_refine_cauldron",
-         "effects": {"spiritual_power": 15, "hp": -10}},
+         "effects": {"spiritual_power": 15, "hp": -20}},
     ]
 }
 
@@ -4436,7 +4436,7 @@ SCENES["ch5_encounter_battle"] = {
     ],
     "choices": [
         {"text": "出手相救！", "next": "ch5_rescue_fellow",
-         "effects": {"hp": -15, "spiritual_power": 5}},
+         "effects": {"hp": -25, "spiritual_power": 5}},
         {"text": "暗中观察——先看清楚情况再说", "next": "ch5_observe_battle",
          "effects": {"comprehension": 1}},
     ]
@@ -4457,9 +4457,9 @@ SCENES["ch5_rescue_fellow"] = {
     ],
     "choices": [
         {"text": "迎战黑风盗！", "next": "ch5_fight_bandits",
-         "effects": {"hp": -10, "reputation": {"七玄门": 15}}},
+         "effects": {"hp": -20, "reputation": {"七玄门": 15}}},
         {"text": "且战且退——带师兄逃离", "next": "ch5_retreat_bandits",
-         "effects": {"hp": -8, "comprehension": 1}},
+         "effects": {"hp": -16, "comprehension": 1}},
     ]
 }
 
@@ -4480,7 +4480,7 @@ SCENES["ch5_fight_bandits"] = {
     ],
     "choices": [
         {"text": "扶起受伤的师兄，返回七玄门", "next": "ch5_after_rescue",
-         "effects": {"hp": -10, "spiritual_power": 8, "talent": 1,
+         "effects": {"hp": -20, "spiritual_power": 8, "talent": 1,
                      "set_flag": "saved_senior", "reputation": {"七玄门": 20}}},
     ]
 }
@@ -4496,7 +4496,7 @@ SCENES["ch5_retreat_bandits"] = {
     ],
     "choices": [
         {"text": "安全返回七玄门", "next": "ch5_after_rescue",
-         "effects": {"hp": -5, "reputation": {"七玄门": 15},
+         "effects": {"hp": -10, "reputation": {"七玄门": 15},
                      "set_flag": "saved_senior"}},
     ]
 }
@@ -4613,7 +4613,7 @@ SCENES["ch6_linyi_warning"] = {
     ],
     "choices": [
         {"text": "“来就来吧——我不怕他们”", "next": "ch6_prepare_defense",
-         "effects": {"hp": -5, "talent": 1}},
+         "effects": {"hp": -10, "talent": 1}},
         {"text": "“先禀报长老——这是宗门的事”", "next": "ch6_report_elder",
          "effects": {"reputation": {"七玄门": 10}}},
     ]
@@ -4674,10 +4674,10 @@ SCENES["ch6_night_attack"] = {
     ],
     "choices": [
         {"text": "祭出玄元鼎防御！", "next": "ch6_defend_cauldron",
-         "effects": {"hp": -10, "spiritual_power": 5},
+         "effects": {"hp": -20, "spiritual_power": 5},
          "conditions": {"flag": "cauldron_refined"}},
         {"text": "烈焰诀迎战！", "next": "ch6_defend_fire",
-         "effects": {"hp": -15, "spiritual_power": 3}},
+         "effects": {"hp": -25, "spiritual_power": 3}},
     ]
 }
 
@@ -4696,9 +4696,9 @@ SCENES["ch6_defend_cauldron"] = {
     ],
     "choices": [
         {"text": "“想杀我？没那么容易！”——全力反击", "next": "ch6_battle_cauldron",
-         "effects": {"hp": -10, "spiritual_power": 8}},
+         "effects": {"hp": -20, "spiritual_power": 8}},
         {"text": "且战且退——引他们到林逸的埋伏圈", "next": "ch6_battle_ambush",
-         "effects": {"hp": -8, "comprehension": 2}},
+         "effects": {"hp": -16, "comprehension": 2}},
     ]
 }
 
@@ -4715,9 +4715,9 @@ SCENES["ch6_defend_fire"] = {
     ],
     "choices": [
         {"text": "全力一搏——不拼就没有机会了", "next": "ch6_battle_desperate",
-         "effects": {"hp": -20, "spiritual_power": 5}},
+         "effects": {"hp": -34, "spiritual_power": 5}},
         {"text": "且战且退——引他们到林逸的埋伏圈", "next": "ch6_battle_ambush",
-         "effects": {"hp": -10, "comprehension": 2}},
+         "effects": {"hp": -20, "comprehension": 2}},
     ]
 }
 
@@ -4738,7 +4738,7 @@ SCENES["ch6_battle_cauldron"] = {
     ],
     "choices": [
         {"text": "乘胜追击——彻底击溃他们！", "next": "ch6_battle_victory",
-         "effects": {"hp": -10, "spiritual_power": 10, "talent": 1}},
+         "effects": {"hp": -20, "spiritual_power": 10, "talent": 1}},
     ]
 }
 
@@ -4759,7 +4759,7 @@ SCENES["ch6_battle_ambush"] = {
     ],
     "choices": [
         {"text": "与朋友们联手——全歼来敌！", "next": "ch6_battle_victory",
-         "effects": {"hp": -8, "spiritual_power": 8, "reputation": {"七玄门": 15}}},
+         "effects": {"hp": -16, "spiritual_power": 8, "reputation": {"七玄门": 15}}},
     ]
 }
 
@@ -4780,7 +4780,7 @@ SCENES["ch6_battle_desperate"] = {
     ],
     "choices": [
         {"text": "“谁还想上？”", "next": "ch6_battle_victory",
-         "effects": {"hp": -20, "spiritual_power": 15, "talent": 2,
+         "effects": {"hp": -34, "spiritual_power": 15, "talent": 2,
                      "set_flag": "desperate_victory"}},
     ]
 }
@@ -4800,10 +4800,10 @@ SCENES["ch6_battle_victory"] = {
     ],
     "choices": [
         {"text": "快退——用玄元鼎护住大家！", "next": "ch6_after_battle",
-         "effects": {"hp": -15, "spiritual_power": 5,
+         "effects": {"hp": -25, "spiritual_power": 5,
                      "set_flag": "survived_selfdestruct"}},
         {"text": "一掌拍晕他——阻止自爆！", "next": "ch6_after_battle",
-         "effects": {"hp": -20, "talent": 1}},
+         "effects": {"hp": -34, "talent": 1}},
     ]
 }
 
@@ -4822,7 +4822,7 @@ SCENES["ch6_after_battle"] = {
     ],
     "choices": [
         {"text": "“兵来将挡——我绝不退缩”", "next": "ch6_breakthrough_mid",
-         "effects": {"hp": 10, "talent": 1}},
+         "effects": {"hp": 5, "talent": 1}},
         {"text": "“请长老指点——我该怎么办？”", "next": "ch6_elder_advice",
          "effects": {"reputation": {"七玄门": 10}}},
     ]
@@ -4900,7 +4900,7 @@ SCENES["ch6_breakthrough_mid"] = {
     ],
     "choices": [
         {"text": "感受新的力量——出关！", "next": "ch6_emerging_storm",
-         "effects": {"cultivation": "筑基中期", "max_hp": 40, "hp": 30,
+         "effects": {"cultivation": "筑基中期", "max_hp": 40, "hp": 15,
                      "spiritual_power": 30, "set_flag": "mid_breakthrough"}},
     ]
 }
@@ -4924,7 +4924,7 @@ SCENES["ch6_emerging_storm"] = {
     ],
     "choices": [
         {"text": "直面血无涯——“你是冲我来的吧？”", "next": "ch6_confront_bloodmaster",
-         "effects": {"hp": -10, "spiritual_power": 10, "talent": 1}},
+         "effects": {"hp": -20, "spiritual_power": 10, "talent": 1}},
     ]
 }
 
@@ -4947,7 +4947,7 @@ SCENES["ch6_confront_bloodmaster"] = {
         {"text": "“血煞真人的传承在我这里——想要就来拿”", "next": "ch6_bloodmaster_negotiate",
          "effects": {"spiritual_power": 5}},
         {"text": "“血煞真人已经陨落——他的传承是我的机缘，与你何干？”", "next": "ch6_bloodmaster_negotiate",
-         "effects": {"hp": -10, "talent": 1}},
+         "effects": {"hp": -20, "talent": 1}},
     ]
 }
 
@@ -5012,7 +5012,7 @@ SCENES["ch6_reject_bloodmaster"] = {
     ],
     "choices": [
         {"text": "全力防御——硬扛他一击！", "next": "ch6_survive_bloodstrike",
-         "effects": {"hp": -30, "spiritual_power": 10}},
+         "effects": {"hp": -45, "spiritual_power": 10}},
     ]
 }
 
@@ -5058,7 +5058,7 @@ SCENES["ch6_survive_bloodstrike"] = {
     ],
     "choices": [
         {"text": "抓紧时间——必须在三个月内突破到筑基后期！", "next": "ch6_three_months",
-         "effects": {"hp": -15, "spiritual_power": 10, "set_flag": "survived_bloodstrike"}},
+         "effects": {"hp": -25, "spiritual_power": 10, "set_flag": "survived_bloodstrike"}},
     ]
 }
 
@@ -5083,7 +5083,7 @@ SCENES["ch6_three_months"] = {
         {"text": "研究玄元鼎——发挥丹鼎的战斗力", "next": "ch6_train_cauldron",
          "effects": {"comprehension": 1}},
         {"text": "修习《血煞真经》中的血遁术——保命要紧", "next": "ch6_train_blood_escape",
-         "effects": {"hp": -5, "luck": 1},
+         "effects": {"hp": -10, "luck": 1},
          "conditions": {"has_technique": "血煞真经"}},
     ]
 }
@@ -5099,7 +5099,7 @@ SCENES["ch6_train_qingmu"] = {
     ],
     "choices": [
         {"text": "继续修炼——最后一个月冲刺", "next": "ch6_final_month",
-         "effects": {"spiritual_power": 25, "max_hp": 20, "hp": 20}},
+         "effects": {"spiritual_power": 25, "max_hp": 20, "hp": 10}},
     ]
 }
 
@@ -5133,7 +5133,7 @@ SCENES["ch6_train_blood_escape"] = {
     ],
     "choices": [
         {"text": "继续修炼——最后一个月冲刺", "next": "ch6_final_month",
-         "effects": {"add_technique": "血遁术", "spiritual_power": 15, "hp": -10}},
+         "effects": {"add_technique": "血遁术", "spiritual_power": 15, "hp": -20}},
     ]
 }
 
@@ -5333,9 +5333,9 @@ SCENES["ch7_journey_east"] = {
     ],
     "choices": [
         {"text": "收敛气息，谨慎前行", "next": "ch7_mist_stealth",
-         "effects": {"hp": -3, "comprehension": 1}},
+         "effects": {"hp": -6, "comprehension": 1}},
         {"text": "加快速度——冲出迷雾区域", "next": "ch7_mist_fast",
-         "effects": {"hp": -8, "spiritual_power": 3}},
+         "effects": {"hp": -16, "spiritual_power": 3}},
     ]
 }
 
@@ -5352,7 +5352,7 @@ SCENES["ch7_mist_stealth"] = {
     ],
     "choices": [
         {"text": "继续前进——万药山脉就在前方", "next": "ch7_arrive_mountains",
-         "effects": {"spiritual_power": 5, "hp": 5}},
+         "effects": {"spiritual_power": 5, "hp": 2}},
     ]
 }
 
@@ -5369,7 +5369,7 @@ SCENES["ch7_mist_fast"] = {
     ],
     "choices": [
         {"text": "万药山脉到了", "next": "ch7_arrive_mountains",
-         "effects": {"hp": -5, "spiritual_power": 5, "talent": 1}},
+         "effects": {"hp": -10, "spiritual_power": 5, "talent": 1}},
     ]
 }
 
@@ -5579,9 +5579,9 @@ SCENES["ch7_final_trial_gate"] = {
     ],
     "choices": [
         {"text": "运转玄元鼎——炼化天火！", "next": "ch7_refine_heavenfire",
-         "effects": {"hp": -20, "spiritual_power": 20}},
+         "effects": {"hp": -34, "spiritual_power": 20}},
         {"text": "先准备万全——再尝试炼化", "next": "ch7_prepare_heavenfire",
-         "effects": {"comprehension": 2, "hp": 10}},
+         "effects": {"comprehension": 2, "hp": 5}},
     ]
 }
 
@@ -5596,7 +5596,7 @@ SCENES["ch7_prepare_heavenfire"] = {
     ],
     "choices": [
         {"text": "运转玄元鼎——炼化天火！", "next": "ch7_refine_heavenfire",
-         "effects": {"hp": -15, "spiritual_power": 25}},
+         "effects": {"hp": -25, "spiritual_power": 25}},
     ]
 }
 
@@ -5617,9 +5617,9 @@ SCENES["ch7_refine_heavenfire"] = {
     ],
     "choices": [
         {"text": "以《青木长生诀》护体，强行炼化！", "next": "ch7_trial_success",
-         "effects": {"hp": -25, "spiritual_power": 30, "talent": 1}},
+         "effects": {"hp": -37, "spiritual_power": 30, "talent": 1}},
         {"text": "以《血煞真经》的霸道之力压制天火！", "next": "ch7_trial_success",
-         "effects": {"hp": -30, "spiritual_power": 35, "comprehension": 1},
+         "effects": {"hp": -45, "spiritual_power": 35, "comprehension": 1},
          "conditions": {"has_technique": "血煞真经"}},
     ]
 }
@@ -5640,7 +5640,7 @@ SCENES["ch7_trial_success"] = {
     "choices": [
         {"text": "感受天火的力量——继承丹宗传承", "next": "ch7_danzong_heir",
          "effects": {"add_item": "天火之种", "set_flag": "refined_heavenfire",
-                     "max_hp": 30, "hp": 20, "spiritual_power": 30}},
+                     "max_hp": 30, "hp": 10, "spiritual_power": 30}},
     ]
 }
 

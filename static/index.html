@@ -598,6 +598,7 @@ body::before {
 </div>
 
 <!-- 突破通知 -->
+<div class="modal-overlay" id="advanceOverlay">
 <div class="advance-notification" id="advanceModal">
   <h2>✦ 突破 ✦</h2>
   <p id="advanceMessage">修为圆满，可突破至下一境界！</p>
@@ -605,6 +606,7 @@ body::before {
     <div id="advanceBar" style="width:0%;height:100%;background:var(--gold-gradient);border-radius:3px;transition:width 0.3s ease;"></div>
   </div>
   <button class="advance-btn" id="advanceBtn" onclick="clickAdvance()">凝聚真气（0/5）</button>
+</div>
 </div>
 
 <script>
@@ -989,6 +991,7 @@ function checkAdvance() {
       $('advanceBtn').textContent = '凝聚真气（0/' + advanceMaxClicks + '）';
       $('advanceBtn').disabled = false;
       $('advanceModal').classList.add('active');
+      $('advanceOverlay').classList.add('active');
     }
   }).catch(() => {});
 }
@@ -1017,6 +1020,7 @@ async function doAdvance() {
     const data = await res.json();
     gameState = data.state;
     $('advanceModal').classList.remove('active');
+    $('advanceOverlay').classList.remove('active');
     renderStats();
     autoSave();
     showEffectNotification({message: data.message || '突破成功！'});
@@ -1073,12 +1077,12 @@ function showEffectNotification(effects) {
     `;
     toast.innerHTML = lines.join('<br>');
     document.body.appendChild(toast);
-    // Auto-dismiss after 2.5 seconds, or click to dismiss immediately
+    // Auto-dismiss after 1 second, or click to dismiss immediately
     var autoTimer = setTimeout(function(){
       toast.style.opacity = '0';
       toast.style.transition = 'opacity 0.5s';
       setTimeout(function(){ toast.remove(); }, 500);
-    }, 2500);
+    }, 1000);
     toast.addEventListener('click', function(){
       clearTimeout(autoTimer);
       toast.remove();
