@@ -769,6 +769,30 @@ function renderAll() {
   renderScene();
 }
 
+// ── 声望渲染 ──
+function renderReputation(reputation) {
+  if (!reputation || Object.keys(reputation).length === 0) return '';
+  var entries = Object.entries(reputation).sort(function(a,b){return b[1]-a[1];});
+  var html = '<div class="stat-section">';
+  html += '<div class="section-title">✦ 声望</div>';
+  entries.forEach(function(e){
+    var faction = e[0], val = e[1];
+    var levelLabel = '';
+    if (val <= 0) levelLabel = '敌对';
+    else if (val < 20) levelLabel = '冷淡';
+    else if (val < 50) levelLabel = '中立';
+    else if (val < 80) levelLabel = '友善';
+    else if (val < 120) levelLabel = '尊敬';
+    else levelLabel = '崇拜';
+    html += '<div class="stat-row" style="cursor:pointer;" onclick="showTooltip(\'' + faction + '声望\',\'当前声望: ' + val + ' (' + levelLabel + ')\')">';
+    html += '<span class="stat-label">' + faction + '</span>';
+    html += '<span class="stat-value" style="font-size:0.9em;">' + levelLabel + ' (' + val + ')</span>';
+    html += '</div>';
+  });
+  html += '</div>';
+  return html;
+}
+
 // ── 渲染状态面板 ──
 function renderStats() {
   if (!gameState) return;
@@ -806,6 +830,7 @@ function renderStats() {
       <div class="section-title">✦ 财物</div>
       <div class="stat-row" style="cursor:pointer;" onclick="showTooltip('灵石',STAT_DESC['spirit_stones'])"><span class="stat-label">灵石</span><span class="stat-value">${s.spirit_stones}</span></div>
     </div>
+    ${renderReputation(s.reputation)}
     ${s.items && s.items.length ? `
     <div class="stat-section">
       <div class="section-title">✦ 物品</div>
@@ -1499,7 +1524,6 @@ async function newGame() {
   if (gameState && gameState.turn_count > 0) {
     if (!confirm('确定要重新开始吗？当前进度将丢失。')) return;
   }
-  document.getElementById('landingScreen').style.display = '';
   document.getElementById('actionBar').style.display = 'none';
   document.getElementById('storyContainer').innerHTML = `
     <div class="landing-screen" id="landingScreen">
