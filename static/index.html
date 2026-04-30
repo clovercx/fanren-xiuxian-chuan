@@ -1007,7 +1007,7 @@ var advanceRealm = null;
 
 function checkAdvance() {
   if (!gameState) return;
-  fetch(API + '/api/advance', {
+  fetch(API + '/api/check-advance', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({state: gameState})
@@ -1082,9 +1082,9 @@ var STAT_DESC = {
   'max_hp': '最大气血 — 身体能承受的气血上限。',
   'spiritual_power': '灵力 — 修为积累的体现。足够时可冲击更高境界。',
   'spirit_stones': '灵石 — 修仙界的硬通货，可用于交易和修炼。',
-  'talent': '根骨 — 修炼资质。影响突破成功率和修炼速度。上限10。',
-  'comprehension': '悟性 — 领悟能力。影响功法学习、阵法理解和特殊事件。上限10。',
-  'luck': '气运 — 命运眷顾。影响奇遇触发的概率和机缘质量。上限10。',
+  'talent': '根骨 — 修炼资质。影响突破成功率和修炼速度。上限15。',
+  'comprehension': '悟性 — 领悟能力。影响功法学习、阵法理解和特殊事件。上限15。',
+  'luck': '气运 — 命运眷顾。影响奇遇触发的概率和机缘质量。上限15。',
   'cultivation': '境界 — 修为层次。从凡人到化神，步步登天。',
 };
 

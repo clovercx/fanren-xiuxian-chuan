@@ -1483,13 +1483,13 @@ SCENES["ch2_library_first"] = {
          "effects": {"spiritual_power": 5}},
         {"text": "选一本丹道典籍——《百炼丹方》", "next": "ch2_learn_alchemy_book",
          "effects": {"spirit_stones": -3, "comprehension": 1},
-         "conditions": {"has_item": "百草经", "comprehension_min": 6}},
+         "conditions": {"comprehension_min": 6}},
         {"text": "选一本阵法基础", "next": "ch2_learn_array",
          "effects": {"comprehension": 1},
          "conditions": {"comprehension_min": 5}},
         {"text": "尝试上二楼——听说上面有更好的功法", "next": "ch2_library_upstairs",
          "effects": {},
-         "conditions": {"comprehension_min": 7, "talent_min": 6}},
+         "conditions": {"comprehension_min": 8, "talent_min": 7}},
     ]
 }
 
@@ -1666,7 +1666,7 @@ SCENES["ch2_lucky_encounter"] = {
     "choices": [
         {"text": "运气来了挡都挡不住！", "next": "ch2_lucky_gain",
          "effects": {"spirit_stones": 30, "add_item": "古丹方残卷", "comprehension": 1},
-         "conditions": {"luck_min": 6}},
+         "conditions": {"luck_min": 8}},
         {"text": "可惜什么也没发现（气运不足）", "next": "ch2_lucky_fail",
          "effects": {"spirit_stones": 5},
          "conditions": {"luck_min": 0}},
@@ -2603,7 +2603,7 @@ SCENES["ch3_palace_first_trial"] = {
          "conditions": {"has_technique": "土甲术"}},
         {"text": "尝试沟通——这头血煞兽或许有灵智", "next": "ch3_trial_fight_talk",
          "effects": {"hp": -10},
-         "conditions": {"comprehension_min": 7}},
+         "conditions": {"comprehension_min": 9}},
     ]
 }
 
@@ -3171,13 +3171,14 @@ SCENES["ch2_library_first"] = {
         {"text": "选一门防御法术——《土甲术》", "next": "ch2_learn_earth",
          "effects": {"spiritual_power": 5}},
         {"text": "选一本丹道典籍——《百炼丹方》", "next": "ch2_learn_alchemy_book",
-         "effects": {"spirit_stones": -3, "comprehension": 1}},
+         "effects": {"spirit_stones": -3, "comprehension": 1},
+         "conditions": {"comprehension_min": 6}},
         {"text": "选一本阵法基础", "next": "ch2_learn_array",
          "effects": {"comprehension": 1},
          "conditions": {"comprehension_min": 5}},
         {"text": "尝试上二楼——听说上面有更好的功法", "next": "ch2_library_upstairs",
          "effects": {},
-         "conditions": {"comprehension_min": 7, "talent_min": 6}},
+         "conditions": {"comprehension_min": 8, "talent_min": 7}},
     ]
 }
 

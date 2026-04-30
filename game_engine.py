@@ -60,11 +60,11 @@ def apply_effect(state, effect):
         elif key == "spirit_stones":
             state["spirit_stones"] = max(0, state["spirit_stones"] + value)
         elif key == "talent":
-            state["talent"] = max(1, min(10, state["talent"] + value))
+            state["talent"] = max(1, min(15, state["talent"] + value))
         elif key == "comprehension":
-            state["comprehension"] = max(1, min(10, state["comprehension"] + value))
+            state["comprehension"] = max(1, min(15, state["comprehension"] + value))
         elif key == "luck":
-            state["luck"] = max(1, min(10, state["luck"] + value))
+            state["luck"] = max(1, min(15, state["luck"] + value))
         elif key == "add_item":
             if value not in state["items"]:
                 state["items"].append(value)

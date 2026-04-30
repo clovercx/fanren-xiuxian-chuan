@@ -246,6 +246,16 @@ def handle_action(data: dict):
     }
 
 
+@app.post("/api/check-advance")
+def check_advance(data: dict):
+    """仅检查是否可以突破，不执行"""
+    state = data.get("state", create_initial_state())
+    next_realm = can_advance_cultivation(state)
+    if next_realm:
+        return {"new_realm": next_realm}
+    return {"new_realm": None}
+
+
 @app.post("/api/advance")
 def force_advance(data: dict):
     """强制突破境界"""
