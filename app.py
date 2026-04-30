@@ -25,7 +25,11 @@ app.add_middleware(
 SAVE_DIR = os.path.join(os.path.dirname(__file__), "saves")
 os.makedirs(SAVE_DIR, exist_ok=True)
 
-STATS_FILE = os.path.join(SAVE_DIR, "stats.json")
+# 持久化存储：HF Spaces 上优先使用 /data（需手动开启 Persistent Storage）
+PERSISTENT_DIR = "/data" if os.path.exists("/data") else SAVE_DIR
+os.makedirs(PERSISTENT_DIR, exist_ok=True)
+
+STATS_FILE = os.path.join(PERSISTENT_DIR, "stats.json")
 
 
 def _load_stats():
@@ -140,7 +144,7 @@ def load_scene(data: dict):
     }
 
 
-AUTO_SAVE_PATH = os.path.join(SAVE_DIR, "save_auto.json")
+AUTO_SAVE_PATH = os.path.join(PERSISTENT_DIR, "save_auto.json")
 
 
 def _merge_state(saved_state):
@@ -183,24 +187,34 @@ def save_auto(data: dict):
 @app.get("/api/saves")
 def list_saves():
     saves = {}
-    for fname in sorted(os.listdir(SAVE_DIR)):
-        if fname.endswith(".json"):
-            slot = int(fname.replace("save_", "").replace(".json", ""))
-            with open(os.path.join(SAVE_DIR, fname)) as f:
-                data = json.load(f)
-            saves[slot] = {
-                "scene": data.get("current_scene", "unknown"),
-                "cultivation": data.get("cultivation", "凡人"),
-                "turn_count": data.get("turn_count", 0),
-                "chapter": data.get("chapter", 1),
-                "timestamp": os.path.getmtime(os.path.join(SAVE_DIR, fname)),
-            }
+    # 同时检查持久化存储和本地存储
+    for d in [PERSISTENT_DIR, SAVE_DIR]:
+        if not os.path.exists(d):
+            continue
+        for fname in sorted(os.listdir(d)):
+            if fname.endswith(".json") and fname.startswith("save_"):
+                try:
+                    slot = int(fname.replace("save_", "").replace(".json", ""))
+                    with open(os.path.join(d, fname)) as f:
+                        data = json.load(f)
+                    saves[slot] = {
+                        "scene": data.get("current_scene", "unknown"),
+                        "cultivation": data.get("cultivation", "凡人"),
+                        "turn_count": data.get("turn_count", 0),
+                        "chapter": data.get("chapter", 1),
+                        "timestamp": os.path.getmtime(os.path.join(d, fname)),
+                    }
+                except:
+                    pass
     return {"saves": saves}
 
 
 @app.get("/api/save/{slot}")
 def load_save(slot: int):
     path = os.path.join(SAVE_DIR, f"save_{slot}.json")
+    # 如果本地没有，尝试持久化目录
+    if not os.path.exists(path):
+        path = os.path.join(PERSISTENT_DIR, f"save_{slot}.json")
     if not os.path.exists(path):
         raise HTTPException(404, "存档不存在")
     with open(path) as f:
@@ -221,7 +235,7 @@ def save_game(slot: int, data: dict = None):
     state = body.get("state")
     if not state:
         raise HTTPException(400, "需要提供游戏状态")
-    path = os.path.join(SAVE_DIR, f"save_{slot}.json")
+    path = os.path.join(PERSISTENT_DIR, f"save_{slot}.json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)

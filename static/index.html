@@ -670,10 +670,12 @@ var QUOTES = [
 ];
 
 function showRandomQuote() {
-  var el = document.getElementById('landingQuote');
-  if (!el) return;
   var q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
-  el.textContent = '「' + q + '」';
+  var text = '「' + q + '」';
+  var landingEl = document.getElementById('landingQuote');
+  if (landingEl) landingEl.textContent = text;
+  var gameEl = document.getElementById('gameQuote');
+  if (gameEl) gameEl.textContent = text;
 }
 
 // 每10秒换一句
@@ -824,6 +826,9 @@ function renderStats() {
       <div class="section-title">✦ 丹药</div>
       <ul class="item-list">${s.pills.map(p => `<li style="cursor:pointer;" onclick="showTooltip('${p}',ITEM_DESC['${p}']||'未知丹药')">${p}</li>`).join('')}</ul>
     </div>` : ''}
+    <div class="stat-section" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border-color);">
+      <div style="font-size:0.75em;color:var(--accent-gold);opacity:0.6;font-style:italic;text-align:center;letter-spacing:0.5px;min-height:1.2em;" id="gameQuote"></div>
+    </div>
   `;
 }
 
