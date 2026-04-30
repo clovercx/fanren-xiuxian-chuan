@@ -59,18 +59,21 @@ def init_new_game():
 @app.post("/api/scene")
 def load_scene(data: dict):
     """加载指定场景，不做选择"""
-    state = data.get("state", create_initial_state())
-    scene_id = data.get("scene_id", state.get("current_scene", "start"))
-    state["current_scene"] = scene_id
+    defaults = create_initial_state()
+    state = data.get("state", {})
+    # 合并默认值，确保所有字段存在
+    merged = {**defaults, **state}
+    scene_id = data.get("scene_id", merged.get("current_scene", "start"))
+    merged["current_scene"] = scene_id
     scene = SCENES.get(scene_id)
     if not scene:
         scene = SCENES["start"]
     chapter = scene.get("chapter", 1)
-    state["chapter"] = chapter
+    merged["chapter"] = chapter
     return {
-        "state": state,
-        "scene": _process_scene(scene, state),
-        "can_advance": can_advance_cultivation(state),
+        "state": merged,
+        "scene": _process_scene(scene, merged),
+        "can_advance": can_advance_cultivation(merged),
     }
 
 
