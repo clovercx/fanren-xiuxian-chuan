@@ -32,9 +32,9 @@ SCENES["start"] = {
     ],
     "choices": [
         {"text": "小心靠近，探查石缝", "next": "cave_entrance_cautious",
-         "effects": {"talent": 1}},
+         "effects": {"talent": 1}, "hint": "步步为营，稳扎稳打"},
         {"text": "毫不犹豫钻进石缝", "next": "cave_entrance_rash",
-         "effects": {"luck": 1}},
+         "effects": {"luck": 1}, "hint": "勇往直前，不计后果"},
     ]
 }
 
@@ -51,9 +51,9 @@ SCENES["cave_entrance_cautious"] = {
     ],
     "choices": [
         {"text": "拿起玉简查看", "next": "get_jade_slip",
-         "effects": {"add_item": "神秘玉简", "comprehension": 1}},
+         "effects": {"add_item": "神秘玉简", "comprehension": 1}, "hint": "知识就是力量"},
         {"text": "先检查小鼎", "next": "get_tripod",
-         "effects": {"add_item": "三足小鼎"}},
+         "effects": {"add_item": "三足小鼎"}, "hint": "器物之中或有玄机"},
     ]
 }
 
@@ -70,9 +70,9 @@ SCENES["cave_entrance_rash"] = {
     ],
     "choices": [
         {"text": "挥刀斩蛇！", "next": "snake_fight",
-         "effects": {"hp": -25}},
+         "effects": {"hp": -15}, "hint": "兵行险着，血溅五步"},
         {"text": "冲向石桌抓起玉简再闪避", "next": "snake_dodge",
-         "effects": {"add_item": "神秘玉简", "luck": 1}},
+         "effects": {"add_item": "神秘玉简", "luck": 1}, "hint": "机敏过人，险中求胜"},
     ]
 }
 

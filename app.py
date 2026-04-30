@@ -283,13 +283,43 @@ def _get_visible_choices(choices, state):
     for i, c in enumerate(choices):
         conditions = c.get("conditions", None)
         if check_choice_visible(state, conditions):
-            result.append({
+            choice_data = {
                 "index": i,
                 "text": c["text"],
                 "effects": c.get("effects", {}),
                 "next": c.get("next", ""),
                 "next_scene_name": SCENES.get(c.get("next", ""), {}).get("text", [""])[0] if c.get("next") else "",
-            })
+            }
+            # 传递选项暗示提示
+            if "hint" in c:
+                choice_data["hint"] = c["hint"]
+            # 传递条件信息（用于展示）
+            if conditions:
+                cond_labels = []
+                for k, v in conditions.items():
+                    if k == "talent_min":
+                        cond_labels.append(f"根骨≥{v}")
+                    elif k == "comprehension_min":
+                        cond_labels.append(f"悟性≥{v}")
+                    elif k == "luck_min":
+                        cond_labels.append(f"气运≥{v}")
+                    elif k == "spirit_stones_min":
+                        cond_labels.append(f"灵石≥{v}")
+                    elif k == "has_item":
+                        cond_labels.append(f"需要：【{v}】")
+                    elif k == "has_technique":
+                        cond_labels.append(f"需要：【{v}】")
+                    elif k == "has_pill":
+                        cond_labels.append(f"需要：{v}")
+                    elif k == "has_artifact":
+                        cond_labels.append(f"需要：{v}")
+                    elif k == "cultivation_min":
+                        cond_labels.append(f"境界≥{v}")
+                    elif k == "flag" or k == "no_flag" or k == "chapter_min":
+                        pass  # 剧情条件不显示给玩家
+                if cond_labels:
+                    choice_data["condition_label"] = " ".join(cond_labels)
+            result.append(choice_data)
     return result
 
 

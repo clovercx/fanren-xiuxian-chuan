@@ -825,7 +825,15 @@ html += '<p>' + escapeHtml(line).replace(/\{name\}/g, gameState ? gameState.name
     }
   } else if (choices.length > 0) {
     choices.forEach((c, i) => {
-choicesHtml += '<button class="choice-btn" onclick="makeChoice(' + i + ')">' + escapeHtml(c.text).replace(/\{name\}/g, gameState ? gameState.name || '道友' : '道友') + '</button>';
+choicesHtml += '<div style="margin-bottom:12px;">';
+choicesHtml += '<button class="choice-btn" onclick="makeChoice(' + i + ')" style="margin-bottom:2px;">' + escapeHtml(c.text).replace(/\{name\}/g, gameState ? gameState.name || '道友' : '道友') + '</button>';
+if (c.hint) {
+choicesHtml += '<div style="font-size:0.75em;color:var(--text-dim);padding-left:26px;letter-spacing:0.5px;">—— ' + escapeHtml(c.hint) + '</div>';
+}
+if (c.condition_label) {
+choicesHtml += '<div style="font-size:0.75em;color:var(--accent-gold);padding-left:26px;letter-spacing:0.5px;opacity:0.8;">' + escapeHtml(c.condition_label) + '</div>';
+}
+choicesHtml += '</div>';
     });
   }
 
