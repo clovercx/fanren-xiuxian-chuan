@@ -77,6 +77,46 @@ def load_scene(data: dict):
     }
 
 
+AUTO_SAVE_PATH = os.path.join(SAVE_DIR, "save_auto.json")
+
+
+def _merge_state(saved_state):
+    """将保存的状态与默认值合并，确保所有字段存在"""
+    defaults = create_initial_state()
+    return {**defaults, **(saved_state or {})}
+
+
+@app.get("/api/auto-save")
+def get_auto_save():
+    """检查是否存在自动存档"""
+    if not os.path.exists(AUTO_SAVE_PATH):
+        return {"exists": False}
+    with open(AUTO_SAVE_PATH) as f:
+        raw = json.load(f)
+    state = _merge_state(raw)
+    scene_id = state.get("current_scene", "start")
+    scene = SCENES.get(scene_id) or SCENES["start"]
+    return {
+        "exists": True,
+        "state": state,
+        "scene": _process_scene(scene, state),
+        "can_advance": can_advance_cultivation(state),
+        "timestamp": os.path.getmtime(AUTO_SAVE_PATH),
+    }
+
+
+@app.post("/api/auto-save")
+def save_auto(data: dict):
+    """自动存档"""
+    state = data.get("state")
+    if not state:
+        raise HTTPException(400, "需要提供游戏状态")
+    os.makedirs(os.path.dirname(AUTO_SAVE_PATH), exist_ok=True)
+    with open(AUTO_SAVE_PATH, "w") as f:
+        json.dump(state, f, ensure_ascii=False, indent=2)
+    return {"success": True}
+
+
 @app.get("/api/saves")
 def list_saves():
     saves = {}

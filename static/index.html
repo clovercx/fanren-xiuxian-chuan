@@ -433,6 +433,62 @@ body::before {
   transform: scale(1.05);
 }
 
+/* ── 首页选择画面 ── */
+.landing-screen {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+.landing-subtitle {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 1.6em;
+  color: var(--accent-gold);
+  margin-bottom: 40px;
+  letter-spacing: 6px;
+}
+.landing-btn {
+  display: block;
+  width: 80%;
+  max-width: 300px;
+  margin: 0 auto 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--accent-gold);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+  color: var(--text-primary);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.15em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 2px;
+}
+.landing-btn:hover {
+  background: linear-gradient(135deg, rgba(201,168,76,0.18), rgba(201,168,76,0.05));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201,168,76,0.15);
+}
+.landing-btn.primary {
+  background: var(--gold-gradient);
+  color: #1a1210;
+  font-weight: 700;
+  border: none;
+}
+.landing-btn.primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 30px rgba(201,168,76,0.3);
+}
+.landing-btn.primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.landing-hint {
+  margin-top: 40px;
+  color: var(--text-dim);
+  font-size: 0.8em;
+  letter-spacing: 1px;
+}
+
 /* ── 动画加载 ── */
 .loading-text {
   text-align: center;
@@ -499,7 +555,12 @@ body::before {
     <!-- 故事区 -->
     <div class="story-area">
       <div class="story-container" id="storyContainer">
-        <div class="loading-text">☯ 天地初开，缘起未定...</div>
+        <div class="landing-screen" id="landingScreen">
+          <div class="landing-subtitle">踏入仙途，逆天改命</div>
+          <button class="landing-btn primary" id="landingContinue" onclick="startFromSave()">📂 继续冒险</button>
+          <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
+          <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
+        </div>
       </div>
 
       <div class="choices-area" id="choicesArea"></div>
@@ -554,16 +615,75 @@ function $(id) { return document.getElementById(id); }
 // ── 初始化和启动 ──
 async function init() {
   try {
+    // 检查自动存档
+    const res = await fetch(API + '/api/auto-save');
+    const data = await res.json();
+    if (data.exists) {
+      $('landingContinue').disabled = false;
+      $('landingContinue').textContent = '📂 继续冒险';
+    } else {
+      $('landingContinue').disabled = true;
+      $('landingContinue').textContent = '📂 无存档';
+    }
+    $('actionBar').style.display = 'none';
+  } catch(e) {
+    $('storyContainer').innerHTML = `<p style="color:var(--accent-red);">连接服务器失败: ${e.message}</p>`;
+  }
+}
+
+
+// ── 从自动存档继续 ──
+async function startFromSave() {
+  try {
+    const res = await fetch(API + '/api/auto-save');
+    const data = await res.json();
+    if (!data.exists) {
+      showLoadModal();
+      return;
+    }
+    gameState = data.state;
+    gameState.auto_advance = autoAdvance;
+    currentScene = data.scene;
+    $('landingScreen').style.display = 'none';
+    $('actionBar').style.display = 'flex';
+    renderAll();
+    window.scrollTo(0, 0);
+    showEffectNotification({message: '读取存档成功，继续冒险！'});
+  } catch(e) {
+    showLoadModal();
+  }
+}
+
+
+// ── 新游戏 ──
+async function startNewGame() {
+  try {
     const res = await fetch(API + '/api/init');
     const data = await res.json();
     gameState = data.state;
     currentScene = data.scene;
     gameState.auto_advance = autoAdvance;
-    renderAll();
+    $('landingScreen').style.display = 'none';
     $('actionBar').style.display = 'flex';
+    renderAll();
     showNameModal();
   } catch(e) {
-    $('storyContainer').innerHTML = `<p style="color:var(--accent-red);">连接服务器失败: ${e.message}</p>`;
+    $('storyContainer').innerHTML = `<p style="color:var(--accent-red);">启动失败: ${e.message}</p>`;
+  }
+}
+
+
+// ── 自动存档 ──
+async function autoSave() {
+  if (!gameState || gameState.turn_count === undefined) return;
+  try {
+    await fetch(API + '/api/auto-save', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({state: gameState})
+    });
+  } catch(e) {
+    // silently fail
   }
 }
 
@@ -798,6 +918,7 @@ async function makeChoice(index) {
     currentScene = data.scene;
     renderAll();
     window.scrollTo(0, 0);
+    autoSave();
 
     // 显示效果反馈
     if (data.applied_effects && Object.keys(data.applied_effects).length > 0) {
@@ -840,6 +961,7 @@ async function continueStory() {
     currentScene = data.scene;
     renderAll();
     window.scrollTo(0, 0);
+    autoSave();
   } catch(e) {
     location.reload();
   }
@@ -873,6 +995,7 @@ async function doAdvance() {
     gameState.auto_advance = autoAdvance;
     $('advanceModal').classList.remove('active');
     renderStats();
+    autoSave();
     showEffectNotification({message: data.message || '突破成功！'});
   } catch(e) {
     alert('突破失败: ' + e.message);
@@ -1058,6 +1181,8 @@ async function doLoad(slot) {
     gameState = data.state;
     gameState.auto_advance = autoAdvance;
     currentScene = data.scene;
+    $('landingScreen').style.display = 'none';
+    $('actionBar').style.display = 'flex';
     renderAll();
     showEffectNotification({message: `已读取存档 ${slot}`});
     closeLoadModal();
@@ -1093,6 +1218,8 @@ async function fetchSceneAndRender(sceneId) {
     gameState = data.state;
     gameState.auto_advance = autoAdvance;
     currentScene = data.scene;
+    $('landingScreen').style.display = 'none';
+    $('actionBar').style.display = 'flex';
     renderAll();
   } catch(e) {
     renderAll();
@@ -1101,12 +1228,22 @@ async function fetchSceneAndRender(sceneId) {
 
 function closeLoadModal() { $('loadModal').classList.remove('active'); }
 
-// ── 新游戏 ──
+// ── 新游戏（从游戏内重开）──
 async function newGame() {
   if (gameState && gameState.turn_count > 0) {
     if (!confirm('确定要重新开始吗？当前进度将丢失。')) return;
   }
-  await init();
+  document.getElementById('landingScreen').style.display = '';
+  document.getElementById('actionBar').style.display = 'none';
+  document.getElementById('storyContainer').innerHTML = `
+    <div class="landing-screen" id="landingScreen">
+      <div class="landing-subtitle">踏入仙途，逆天改命</div>
+      <button class="landing-btn primary" id="landingContinue" onclick="startFromSave()">📂 继续冒险</button>
+      <button class="landing-btn" onclick="startNewGame()">✨ 新的开始</button>
+      <div class="landing-hint">修仙之路漫漫，道心坚定者可成大道</div>
+    </div>`;
+  document.getElementById('choicesArea').innerHTML = '';
+  init();
   window.scrollTo(0, 0);
 }
 
